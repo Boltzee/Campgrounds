@@ -1,5 +1,7 @@
-const mongoose = require('mongoose');
-const Campground = require('../models/campground');
+const mongoose = require("mongoose");
+const Campground = require("../models/campground");
+const cities = require("./cities");
+const { descriptors, places } = require("./seedHelpers");
 
 mongoose.connect("mongodb://localhost:27017/YelpCamp", {
 	useNewUrlParser: true,
@@ -13,10 +15,21 @@ db.once("open", () => {
 	console.log("Database Connected");
 });
 
+const sample = (array) => array[Math.floor(Math.random() * array.length)];
+
 const seedDB = async () => {
 	await Campground.deleteMany({});
-	const k = new Campground({title: "hello kitty", price : 2});
-	await k.save();
-}
+	for (let x = 0; x < 50; x++) {
+		let random1000 = Math.floor(Math.random() * 1000);
+		const item = new Campground({
+			location: `${cities[random1000].city},${cities[random1000].state}`,
+			title: `${sample(descriptors)} ${sample(places)}`,
+			price: Math.floor(Math.random() * 100),
+		});
+		await item.save();
+	}
+};
 
-seedDB();
+seedDB().then(() => {
+	db.close();
+})
