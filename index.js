@@ -15,11 +15,11 @@ app.set("views", path.join(__dirname, "views"));
 /// Connecting to the mongo database
 
 mongoose
-	.connect("mongodb://localhost:27017/", {
+	.connect("mongodb://localhost:27017/farmApp", {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
-	.then((res) => {
+	.then(() => {
 		console.log("We are successfully connected to the database");
 	})
 	.catch((err) => {
@@ -31,7 +31,7 @@ mongoose
 
 app.get("/", (req, res) => {
 	// res.send("we are on the homepage of the application");
-	res.render('home');
+	res.render("home");
 });
 
 app.listen(3000, () => {
