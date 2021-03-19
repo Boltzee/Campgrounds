@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public", path.join(__dirname, "public"))); // all the middlewares
+app.use(express.static(path.join(__dirname, "public"))); // all the middlewares
 app.use(methodOverride("_method"));
 
 app.set("view engine", "ejs"); /// all the app sets
