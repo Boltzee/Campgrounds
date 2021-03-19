@@ -15,25 +15,24 @@ app.set("views", path.join(__dirname, "views"));
 
 /// Connecting to the mongo database
 
-mongoose
-	.connect("mongodb://localhost:27017/YelpCamp", {
-		useNewUrlParser: true,
-		useCreateIndex: true,
-		useUnifiedTopology: true,
-	})
-	// .then(() => {
-	// 	console.log("We are successfully connected to the database");
-	// })
-	// .catch((err) => {
-	// 	console.log("OHH No! we have encountered an error");
-	// 	console.log(err);
-	// });
+mongoose.connect("mongodb://localhost:27017/YelpCamp", {
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useUnifiedTopology: true,
+});
+// .then(() => {
+// 	console.log("We are successfully connected to the database");
+// })
+// .catch((err) => {
+// 	console.log("OHH No! we have encountered an error");
+// 	console.log(err);
+// });
 
-const db= mongoose.connection;
+const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
-db.once.("open", ()=> {
+db.once("open", () => {
 	console.log("Database Connected");
-})
+});
 
 //
 
