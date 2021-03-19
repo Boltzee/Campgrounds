@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const path = require("path");
 const app = express();
-const Campground = require('./models/campground');
+const Campground = require("./models/campground");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -16,8 +16,9 @@ app.set("views", path.join(__dirname, "views"));
 /// Connecting to the mongo database
 
 mongoose
-	.connect("mongodb://localhost:27017/farmApp", {
+	.connect("mongodb://localhost:27017/YelpCamp", {
 		useNewUrlParser: true,
+		useCreateIndex : true,
 		useUnifiedTopology: true,
 	})
 	.then(() => {
