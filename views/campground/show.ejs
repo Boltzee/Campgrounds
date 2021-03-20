@@ -7,10 +7,10 @@
 </head>
 <body>
 	<h1>This is the page to show all the campgrounds in the database</h1>
-	<ul>
+	<ol>
 		<% for(let x of grounds) {%>
-		    <li><%=x.name%>,</li>
+		    <li><a href="/campgrounds/<%=x._id%>"><%=x.title%>, <%=x.location%></a></li>
 		<%}%>
-	</ul>
+	</ol>
 </body>
 </html>
