@@ -4,6 +4,7 @@ const methodOverride = require("method-override");
 const path = require("path");
 const app = express();
 const Campground = require("./models/campground");
+const { descriptors, places } = require("./seeds/seedHelpers");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -64,8 +65,14 @@ app.delete("/campgrounds/:id", async (req, res) => {
 
 // NEW CAMPGROUND route
 
-app.use('/campgrounds/new', (req, res) => {
-	res.render('campground/new');
+app.get("/campgrounds/new", (req, res) => {
+	res.render("campground/new", { places, descriptors });
+});
+
+app.post('/campgrounds', async (req, res) => {
+	const ground = new Campground(req.body);
+	await ground.save();
+	res.redirect(`/campgrounds/${ground._id}`);
 })
 
 //
