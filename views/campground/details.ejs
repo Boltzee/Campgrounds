@@ -12,5 +12,8 @@
 		<li>--<%=ground.location%></li>
 	</ul>
 	<a href="/campgrounds">Back to all campgrounds</a>
+	<form method="POST" action="/campgrounds/<%=ground._id%>?_method=DELETE">
+		<button style="background-color: maroon">DELETE</button>
+	</form>
 </body>
 </html>
