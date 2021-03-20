@@ -4,7 +4,7 @@ const methodOverride = require("method-override");
 const path = require("path");
 const app = express();
 const Campground = require("./models/campground");
-const { descriptors, places } = require("./seeds/seedHelpers");
+const cities = require("./seeds/cities");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -45,6 +45,10 @@ app.get("/campgrounds", async (req, res) => {
 
 // The details route -- shows info about a single campground
 
+app.get("/campgrounds/new", (req, res) => {
+	res.render("campground/new", { cities });
+});
+
 app.get("/campgrounds/:id", async (req, res) => {
 	const { id } = req.params;
 	const ground = await Campground.findById(id);
@@ -65,15 +69,15 @@ app.delete("/campgrounds/:id", async (req, res) => {
 
 // NEW CAMPGROUND route
 
-app.get("/campgrounds/new", (req, res) => {
-	res.render("campground/new", { places, descriptors });
-});
+/// order where the app.get(new ) is placed matters so i placed it in front of the /campgrounds/:id get req
 
-app.post('/campgrounds', async (req, res) => {
-	const ground = new Campground(req.body);
+app.post("/campgrounds", async (req, res) => {
+	// console.log(req.body.campground.title);
+	// res.send(req.body);
+	const ground = new Campground(req.body.campground);
 	await ground.save();
 	res.redirect(`/campgrounds/${ground._id}`);
-})
+});
 
 //
 
