@@ -34,14 +34,24 @@ app.get("/", (req, res) => {
 });
 //
 
-// The index route
+// The index route -- basically shows all the campgrounds in the database
 
 app.get("/campgrounds", async (req, res) => {
 	const grounds = await Campground.find({});
-	res.render("show", { grounds });
+	res.render("campground/show", { grounds });
 });
+//
+
+// The details route -- shows info about a single campground
+
+app.get('/campgrounds/:id', async (req, res) => {
+	const {id} = req.params;
+	const ground = await Campground.findById(id);
+	res.render('campground/details', {ground});
+})
 
 //
+
 
 app.listen(3000, () => {
 	console.log("LISTENING ON PORT 3000");
