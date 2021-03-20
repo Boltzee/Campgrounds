@@ -12,6 +12,8 @@
 		<li>--<%=ground.location%></li>
 	</ul>
 	<a href="/campgrounds">Back to all campgrounds</a>
+	<br>
+	<a href="/campgrounds/<%=ground._id%>/edit">Edit the campground</a>
 	<form method="POST" action="/campgrounds/<%=ground._id%>?_method=DELETE">
 		<button>DELETE</button>
 	</form>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Edit ground.title</title>
+</head>
+<body>
+	<h1 style="text-align: center;">Form to edit the campground</h1>
+	<form method="POST" action="/campgrounds/<%=ground._id%>?_method=PATCH">
+		<label for="title">Edit the name</label>
+		<input type="text" name="campground[title]" id="title" value="<%=ground.title%>">
+		<br>
+		<label for="price">Edit the price</label>
+		<input type="number" id="price" name="campground[price]" value="<%=ground.price%>">
+		<br>
+		<label for="location">Edit the location</label>
+		<select name="campground[location]" id="location">
+			<% for(let city of cities) {%>
+				<option value="<%=city.city%>" <% city.city===ground.location ? 'selected' : ''%>> <%=city.city%> </option>
+			<%}%>
+		</select>
+		<br>
+		<button>Edit the campground</button>
+	</form>
+	<a href="/campgrounds">Cancel the edit and return to the all campgrounds page</a>
+</body>
+</html>
