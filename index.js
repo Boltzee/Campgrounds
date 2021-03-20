@@ -62,6 +62,14 @@ app.delete("/campgrounds/:id", async (req, res) => {
 
 //
 
+// NEW CAMPGROUND route
+
+app.use('/campgrounds/new', (req, res) => {
+	res.render('campground/new');
+})
+
+//
+
 app.listen(3000, () => {
 	console.log("LISTENING ON PORT 3000");
 });
