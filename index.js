@@ -44,14 +44,23 @@ app.get("/campgrounds", async (req, res) => {
 
 // The details route -- shows info about a single campground
 
-app.get('/campgrounds/:id', async (req, res) => {
-	const {id} = req.params;
+app.get("/campgrounds/:id", async (req, res) => {
+	const { id } = req.params;
 	const ground = await Campground.findById(id);
-	res.render('campground/details', {ground});
-})
+	res.render("campground/details", { ground });
+});
 
 //
 
+// The DELETE route -- 
+
+app.delete('/campground/:id', async (req, res) => {
+	const {id} = req.params;
+	await Campground.deleteMany(id);
+	res.redirect('/campgrounds');
+})
+
+//
 
 app.listen(3000, () => {
 	console.log("LISTENING ON PORT 3000");
