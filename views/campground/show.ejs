@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>All Campgrounds</title>
+</head>
+<body>
+	<h1>This is the page to show all the campgrounds in the database</h1>
+	<ul>
+		<% for(let x of grounds) {%>
+		    <li><%=x.name%>,</li>
+		<%}%>
+	</ul>
+</body>
+</html>
