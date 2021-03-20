@@ -20,26 +20,28 @@ mongoose.connect("mongodb://localhost:27017/YelpCamp", {
 	useCreateIndex: true,
 	useUnifiedTopology: true,
 });
-// .then(() => {
-// 	console.log("We are successfully connected to the database");
-// })
-// .catch((err) => {
-// 	console.log("OHH No! we have encountered an error");
-// 	console.log(err);
-// });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
 	console.log("Database Connected");
 });
-
 //
 
+// The / route
 app.get("/", (req, res) => {
-	// res.send("we are on the homepage of the application");
 	res.render("home");
 });
+//
+
+// The index route
+
+app.get("/campgrounds", async (req, res) => {
+	const grounds = await Campground.find({});
+	res.render("show", { grounds });
+});
+
+//
 
 app.listen(3000, () => {
 	console.log("LISTENING ON PORT 3000");
