@@ -52,13 +52,13 @@ app.get("/campgrounds/:id", async (req, res) => {
 
 //
 
-// The DELETE route -- 
+// The DELETE route --
 
-app.delete('/campground/:id', async (req, res) => {
-	const {id} = req.params;
-	await Campground.deleteMany(id);
-	res.redirect('/campgrounds');
-})
+app.delete("/campgrounds/:id", async (req, res) => {
+	const { id } = req.params;
+	await Campground.findByIdAndDelete(id);
+	res.redirect("/campgrounds");
+});
 
 //
 
