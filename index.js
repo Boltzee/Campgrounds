@@ -59,18 +59,22 @@ app.get("/campgrounds/:id", async (req, res) => {
 
 // The edit/patch route --
 
-app.get('/campgrounds/:id/edit', async (req, res) => {
-	const {id} = req.params;
+app.get("/campgrounds/:id/edit", async (req, res) => {
+	const { id } = req.params;
 	const ground = await Campground.findById(id);
-	res.render('campground/edit', {ground});
-})
+	res.render("campground/edit", { ground, cities });
+});
 
-app.patch('/campground/:id', async (req, res) =>{
-	const {id} = req.params;
+app.patch("/campgrounds/:id", async (req, res) => {
+	const { id } = req.params;
 	const update = req.body.campground;
-	const see = await Campground.findByIdAndUpdate(id, update, {new: true, runValidators: true});
+	console.log(update);
+	const see = await Campground.findByIdAndUpdate(id, update, {
+		new: true,
+		runValidators: true,
+	});
 	res.redirect(`/campgrounds/${see._id}`);
-})
+});
 
 //
 
