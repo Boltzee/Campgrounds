@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const path = require("path");
 const app = express();
-const ejsMate = require('ejs-mate');
+const ejsMate = require("ejs-mate");
 const Campground = require("./models/campground");
 const cities = require("./seeds/cities");
 
