@@ -1,19 +1,33 @@
 <% layout('layouts/boilerplate') %>
-	<h1 style="text-align: center;">Create a new campground</h1>;
-	<form action="/campgrounds" method="POST">
-		<label for="title">Add a title for the campground:</label>
-		<input type="text" id="title" name="campground[title]">
-		<br>
-		<label for="price">Add a price</label>
-		<input type="number" id="price" name="campground[price]">
-		<br>
-		<label for="places">Select a place</label>
-		<select name="campground[location]" id="places">
-			<% for(let place of cities) {%>
-				<option value="<%=place.city%>"><%=place.city%></option>
-			<%}%>
-		</select>
-		<br>
-		<button>Submit</button>
-	</form>
-	<a href="/campgrounds">Back to all campgrounds</a>
+	<h1 class="text-center">Create a new campground</h1>;
+	<div class="col-6 offset-3">
+		<form action="/campgrounds" method="POST">
+			<label class="form-label" for="title">Add a title for the campground:</label>
+			<input class="form-control" type="text" id="title" name="campground[title]">
+			<br>
+			<div class="mb-3">
+				<label class="form-label" for="price">Add a price</label>
+				<div class="input-group">
+	  				<span class="input-group-text" id="price-label">$</span>
+	  				<input name="campground[price]" type="text" class="form-control" placeholder="0" aria-label="Username" aria-describedby="price-label" id="price">
+				</div>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="image">Enter Image url</label>
+				<input class="form-control" type="text" id="image" name="campground[image]">
+			</div>
+			<div class="mb-3">
+				<label for="description" class="form-label">Enter description</label>
+				<textarea class="form-control" name="campground[description]" id="description" cols="30" rows="3" placeholder="Enter the description of the campground"></textarea>
+			</div>
+			<label class="form-label" for="places">Select a place</label>
+			<select class="form-select" name="campground[location]" id="places" >
+				<% for(let place of cities) {%>
+					<option value="<%=place.city%>"><%=place.city%></option>
+				<%}%>
+			</select>
+			<br>
+			<button class="btn btn-success mb-1">Submit</button>
+	    </form>
+		<a class="btn btn-secondary mb-1" href="/campgrounds">Back to all campgrounds</a>
+	</div>
