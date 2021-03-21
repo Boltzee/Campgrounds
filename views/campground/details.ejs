@@ -7,9 +7,9 @@
 		<li>--<%=ground.location%></li>
 	</ul>
 	<br>
-	<a href="/campgrounds">Back to all campgrounds</a>
+	<a class="btn btn-secondary mb-1" href="/campgrounds">Back to all campgrounds</a>
 	<br>
-	<a href="/campgrounds/<%=ground._id%>/edit">Edit the campground</a>
+	<a class="btn btn-primary mb-1" href="/campgrounds/<%=ground._id%>/edit">Edit the campground</a>
 	<form method="POST" action="/campgrounds/<%=ground._id%>?_method=DELETE">
-		<button>DELETE</button>
+		<button class="btn btn-primary mb-1">DELETE</button>
 	</form>
