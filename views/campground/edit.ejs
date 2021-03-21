@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Edit ground.title</title>
-</head>
-<body>
+<% layout('layouts/boilerplate') %>
 	<h1 style="text-align: center;">Form to edit the campground</h1>
 	<form method="POST" action="/campgrounds/<%=ground._id%>?_method=PATCH">
 		<label for="title">Edit the name</label>
@@ -24,5 +17,3 @@
 		<button>Edit the campground</button>
 	</form>
 	<a href="/campgrounds">Cancel the edit and return to the all campgrounds page</a>
-</body>
-</html>
