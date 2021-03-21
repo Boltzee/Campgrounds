@@ -1,19 +1,34 @@
 <% layout('layouts/boilerplate') %>
 	<h1 style="text-align: center;">Form to edit the campground</h1>
-	<form method="POST" action="/campgrounds/<%=ground._id%>?_method=PATCH">
-		<label for="title">Edit the name</label>
-		<input type="text" name="campground[title]" id="title" value="<%=ground.title%>">
-		<br>
-		<label for="price">Edit the price</label>
-		<input type="number" id="price" name="campground[price]" value="<%=ground.price%>">
-		<br>
-		<label for="location">Edit the location</label>
-		<select name="campground[location]" id="location">
-			<% for(let city of cities) {%>
-				<option value="<%=city.city%>" <% city.city===ground.location ? 'selected' : ''%>> <%=city.city%> </option>
-			<%}%>
-		</select>
-		<br>
-		<button>Edit the campground</button>
-	</form>
-	<a href="/campgrounds">Cancel the edit and return to the all campgrounds page</a>
+	<div class="col-6 offset-3">
+		<form action="/campgrounds/<%=ground._id%>?_method=PATCH" method="POST">
+			<label class="form-label" for="title">Edit the title:</label>
+			<input class="form-control" type="text" id="title" name="campground[title]" value="<%=ground.title%>">
+			<br>
+			<div class="mb-3">
+				<label class="form-label" for="price">Edit the price</label>
+				<div class="input-group">
+	  				<span class="input-group-text" id="price-label">$</span>
+	  				<input name="campground[price]" type="text" class="form-control" placeholder="0" aria-label="Username" aria-describedby="price-label" id="price" value="<%=ground.price%>">
+				</div>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="image">Edit Image url</label>
+				<input class="form-control" type="text" id="image" name="campground[image]" value="<%=ground.image%>">
+			</div>
+			<div class="mb-3">
+				<label for="description" class="form-label">Edit description</label>
+				<textarea class="form-control" name="campground[description]" id="description" cols="30" rows="3" placeholder="Edit the description of the campground"><%=ground.description%></textarea>
+			</div>
+			<label class="form-label" for="places">Edit place</label>
+			<select class="form-select" name="campground[location]" id="places">
+				<% for(let city of cities) {%>
+					<option value="<%=city.city%>" <%=city.city===ground.location ? 'selected' : ''%>> <%=city.city%> </option>
+				<%}%>
+			</select>
+			<br>
+			<button class="btn btn-success mb-1">Submit</button>
+	    </form>
+		<a class="btn btn-secondary mb-1" href="/campgrounds">Cancel the edit and return to the all campgrounds page</a>
+	</div>
+
