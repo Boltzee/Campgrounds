@@ -1,10 +1,26 @@
 <% layout('layouts/boilerplate') %>
 <body>
 	<h1>This is the page to show all the campgrounds in the database</h1>
-	<ol>
 		<% for(let x of grounds) {%>
-		    <li><a href="/campgrounds/<%=x._id%>"><%=x.title%>, <%=x.location%></a></li>
+		    <div class="card">
+		    	<div class="row">
+		    		<div class="col-md-4">
+		    			<img class="img-fluid" src="<%=x.image%>" alt="">
+		    		</div>
+		    		<div class="col-md-8">
+		    			<div class="card-body">
+		    				<h5 class="card-title">
+		    					<%=x.title%>
+		    				</h5>
+		    				<p class="card-text"><%=x.description%></p>
+		    				<p class="card-text">
+		    					<small class="text-muted"><%=x.location%></small>
+		    				</p>
+		    				<a href="/campgrounds/<%=x._id%>" class="btn btn-primary">View <%=x.title%></a>
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
 		<%}%>
-	</ol>
 	<a href="/campgrounds/new">Add a new campground</a>
 </body>
