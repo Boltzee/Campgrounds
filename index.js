@@ -9,6 +9,7 @@ const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/expressError");
 const Campground = require("./models/campground");
 const cities = require("./seeds/cities");
+const { campgroundSchema } = require("./schemas.js");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -18,24 +19,14 @@ app.use(methodOverride("_method"));
 // Custom defined middleware functions
 
 const validateCampground = (req, res, err) => {
-	const campgroundSchema = Joi.object({
-			campground: Joi.object({
-				title: Joi.string().required(),
-				price: Joi.number().required().min(0),
-				image: Joi.string().required(),
-				location: Joi.string().required(),
-				description: Joi.string().required(),
-			}).required(),
-		});
-		const { error } = campgroundSchema.validate(req.body);
-		if (error) {
-			const msg = error.details.map((el) => el.message).join(",");
-			throw new ExpressError(msg, 400);
-		}
-		else{
-			next();
-		}
-}
+	const { error } = campgroundSchema.validate(req.body);
+	if (error) {
+		const msg = error.details.map((el) => el.message).join(",");
+		throw new ExpressError(msg, 400);
+	} else {
+		next();
+	}
+};
 
 //
 
@@ -143,7 +134,6 @@ app.post(
 	catchAsync(async (req, res, next) => {
 		// if (!req.body.campground)
 		// 	throw new ExpressError("Send required data please", 400);
-
 
 		const ground = new Campground(req.body.campground); // to handle the async error
 		await ground.save();
