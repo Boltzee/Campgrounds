@@ -1,34 +1,67 @@
 <% layout('layouts/boilerplate') %>
 	<h1 style="text-align: center;">Form to edit the campground</h1>
 	<div class="col-6 offset-3">
-		<form action="/campgrounds/<%=ground._id%>?_method=PATCH" method="POST">
+		<form novalidate class="validate-form" action="/campgrounds/<%=ground._id%>?_method=PATCH" method="POST">
 			<label class="form-label" for="title">Edit the title:</label>
-			<input class="form-control" type="text" id="title" name="campground[title]" value="<%=ground.title%>">
+			<input class="form-control" type="text" id="title" name="campground[title]" value="<%=ground.title%>" required>
+			<div class="valid-feedback">
+				Looks good
+			</div>
+			<div id="validationServer00Feedback" class="invalid-feedback">
+      			Title of the campground is required.
+    		</div>
 			<br>
 			<div class="mb-3">
 				<label class="form-label" for="price">Edit the price</label>
 				<div class="input-group">
 	  				<span class="input-group-text" id="price-label">$</span>
-	  				<input name="campground[price]" type="text" class="form-control" placeholder="0" aria-label="Username" aria-describedby="price-label" id="price" value="<%=ground.price%>">
+	  				<input required name="campground[price]" type="text" class="form-control" placeholder="0" aria-label="Username" aria-describedby="price-label" id="price" value="<%=ground.price%>">
+	  				<div class="valid-feedback">
+						Looks good
+					</div>
+					<div id="validationServer01Feedback" class="invalid-feedback">
+      					Please provide a valid price.
+    				</div>
 				</div>
 			</div>
 			<div class="mb-3">
 				<label class="form-label" for="image">Edit Image url</label>
-				<input class="form-control" type="text" id="image" name="campground[image]" value="<%=ground.image%>">
+				<input required class="form-control" type="text" id="image" name="campground[image]" value="<%=ground.image%>">
+				<div class="valid-feedback">
+					Looks good
+				</div>
+				<div id="validationServer02Feedback" class="invalid-feedback">
+      				Please enter valid image url.
+    			</div>
 			</div>
 			<div class="mb-3">
 				<label for="description" class="form-label">Edit description</label>
-				<textarea class="form-control" name="campground[description]" id="description" cols="30" rows="3" placeholder="Edit the description of the campground"><%=ground.description%></textarea>
+				<textarea required class="form-control" name="campground[description]" id="description" cols="30" rows="3" placeholder="Edit the description of the campground"><%=ground.description%></textarea>
+				<div class="valid-feedback">
+					Looks good
+				</div>
+				<div id="validationServer03Feedback" class="invalid-feedback">
+      				Please provide a good description.
+    			</div>
 			</div>
-			<label class="form-label" for="places">Edit place</label>
-			<select class="form-select" name="campground[location]" id="places">
-				<% for(let city of cities) {%>
-					<option value="<%=city.city%>" <%=city.city===ground.location ? 'selected' : ''%>> <%=city.city%> </option>
-				<%}%>
-			</select>
-			<br>
+			<div>
+				<label class="form-label" for="places">Edit place</label>
+				<select required class="form-select" name="campground[location]" id="places">
+					<% for(let city of cities) {%>
+						<option value="<%=city.city%>" <%=city.city===ground.location ? 'selected' : ''%>> <%=city.city%> </option>
+					<%}%>
+				</select>
+				<div class="valid-feedback">
+					Looks good
+				</div>
+				<div id="validationServer04Feedback" class="invalid-feedback">
+	      			Please select a city.
+	    		</div>
+				<br>
+			</div>
 			<button class="btn btn-success mb-1">Submit</button>
 	    </form>
 		<a class="btn btn-secondary mb-1" href="/campgrounds">Cancel the edit and return to the all campgrounds page</a>
 	</div>
 
+	
