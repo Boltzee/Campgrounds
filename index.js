@@ -4,6 +4,7 @@ const methodOverride = require("method-override");
 const path = require("path");
 const app = express();
 const ejsMate = require("ejs-mate");
+const Joi = require("joi");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/expressError");
 const Campground = require("./models/campground");
@@ -115,10 +116,19 @@ app.delete(
 app.post(
 	"/campgrounds",
 	catchAsync(async (req, res, next) => {
-		if (!req.body.campground)
-			throw new ExpressError("Send required data please", 400);
-		// console.log(req.body.campground.title);
-		// res.send(req.body);
+		// if (!req.body.campground)
+		// 	throw new ExpressError("Send required data please", 400);
+
+		const campgroundSchema = Joi.object({
+			campground: Joi.object({
+				title: Joi.string().required(),
+				price: Joi.number().required().min(0),
+			}).required(),
+		});
+		const result = campgroundSchema.validate(req.body);
+		if(result.error) {
+			throw new ExpressError(result.error.details, 400);
+		}
 		const ground = new Campground(req.body.campground); // to handle the async error
 		await ground.save();
 		res.redirect(`/campgrounds/${ground._id}`);
@@ -144,8 +154,8 @@ app.all("*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
 	const { status = 500 } = err;
-	if(!err.message) err.message= "OHH NO! Something went wrong";
-	res.status(status).render("error",{err});
+	if (!err.message) err.message = "OHH NO! Something went wrong";
+	res.status(status).render("error", { err });
 });
 
 //
