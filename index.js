@@ -128,7 +128,12 @@ app.post(
 // 404 response page
 
 app.all("*", (req, res, next) => {
-	next(throw new ExpressError('Sorry, but the page that your are looking for is not available', 404));
+	next(
+		new ExpressError(
+			"Sorry, but the page that your are looking for is not available",
+			404
+		)
+	);
 });
 
 //
@@ -136,7 +141,7 @@ app.all("*", (req, res, next) => {
 // Custom defined error handler
 
 app.use((err, req, res, next) => {
-	const {message, status} = err;
+	const { message, status } = err;
 	res.status(status).send(message);
 });
 
