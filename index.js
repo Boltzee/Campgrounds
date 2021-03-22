@@ -125,8 +125,9 @@ app.post(
 				price: Joi.number().required().min(0),
 			}).required(),
 		});
-		const result = campgroundSchema.validate(req.body);
-		if(result.error) {
+		const {error} = campgroundSchema.validate(req.body);
+		if (error) {
+			const msg = error.details.map(el => el.message).join(,);
 			throw new ExpressError(result.error.details, 400);
 		}
 		const ground = new Campground(req.body.campground); // to handle the async error
