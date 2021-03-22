@@ -143,8 +143,9 @@ app.all("*", (req, res, next) => {
 // Custom defined error handler
 
 app.use((err, req, res, next) => {
-	const { message, status } = err;
-	res.status(status).send(message);
+	const { status = 500 } = err;
+	if(!err.message) err.message= "OHH NO! Something went wrong";
+	res.status(status).render("error",{err});
 });
 
 //
