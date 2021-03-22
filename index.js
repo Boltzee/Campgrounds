@@ -95,12 +95,24 @@ app.delete("/campgrounds/:id", async (req, res) => {
 
 /// order where the app.get(new ) is placed matters so i placed it in front of the /campgrounds/:id get req
 
-app.post("/campgrounds", async (req, res) => {
+app.post("/campgrounds", async (req, res, next) => {
 	// console.log(req.body.campground.title);
 	// res.send(req.body);
-	const ground = new Campground(req.body.campground);
-	await ground.save();
-	res.redirect(`/campgrounds/${ground._id}`);
+	try {
+		const ground = new Campground(req.body.campground); // to handle the async error
+		await ground.save();
+		res.redirect(`/campgrounds/${ground._id}`);
+	} catch (e) {
+		next(e);
+	}
+});
+
+//
+
+// Custom defined error handler
+
+app.use((err, req, res, next) => {
+	res.send("OOOOOH, yeah ERRRor");
 });
 
 //
