@@ -1,33 +1,67 @@
 <% layout('layouts/boilerplate') %>
 	<h1 class="text-center">Create a new campground</h1>;
 	<div class="col-6 offset-3">
-		<form action="/campgrounds" method="POST">
+		<form action="/campgrounds" method="POST" class="validate-form" novalidate>
 			<label class="form-label" for="title">Add a title for the campground:</label>
-			<input class="form-control" type="text" id="title" name="campground[title]">
+			<input class="form-control" type="text" id="title" name="campground[title]" required>
+			<div class="valid-feedback">
+				Looks good
+			</div>
+			<div id="validationServer00Feedback" class="invalid-feedback">
+      			Title of the campground is required.
+    		</div>
 			<br>
 			<div class="mb-3">
 				<label class="form-label" for="price">Add a price</label>
 				<div class="input-group">
 	  				<span class="input-group-text" id="price-label">$</span>
-	  				<input name="campground[price]" type="text" class="form-control" placeholder="0" aria-label="Username" aria-describedby="price-label" id="price">
+	  				<input name="campground[price]" type="text" class="form-control" placeholder="0" aria-label="Username" aria-describedby="price-label" id="price" required>
+	  				<div class="valid-feedback">
+						Looks good
+					</div>
+					<div id="validationServer01Feedback" class="invalid-feedback">
+      					Please provide a valid price.
+    				</div>
 				</div>
 			</div>
 			<div class="mb-3">
 				<label class="form-label" for="image">Enter Image url</label>
-				<input class="form-control" type="text" id="image" name="campground[image]">
+				<input class="form-control" type="text" id="image" name="campground[image]" required>
+				<div class="valid-feedback">
+					Looks good
+				</div>
+				<div id="validationServer02Feedback" class="invalid-feedback">
+      				Please enter valid image url.
+    			</div>
 			</div>
 			<div class="mb-3">
 				<label for="description" class="form-label">Enter description</label>
-				<textarea class="form-control" name="campground[description]" id="description" cols="30" rows="3" placeholder="Enter the description of the campground"></textarea>
+				<textarea class="form-control" name="campground[description]" id="description" cols="30" rows="3" placeholder="Enter the description of the campground" required></textarea>
+				<div class="valid-feedback">
+					Looks good
+				</div>
+				<div id="validationServer03Feedback" class="invalid-feedback">
+      				Please provide a good description.
+    			</div>
 			</div>
-			<label class="form-label" for="places">Select a place</label>
-			<select class="form-select" name="campground[location]" id="places" >
-				<% for(let place of cities) {%>
-					<option value="<%=place.city%>"><%=place.city%></option>
-				<%}%>
-			</select>
-			<br>
+			<div>
+				<label class="form-label" for="places">Select a place</label>
+				<select class="form-select" name="campground[location]" id="places" required>
+					<% for(let place of cities) {%>
+						<option value="<%=place.city%>"><%=place.city%></option>
+					<%}%>
+				</select>
+				<div class="valid-feedback">
+					Looks good
+				</div>
+				<div id="validationServer04Feedback" class="invalid-feedback">
+	      			Please select a city.
+	    		</div>
+				<br>
+			</div>
 			<button class="btn btn-success mb-1">Submit</button>
 	    </form>
 		<a class="btn btn-secondary mb-1" href="/campgrounds">Back to all campgrounds</a>
 	</div>
+
+	
