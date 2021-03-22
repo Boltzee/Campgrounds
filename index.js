@@ -115,6 +115,8 @@ app.delete(
 app.post(
 	"/campgrounds",
 	catchAsync(async (req, res, next) => {
+		if (!req.body.campground)
+			throw new ExpressError("Send required data please", 400);
 		// console.log(req.body.campground.title);
 		// res.send(req.body);
 		const ground = new Campground(req.body.campground); // to handle the async error
