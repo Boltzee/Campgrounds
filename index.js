@@ -15,6 +15,30 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public"))); // all the middlewares
 app.use(methodOverride("_method"));
 
+// Custom defined middleware functions
+
+const validateCampground = (req, res, err) => {
+	const campgroundSchema = Joi.object({
+			campground: Joi.object({
+				title: Joi.string().required(),
+				price: Joi.number().required().min(0),
+				image: Joi.string().required(),
+				location: Joi.string().required(),
+				description: Joi.string().required(),
+			}).required(),
+		});
+		const { error } = campgroundSchema.validate(req.body);
+		if (error) {
+			const msg = error.details.map((el) => el.message).join(",");
+			throw new ExpressError(msg, 400);
+		}
+		else{
+			next();
+		}
+}
+
+//
+
 app.engine("ejs", ejsMate);
 
 app.set("view engine", "ejs"); /// all the app sets
@@ -115,24 +139,12 @@ app.delete(
 
 app.post(
 	"/campgrounds",
+	validateCampground,
 	catchAsync(async (req, res, next) => {
 		// if (!req.body.campground)
 		// 	throw new ExpressError("Send required data please", 400);
 
-		const campgroundSchema = Joi.object({
-			campground: Joi.object({
-				title: Joi.string().required(),
-				price: Joi.number().required().min(0),
-				image: Joi.string().required(),
-				location : Joi.string().required(),
-				description: Joi.string().required()
-			}).required(),
-		});
-		const { error } = campgroundSchema.validate(req.body);
-		if (error) {
-			const msg = error.details.map((el) => el.message).join(",");
-			throw new ExpressError(msg, 400);
-		}
+
 		const ground = new Campground(req.body.campground); // to handle the async error
 		await ground.save();
 		res.redirect(`/campgrounds/${ground._id}`);
