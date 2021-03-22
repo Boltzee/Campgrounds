@@ -4,6 +4,8 @@ const methodOverride = require("method-override");
 const path = require("path");
 const app = express();
 const ejsMate = require("ejs-mate");
+const catchAsync = require("./utils/catchAsync");
+const ExpressError = require("./utils/expressError");
 const Campground = require("./models/campground");
 const cities = require("./seeds/cities");
 
@@ -40,10 +42,10 @@ app.get("/", (req, res) => {
 
 // The index route -- basically shows all the campgrounds in the database
 
-app.get("/campgrounds", async (req, res) => {
+app.get("/campgrounds", catchAsync(async (req, res) => {
 	const grounds = await Campground.find({});
 	res.render("campground/show", { grounds });
-});
+}));
 //
 
 // The details route -- shows info about a single campground
@@ -52,23 +54,23 @@ app.get("/campgrounds/new", (req, res) => {
 	res.render("campground/new", { cities });
 });
 
-app.get("/campgrounds/:id", async (req, res) => {
+app.get("/campgrounds/:id", catchAsync(async (req, res) => {
 	const { id } = req.params;
 	const ground = await Campground.findById(id);
 	res.render("campground/details", { ground });
-});
+}));
 
 //
 
 // The edit/patch route --
 
-app.get("/campgrounds/:id/edit", async (req, res) => {
+app.get("/campgrounds/:id/edit", catchAsync(async (req, res) => {
 	const { id } = req.params;
 	const ground = await Campground.findById(id);
 	res.render("campground/edit", { ground, cities });
-});
+}));
 
-app.patch("/campgrounds/:id", async (req, res) => {
+app.patch("/campgrounds/:id", catchAsync(async (req, res) => {
 	const { id } = req.params;
 	const update = req.body.campground;
 	console.log(update);
@@ -77,17 +79,17 @@ app.patch("/campgrounds/:id", async (req, res) => {
 		runValidators: true,
 	});
 	res.redirect(`/campgrounds/${see._id}`);
-});
+}));
 
 //
 
 // The DELETE route --
 
-app.delete("/campgrounds/:id", async (req, res) => {
+app.delete("/campgrounds/:id", catchAsync(async (req, res) => {
 	const { id } = req.params;
 	await Campground.findByIdAndDelete(id);
 	res.redirect("/campgrounds");
-});
+}));
 
 //
 
@@ -95,17 +97,16 @@ app.delete("/campgrounds/:id", async (req, res) => {
 
 /// order where the app.get(new ) is placed matters so i placed it in front of the /campgrounds/:id get req
 
-app.post("/campgrounds", async (req, res, next) => {
-	// console.log(req.body.campground.title);
-	// res.send(req.body);
-	try {
+app.post(
+	"/campgrounds",
+	catchAsync(async (req, res, next) => {
+		// console.log(req.body.campground.title);
+		// res.send(req.body);
 		const ground = new Campground(req.body.campground); // to handle the async error
 		await ground.save();
 		res.redirect(`/campgrounds/${ground._id}`);
-	} catch (e) {
-		next(e);
-	}
-});
+	})
+);
 
 //
 
