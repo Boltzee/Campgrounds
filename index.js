@@ -147,8 +147,15 @@ app.post(
 // Route for creating a new review for a perticular campground
 
 app.post("/campgrounds/:id/review", async (req, res) => {
+	const {id} = req.params;
+	const campground = Campground.findById(id);
 	const { review } = req.body;
-	console.log(review);
+	const rev = new Review(review);
+	campground.reviews.push(rev);
+	await campground.save().then(d => console.log(d));
+	await rev.save();
+	// console.log(review);
+	// res.send(review);
 });
 
 //
