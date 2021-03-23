@@ -10,7 +10,7 @@ const ExpressError = require("./utils/expressError");
 const Campground = require("./models/campground");
 const cities = require("./seeds/cities");
 const Review = require("./models/review");
-const { campgroundSchema } = require("./schemas.js");
+const { campgroundSchema, reviewSchema } = require("./schemas.js");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -21,6 +21,16 @@ app.use(methodOverride("_method"));
 
 const validateCampground = (req, res, err) => {
 	const { error } = campgroundSchema.validate(req.body);
+	if (error) {
+		const msg = error.details.map((el) => el.message).join(",");
+		throw new ExpressError(msg, 400);
+	} else {
+		next();
+	}
+};
+
+const validateReview = (req, res, next) => {
+	const { error } = reviewSchema.validate(req.body);
 	if (error) {
 		const msg = error.details.map((el) => el.message).join(",");
 		throw new ExpressError(msg, 400);
@@ -98,6 +108,7 @@ app.get(
 
 app.patch(
 	"/campgrounds/:id",
+	validateCampground,
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const update = req.body.campground;
@@ -146,18 +157,22 @@ app.post(
 
 // Route for creating a new review for a perticular campground
 
-app.post("/campgrounds/:id/review", async (req, res) => {
-	const { id } = req.params;
-	const campground = await Campground.findById(id);
-	const { review } = req.body;
-	const rev = new Review(review);
-	campground.reviews.push(rev);
-	await campground.save();
-	await rev.save();
-	res.redirect(`/campgrounds/${campground._id}`);
-	// console.log(review);
-	// res.send(review);
-});
+app.post(
+	"/campgrounds/:id/review",
+	validateReview,
+	catchAsync(async (req, res) => {
+		const { id } = req.params;
+		const campground = await Campground.findById(id);
+		const { review } = req.body;
+		const rev = new Review(review);
+		campground.reviews.push(rev);
+		await campground.save();
+		await rev.save();
+		res.redirect(`/campgrounds/${campground._id}`);
+		// console.log(review);
+		// res.send(review);
+	})
+);
 
 //
 
