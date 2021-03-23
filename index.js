@@ -154,6 +154,7 @@ app.post("/campgrounds/:id/review", async (req, res) => {
 	campground.reviews.push(rev);
 	await campground.save().then((d) => console.log(d));
 	await rev.save();
+	res.redirect(`/campgrounds/${campground._id}`);
 	// console.log(review);
 	// res.send(review);
 });
