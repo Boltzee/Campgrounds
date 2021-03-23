@@ -43,9 +43,11 @@
  				<button class="btn btn-success">Submit</button>
  			</form>
  			<% for(review of ground.reviews) {%>
- 				<div class="mb-1">
- 					<p>Rating: <%=review.rating%></p>
- 					<p>Review: <%=review.body%></p>
+ 				<div class="card mb-1">
+	 				<div class="card-body">
+	 					<p>Rating: <%=review.rating%></p>
+	 					<p>Review: <%=review.body%></p>
+	 				</div>
  				</div>
  			<%}%>
 		</div>
