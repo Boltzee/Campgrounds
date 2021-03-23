@@ -45,12 +45,119 @@
  				<button class="btn btn-success">Submit</button>
  			</form>
  			<% for(review of ground.reviews) {%>
- 				<div class="card mb-3">
-	 				<div class="card-body">
+ 				<div class="card mb-3" id="i<%=review._id%>">
+	 				<div class="card-body" >
 	 					<h5 class="card-title">Rating: <%=review.rating%></h5>
-				    	<p class="card-text">Review: <%=review.body%></p>
+				    	<p class="card-text" id="edit-p">Review: <%=review.body%></p>
 	 				</div>
+	 				<div class="card-body pt-0">
+				    	<a id="edit-button" class="user card-link btn btn-success mb-1" data-rev="<%=review%>">Edit</a>
+					    <form style="display: inline;" method="POST" action="/campgrounds/<%=ground._id%>/review/<%=review._id%>?_method=DELETE">
+							<button class="btn btn-danger mb-1">DELETE</button>
+					  	</form>
+				  	</div>
  				</div>
  			<%}%>
 		</div>
 	</div>
+
+	<script>
+
+		function remove_linebreaks( str ) {
+			str=str.replace("{","");
+			str= str.replace("}","");
+			str= str.replace( /[\r\n]+/gm, "" );
+			str= str.trim();
+			return str;
+		}
+		const t = document.querySelectorAll('a.user');
+			console.log(t);
+
+		setInterval(()=> {
+			 
+			t.forEach(ele => ele.addEventListener('click', function(e) {
+			// console.log('the value of this.dataset.rev is', this.dataset.rev);
+			let n = remove_linebreaks(this.dataset.rev);
+			var properties = n.split(',  ');
+			var obj = {};
+			properties.forEach(function(property) {
+			    var tup = property.split(': ');
+			    obj[tup[0]] = tup[1];
+			});
+			// console.log('the value of obj is',obj)
+			const element = document.querySelector(`#i${obj._id}`);
+			element.style.outline = 'none !important';
+			element.style.borderColor = '#719ece';
+			element.style.boxShadow = '0 0 10px #719ece';
+			var bod = '';
+			<% for(let r of ground.reviews) {%>
+				if('<%-r._id%>'===obj._id){
+					bod = '<%-r.body%>';
+				}
+			<% }%>
+			// console.log(bod);
+			const str = 
+			 `<form method="POST" action="/campgrounds/<%=ground._id%>/review/${obj._id}?_method=PATCH" class="validate-form mb-3 mx-3 mt-3" novalidate>
+			 	<div class="card-body">
+			 		<label for="rating1" class="form-label"><h3 class="card-title">Edit the rating</h3></label>
+			 		<input type="range" name="review[rating]" min="1" max="5" value="${obj.rating}" id="rating1" class="form-range">
+			 	</div>
+			 	<div class="mb-3 card-body pt-0">
+			 		<label for="body1" class="form-label card-title"><h3 class="card-title">Edit review</h3></label>
+			 		<textarea name="review[body]" id="body1" cols="30" rows="3" class="form-control" required>${bod}</textarea>
+			 		<div class="valid-feedback">
+			 			Looks good
+			 		</div>
+			 		<div id="validationServerFeedback01" class="invalid-feedback">
+ 						Please provide a review.
+			 		</div>
+			 	</div>
+			 	<button class="btn btn-info">
+  					Submit
+			 	</button>
+			 	<a id="backToNormal" class="btn btn-secondary">Cancel</a>
+			 </form>`
+
+			element.innerHTML = str; 
+
+			document.querySelector('#backToNormal').addEventListener('click', function (e) {
+				let o = `  _id: ${obj._id},  body: ${obj.body},  rating: ${obj.rating}`;
+
+				let original = `
+					<div class="card-body" >
+	 					<h5 class="card-title">Rating: ${obj.rating}</h5>
+				    	<p class="card-text" id="edit-p">Review: ${bod}</p>
+	 				</div>
+	 				<div class="card-body pt-0">
+				    	<a id="edit-button" class="card-link btn btn-success mb-1" data-rev="${o}">Edit</a>
+					    <form style="display: inline;" method="POST" action="/campgrounds/<%=ground._id%>?_method=DELETE">
+							<button class="btn btn-danger mb-1">DELETE</button>
+					  	</form>
+				  	</div>
+				`
+				element.style.outline = '';
+				element.style.borderColor = '';
+				element.style.boxShadow = '';
+				element.innerHTML = original;
+			})
+
+			var forms = document.querySelectorAll('.validate-form')
+			// console.log(forms);
+		  	// Loop over them and prevent submission
+			  Array.prototype.slice.call(forms)
+			    .forEach(function (form) {
+			      form.addEventListener('submit', function (event) {
+			        if (!form.checkValidity()) {
+			          event.preventDefault()
+			          event.stopPropagation()
+			        }
+
+			        form.classList.add('was-validated')
+			      }, false)
+			    })
+
+		}));
+
+	}, 2000);
+	</script>
+
