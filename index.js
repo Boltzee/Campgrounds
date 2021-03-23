@@ -9,7 +9,7 @@ const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/expressError");
 const Campground = require("./models/campground");
 const cities = require("./seeds/cities");
-const Review = require('./models/review');
+const Review = require("./models/review");
 const { campgroundSchema } = require("./schemas.js");
 
 app.use(express.urlencoded({ extended: true }));
@@ -146,10 +146,10 @@ app.post(
 
 // Route for creating a new review for a perticular campground
 
-app.get('/campgrounds/:id/review', async (req, res) => {
-	const {review} = req.body;
+app.post("/campgrounds/:id/review", async (req, res) => {
+	const { review } = req.body;
 	console.log(review);
-})
+});
 
 //
 
