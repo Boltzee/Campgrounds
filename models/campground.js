@@ -19,12 +19,12 @@ const campgroundSchema = new mongoose.Schema({
 	location: {
 		type: String,
 	},
-	reviews : [
+	reviews: [
 		{
 			type: mongoose.Schema.Types.ObjectID,
-			ref: 'Review'
-		}
-	]
+			ref: "Review",
+		},
+	],
 });
 
 const Campground = mongoose.model("Campground", campgroundSchema);
