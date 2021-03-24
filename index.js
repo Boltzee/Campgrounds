@@ -178,16 +178,16 @@ app.post(
 
 // Route for deleting a perticular review of a campground
 
-var removeByAttr = function (arr, attr, value) {
-	/// function to delete an review from the reviews array
-	var i = arr.length;
-	while (i--) {
-		if (arr[i] && arr[i][attr] == value) {
-			arr.splice(i, 1);
-		}
-	}
-	return arr;
-};
+// var removeByAttr = function (arr, attr, value) {
+// 	/// function to delete an review from the reviews array
+// 	var i = arr.length;
+// 	while (i--) {
+// 		if (arr[i] && arr[i][attr] == value) {  				/// Once used now out of date.
+// 			arr.splice(i, 1);
+// 		}
+// 	}
+// 	return arr;
+// };
 
 app.delete(
 	"/campgrounds/:groundId/review/:reviewId",
@@ -195,7 +195,11 @@ app.delete(
 		const { groundId, reviewId } = req.params;
 		// let ground = await Campground.findById(groundId).populate("reviews");
 		// console.log(ground);
-		await Campground.findByIdAndUpdate(groundId, {$pull : {reviews: reviewId}}); // New more powerful
+
+		await Campground.findByIdAndUpdate(groundId, {
+			$pull: { reviews: reviewId },
+		}); // New more powerful
+
 		// removeByAttr(ground.reviews, "_id", reviewId);
 		// await ground.save().then((d) => {
 		// 	d.populate("reviews");
@@ -203,7 +207,7 @@ app.delete(
 		// });
 		const review = await Review.findByIdAndDelete(reviewId);
 		console.log(review);
-		res.redirect(`/campgrounds/${ground._id}`);
+		res.redirect(`/campgrounds/${groundId}`);
 	})
 );
 
