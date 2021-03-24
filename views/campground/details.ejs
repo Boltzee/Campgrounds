@@ -28,11 +28,11 @@
  			<hr>
  			<form class="mb-3 validate-form" action="/campgrounds/<%=ground._id%>/review" method="POST" novalidate>
  				<div class="mb-3">
- 					<label class="form-label" for="rating">Select a rating</label>
+ 					<label class="form-label" for="rating"><b>Select a rating</b></label>
  					<input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
  				</div>
  				<div class="mb-3">
- 					<label class="form-label" for="body">Add a review</label>
+ 					<label class="form-label" for="body"><b>Select a rating</b></label>
  					<textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
  					<div class="valid-feedback">
 						Looks good
@@ -73,7 +73,7 @@
 		}
 		
 		const editFunction = function(e) {
-			console.log(e.target);
+			// console.log(e.target);
 			// console.log(this);
 			if(!e.target.matches("a")) return;
 			el = e.target;
