@@ -74,6 +74,10 @@
 		}
 		
 		const editFunction = function(e) {
+			console.log(e.target);
+			// console.log(this);
+			if(!e.target.matches("a")) return;
+			this = e.target;
 			// console.log('the value of this.dataset.rev is', this.dataset.rev);
 			let n = remove_linebreaks(this.dataset.rev);
 			var properties = n.split(',  ');
