@@ -77,9 +77,9 @@
 			console.log(e.target);
 			// console.log(this);
 			if(!e.target.matches("a")) return;
-			this = e.target;
-			// console.log('the value of this.dataset.rev is', this.dataset.rev);
-			let n = remove_linebreaks(this.dataset.rev);
+			el = e.target;
+			// console.log('the value of el.dataset.rev is', el.dataset.rev);
+			let n = remove_linebreaks(el.dataset.rev);
 			var properties = n.split(',  ');
 			var obj = {};
 			properties.forEach(function(property) {
