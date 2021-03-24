@@ -132,7 +132,7 @@
 	 				</div>
 	 				<div class="card-body pt-0">
 				    	<a id="edit-button" class="card-link btn btn-success mb-1" data-rev="${o}">Edit</a>
-					    <form style="display: inline;" method="POST" action="/campgrounds/<%=ground._id%>?_method=DELETE">
+					    <form style="display: inline;" method="POST" action="/campgrounds/<%=ground._id%>/review/<%=review._id%>?_method=DELETE">
 							<button class="btn btn-danger mb-1">DELETE</button>
 					  	</form>
 				  	</div>
