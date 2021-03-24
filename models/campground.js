@@ -28,13 +28,12 @@ const campgroundSchema = new mongoose.Schema({
 	],
 });
 
-campgroundSchema.post("findByIdAndDelete", async function (ground) {
-	console.log(ground.reviews.length);
-	if (ground.reviews.length) {
-		const res = await Review.deleteMany({ _id: { $in: ground.reviews } });
+campgroundSchema.post('findOneAndDelete', async function (ground) {
+	if(ground.reviews.length) {
+		const res = await Review.deleteMany({_id : {$in : ground.reviews}})
 		console.log(res);
 	}
-});
+})
 
 const Campground = mongoose.model("Campground", campgroundSchema);
 
