@@ -212,8 +212,8 @@ app.patch(
 	validateReview,
 	catchAsync(async (req, res) => {
 		const { groundId, reviewId } = req.params;
-		const update = req.body.campground;
-		// console.log(update);
+		const update = req.body.review;
+		console.log(update);
 		const see = await Review.findByIdAndUpdate(reviewId, update, {
 			new: true,
 		});
