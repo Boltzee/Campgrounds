@@ -70,12 +70,8 @@
 			str= str.trim();
 			return str;
 		}
-		const t = document.querySelectorAll('a.user');
-			console.log(t);
-
-		setInterval(()=> {
-			 
-			t.forEach(ele => ele.addEventListener('click', function(e) {
+		
+		const editFunction = function(e) {
 			// console.log('the value of this.dataset.rev is', this.dataset.rev);
 			let n = remove_linebreaks(this.dataset.rev);
 			var properties = n.split(',  ');
@@ -156,8 +152,7 @@
 			      }, false)
 			    })
 
-		}));
+		}
 
-	}, 2000);
 	</script>
 
