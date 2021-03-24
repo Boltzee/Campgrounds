@@ -194,9 +194,12 @@ app.delete(
 	catchAsync(async (req, res) => {
 		const { groundId, reviewId } = req.params;
 		let ground = await Campground.findById(groundId).populate("reviews");
-		console.log(ground);
+		// console.log(ground);
 		removeByAttr(ground.reviews, "_id", reviewId);
-		await ground.save();
+		await ground.save().then((d) => {
+			d.populate("reviews");
+			console.log(d);
+		});
 		const review = await Review.findByIdAndDelete(reviewId);
 		console.log(review);
 		res.redirect(`/campgrounds/${ground._id}`);
