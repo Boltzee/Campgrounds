@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start" : "nodemon index.js",
+    "ui": "browser-sync start --proxy localhost:3000 --files=**/*  --ignore=node_modules --reload-delay 500 --no-ui --no-open --no-notify"
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
