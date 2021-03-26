@@ -69,7 +69,7 @@ router.patch(
 			new: true,
 			runValidators: true,
 		});
-		req.flash('success', 'Successfully updated the campground');
+		req.flash("success", "Successfully updated the campground");
 		res.redirect(`/campgrounds/${see._id}`);
 	})
 );
@@ -83,6 +83,7 @@ router.delete(
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		await Campground.findByIdAndDelete(id);
+		req.flash("success", "Successfully deleted the campground");
 		res.redirect("/campgrounds");
 	})
 );
@@ -102,7 +103,7 @@ router.post(
 
 		const ground = new Campground(req.body.campground); // to handle the async error
 		await ground.save();
-		req.flash("success", "Job done successfully!!!");
+		req.flash("success", "Created a new campground!!!");
 		res.redirect(`/campgrounds/${ground._id}`);
 	})
 );
