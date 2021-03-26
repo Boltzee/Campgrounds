@@ -101,7 +101,7 @@ router.post(
 
 		const ground = new Campground(req.body.campground); // to handle the async error
 		await ground.save();
-		req.flash('success','Job done successfully!!!');
+		req.flash("success", "Job done successfully!!!");
 		res.redirect(`/campgrounds/${ground._id}`);
 	})
 );
