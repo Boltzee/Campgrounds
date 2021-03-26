@@ -1,3 +1,5 @@
-<div class="alert alert-success" role="alert">
-	<%= success %>
-</div>
+<% if(success && success.lenght) {%>
+	<div class="alert alert-success" role="alert">
+		<%= success %>
+	</div>
+<% }%>
