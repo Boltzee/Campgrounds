@@ -47,6 +47,8 @@ db.once("open", () => {
 
 const sessionConfig = {
 	secret: "thisisnotagoodsecret",
+	resave: false,
+	saveUninitialized: true,
 	cookie: {
 		httpOnly: true,
 		expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
