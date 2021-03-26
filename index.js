@@ -9,7 +9,7 @@ const reviews = require("./routes/reviews");
 const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
-const session = require('express-session');
+const session = require("express-session");
 
 const ExpressError = require("./utils/expressError");
 
@@ -18,17 +18,13 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public"))); // all the middlewares
 app.use(methodOverride("_method"));
 
-
 app.use("/campgrounds", campgrounds);
 app.use("/campgrounds/:id/review", reviews);
-
 
 app.engine("ejs", ejsMate);
 
 app.set("view engine", "ejs"); /// all the app sets
 app.set("views", path.join(__dirname, "views"));
-
-
 
 /// Connecting to the mongo database
 
@@ -50,13 +46,15 @@ db.once("open", () => {
 // Setting up the session for the application.
 
 const sessionConfig = {
-	secret : 'thisisnotagoodsecret',
-	cookie : {
-		httpOnly : true,
-		expires : Date.now() + 1000 * 60 * 60 * 24 * 7,
-		maxAge : 1000 * 60 * 60 * 24 * 7
-	}
-}
+	secret: "thisisnotagoodsecret",
+	cookie: {
+		httpOnly: true,
+		expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+		maxAge: 1000 * 60 * 60 * 24 * 7,
+	},
+};
+
+app.use(session(sessionConfig));
 
 //
 
