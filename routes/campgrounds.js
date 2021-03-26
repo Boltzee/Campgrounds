@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 const validateCampground = (req, res, err) => {
@@ -25,7 +25,7 @@ router.get(
 // The details route -- shows info about a single campground
 
 router.get("/campgrounds/new", (req, res) => {
-	res.render("campground/new", { cities });  // route for displaying form to create a new campground
+	res.render("campground/new", { cities }); // route for displaying form to create a new campground
 });
 
 router.get(
