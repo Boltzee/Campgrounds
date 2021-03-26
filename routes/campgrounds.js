@@ -1,5 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const { campgroundSchema} = require("../schemas.js");
+const Campground = require("../models/campground");
+const ExpressError = require("../utils/expressError");
+const cities = require("../seeds/cities");
 
 const validateCampground = (req, res, err) => {
 	const { error } = campgroundSchema.validate(req.body);
