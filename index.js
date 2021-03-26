@@ -10,6 +10,7 @@ const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const session = require("express-session");
+const flash = require('connect-flash');
 
 const ExpressError = require("./utils/expressError");
 
@@ -17,6 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public"))); // all the middlewares
 app.use(methodOverride("_method"));
+
+app.use((req, res, next) => {
+	res.locals.success = req.flash('success');   // Middleware so that the flash messages
+	res.locals.error = req.flash('error');		// are automatically sent to the templates.	
+	next();
+})
 
 app.use("/campgrounds", campgrounds);
 app.use("/campgrounds/:id/review", reviews);
