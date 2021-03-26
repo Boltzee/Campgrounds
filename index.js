@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const campgrounds = require('./routes/campgrounds');
 const methodOverride = require("method-override");
 const path = require("path");
 const app = express();
@@ -16,6 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public"))); // all the middlewares
 app.use(methodOverride("_method"));
+
+app.use('/campgrounds', campgrounds);
 
 // Custom defined middleware functions
 
