@@ -57,11 +57,11 @@ router.post(
 router.delete(
 	"/:reviewId",
 	catchAsync(async (req, res) => {
-		const { groundId, reviewId } = req.params;
+		const { id, reviewId } = req.params;
 		// let ground = await Campground.findById(groundId).populate("reviews");
 		// console.log(ground);
 
-		await Campground.findByIdAndUpdate(groundId, {
+		await Campground.findByIdAndUpdate(id, {
 			$pull: { reviews: reviewId },
 		}); // New more powerful
 
@@ -72,7 +72,7 @@ router.delete(
 		// });
 		const review = await Review.findByIdAndDelete(reviewId);
 		console.log(review);
-		res.redirect(`/campgrounds/${groundId}`);
+		res.redirect(`/campgrounds/${id}`);
 	})
 );
 
@@ -84,14 +84,14 @@ router.patch(
 	"/:reviewId",
 	validateReview,
 	catchAsync(async (req, res) => {
-		const { groundId, reviewId } = req.params;
+		const { id, reviewId } = req.params;
 		const update = req.body.review;
 		console.log(update);
 		const see = await Review.findByIdAndUpdate(reviewId, update, {
 			new: true,
 		});
 		console.log(see);
-		res.redirect(`/campgrounds/${groundId}`);
+		res.redirect(`/campgrounds/${id}`);
 	})
 );
 
