@@ -9,6 +9,7 @@ const reviews = require("./routes/reviews");
 const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
+const session = require('express-session');
 
 const ExpressError = require("./utils/expressError");
 
@@ -43,6 +44,19 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
 	console.log("Database Connected");
 });
+
+//
+
+// Setting up the session for the application.
+
+const sessionConfig = {
+	secret : 'thisisnotagoodsecret',
+	cookie : {
+		httpOnly : true,
+		expires : Date.now() + 1000 * 60 * 60 * 24 * 7,
+		maxAge : 1000 * 60 * 60 * 24 * 7
+	}
+}
 
 //
 
