@@ -10,7 +10,7 @@ const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const session = require("express-session");
-const flash = require('connect-flash');
+const flash = require("connect-flash");
 
 const ExpressError = require("./utils/expressError");
 
@@ -19,11 +19,35 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public"))); // all the middlewares
 app.use(methodOverride("_method"));
 
+// Setting up the session for the application.
+
+const sessionConfig = {
+	secret: "thisisnotagoodsecret",
+	resave: false,
+	saveUninitialized: true,
+	cookie: {
+		httpOnly: true,
+		expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+		maxAge: 1000 * 60 * 60 * 24 * 7,
+	},
+};
+
+app.use(session(sessionConfig));
+
+//
+
+// Flash setup
+
+app.use(flash());
+
 app.use((req, res, next) => {
-	res.locals.success = req.flash('success');   // Middleware so that the flash messages
-	res.locals.error = req.flash('error');		// are automatically sent to the templates.	
+	// console.log("we are inside");
+	res.locals.success = req.flash("success"); // Middleware so that the flash messages
+	res.locals.error = req.flash("error"); // are automatically sent to the templates.
 	next();
-})
+});
+
+//
 
 app.use("/campgrounds", campgrounds);
 app.use("/campgrounds/:id/review", reviews);
@@ -47,23 +71,6 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
 	console.log("Database Connected");
 });
-
-//
-
-// Setting up the session for the application.
-
-const sessionConfig = {
-	secret: "thisisnotagoodsecret",
-	resave: false,
-	saveUninitialized: true,
-	cookie: {
-		httpOnly: true,
-		expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-		maxAge: 1000 * 60 * 60 * 24 * 7,
-	},
-};
-
-app.use(session(sessionConfig));
 
 //
 
