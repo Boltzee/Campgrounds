@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "nodemon index.js",
+    "start": "nodemon index.js",
     "ui": "browser-sync start --proxy localhost:3000 --files=**/*  --ignore=node_modules --reload-delay 6500 --no-ui --no-open --no-notify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +23,7 @@
     "ejs": "^3.1.6",
     "ejs-mate": "^3.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "joi": "^17.4.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.12.1"
