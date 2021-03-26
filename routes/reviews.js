@@ -33,6 +33,7 @@ router.post(
 		campground.reviews.push(rev);
 		await campground.save();
 		await rev.save();
+		req.flash('success', 'Successfully created a review');
 		res.redirect(`/campgrounds/${campground._id}`);
 		// console.log(review);
 		// res.send(review);
@@ -72,6 +73,7 @@ router.delete(
 		// });
 		const review = await Review.findByIdAndDelete(reviewId);
 		console.log(review);
+		req.flash('success', 'Successfully deleted the review');
 		res.redirect(`/campgrounds/${id}`);
 	})
 );
@@ -91,6 +93,7 @@ router.patch(
 			new: true,
 		});
 		console.log(see);
+		req.flash('success', 'Successfully edited the review');
 		res.redirect(`/campgrounds/${id}`);
 	})
 );
