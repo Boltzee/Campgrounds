@@ -69,6 +69,7 @@ router.patch(
 			new: true,
 			runValidators: true,
 		});
+		req.flash('success', 'Successfully updated the campground');
 		res.redirect(`/campgrounds/${see._id}`);
 	})
 );
