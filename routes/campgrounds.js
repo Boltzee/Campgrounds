@@ -14,7 +14,7 @@ const validateCampground = (req, res, err) => {
 // The index route -- basically shows all the campgrounds in the database
 
 router.get(
-	"/campgrounds",
+	"/",
 	catchAsync(async (req, res) => {
 		const grounds = await Campground.find({});
 		res.render("campground/show", { grounds });
@@ -24,12 +24,12 @@ router.get(
 
 // The details route -- shows info about a single campground
 
-router.get("/campgrounds/new", (req, res) => {
+router.get("/new", (req, res) => {
 	res.render("campground/new", { cities }); // route for displaying form to create a new campground
 });
 
 router.get(
-	"/campgrounds/:id",
+	"/:id",
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const ground = await Campground.findById(id).populate("reviews");
@@ -42,7 +42,7 @@ router.get(
 // The edit/patch route --
 
 router.get(
-	"/campgrounds/:id/edit",
+	"/:id/edit",
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const ground = await Campground.findById(id);
@@ -51,7 +51,7 @@ router.get(
 );
 
 router.patch(
-	"/campgrounds/:id",
+	"/:id",
 	validateCampground,
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
@@ -70,7 +70,7 @@ router.patch(
 // The DELETE route --
 
 router.delete(
-	"/campgrounds/:id",
+	"/:id",
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		await Campground.findByIdAndDelete(id);
@@ -85,7 +85,7 @@ router.delete(
 /// order where the router.get(new ) is placed matters so i placed it in front of the /campgrounds/:id get req
 
 router.post(
-	"/campgrounds",
+	"/",
 	validateCampground,
 	catchAsync(async (req, res, next) => {
 		// if (!req.body.campground)
