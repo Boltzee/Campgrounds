@@ -28,6 +28,10 @@ router.post(
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const campground = await Campground.findById(id);
+		if(!campground){
+			req.flash('error', 'Requested campground cannot be found');
+			return res.redirect('/campgrounds');
+		}
 		const { review } = req.body;
 		const rev = new Review(review);
 		campground.reviews.push(rev);
@@ -61,7 +65,11 @@ router.delete(
 		const { id, reviewId } = req.params;
 		// let ground = await Campground.findById(groundId).populate("reviews");
 		// console.log(ground);
-
+		const ground = await Campground.findById(id);
+		if(!ground){
+			req.flash('error', 'Requested campground cannot be found');
+			return res.redirect('/campgrounds');
+		}
 		await Campground.findByIdAndUpdate(id, {
 			$pull: { reviews: reviewId },
 		}); // New more powerful
@@ -71,6 +79,11 @@ router.delete(
 		// 	d.populate("reviews");
 		// 	console.log(d);
 		// });
+		const r = await Campground.findById(id);
+		if(!r){
+			req.flash('error', 'Requested review cannot be found');
+			return res.redirect('/campgrounds');
+		}
 		const review = await Review.findByIdAndDelete(reviewId);
 		console.log(review);
 		req.flash('success', 'Successfully deleted the review');
@@ -89,6 +102,11 @@ router.patch(
 		const { id, reviewId } = req.params;
 		const update = req.body.review;
 		console.log(update);
+		const r = await Campground.findById(id);
+		if(!r){
+			req.flash('error', 'Requested review cannot be found');
+			return res.redirect('/campgrounds');
+		}
 		const see = await Review.findByIdAndUpdate(reviewId, update, {
 			new: true,
 		});
