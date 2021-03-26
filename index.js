@@ -5,13 +5,11 @@ const methodOverride = require("method-override");
 const path = require("path");
 const app = express();
 const ejsMate = require("ejs-mate");
-const Joi = require("joi");
+// const Joi = require("joi");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/expressError");
-const Campground = require("./models/campground");
-const cities = require("./seeds/cities");
 const Review = require("./models/review");
-const { campgroundSchema, reviewSchema } = require("./schemas.js");
+const { reviewSchema } = require("./schemas.js");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
