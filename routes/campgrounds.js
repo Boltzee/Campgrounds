@@ -19,9 +19,7 @@ router.get("/", catchAsync(campgrounds.index));
 
 // The details route -- shows info about a single campground
 
-router.get("/new", isLoggedIn, (req, res) => {
-	res.render("campground/new", { cities }); // route for displaying form to create a new campground
-});
+router.get("/new", isLoggedIn, campgrounds.newCampgroundForm);
 
 router.get(
 	"/:id",
