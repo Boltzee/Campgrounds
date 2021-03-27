@@ -11,6 +11,8 @@ const path = require("path");
 const ejsMate = require("ejs-mate");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require('passport');
+const localStrategy = require('passport-local');
 
 const ExpressError = require("./utils/expressError");
 
@@ -46,6 +48,13 @@ app.use((req, res, next) => {
 	res.locals.error = req.flash("error"); // are automatically sent to the templates.
 	next();
 });
+
+//
+
+// Passport setup 
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //
 
