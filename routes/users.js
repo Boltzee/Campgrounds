@@ -23,10 +23,6 @@ router.post(
 	users.userLogin
 );
 
-router.get("/logout", (req, res) => {
-	req.logout();
-	req.flash("success", "Goodbye");
-	res.redirect("/campgrounds");
-});
+router.get("/logout", users.userLogout);
 
 module.exports = router;
