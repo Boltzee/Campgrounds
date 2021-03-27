@@ -39,17 +39,7 @@ router.patch(
 	isLoggedIn,
 	isAuthor,
 	validateCampground,
-	catchAsync(async (req, res) => {
-		const { id } = req.params;
-		const update = req.body.campground;
-		console.log(update);
-		const see = await Campground.findByIdAndUpdate(id, update, {
-			new: true,
-			runValidators: true,
-		});
-		req.flash("success", "Successfully updated the campground");
-		res.redirect(`/campgrounds/${see._id}`);
-	})
+	catchAsync(campgrounds.editCampgroundById)
 );
 
 //
