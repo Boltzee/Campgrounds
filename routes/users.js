@@ -8,7 +8,11 @@ router.get("/register", (req, res) => {
 
 router.post("/register", async (req, res) => {
 	console.log(req.body);
-	res.send("Successfully added you... Welcome to the family!!");
+	const { username, password, email } = req.body;
+	const user = new User({ email, username });
+	const result = await User.register(user, password);
+	res.send(result);
+	// res.send("Successfully added you... Welcome to the family!!");
 });
 
 module.exports = router;
