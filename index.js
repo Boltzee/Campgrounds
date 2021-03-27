@@ -3,9 +3,10 @@ const app = express();
 
 const mongoose = require("mongoose");
 
-const campgrounds = require("./routes/campgrounds");
-const reviews = require("./routes/reviews");
-const users = require("./routes/users");
+const campgroundRoutes = require("./routes/campgrounds");
+const reviewRoutes = require("./routes/reviews");
+const userRoutes = require("./routes/users");
+const User = require("./models/user");
 
 const methodOverride = require("method-override");
 const path = require("path");
@@ -64,9 +65,9 @@ passport.deserializeUser(User.deserializeUser());
 
 //
 
-app.use("/campgrounds", campgrounds);
-app.use("/campgrounds/:id/review", reviews);
-app.use("/users", users);
+app.use("/campgrounds", campgroundRoutes);
+app.use("/campgrounds/:id/review", reviewRoutes);
+app.use("/users", userRoutes);
 
 app.engine("ejs", ejsMate);
 
