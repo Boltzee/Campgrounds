@@ -40,20 +40,6 @@ app.use(session(sessionConfig));
 
 //
 
-// Flash setup
-
-app.use(flash());
-
-app.use((req, res, next) => {
-	// console.log("we are inside");
-	res.locals.currentUser = req.user;
-	res.locals.success = req.flash("success"); // Middleware so that the flash messages
-	res.locals.error = req.flash("error"); // are automatically sent to the templates.
-	next();
-});
-
-//
-
 // Passport setup
 
 app.use(passport.initialize());
@@ -63,6 +49,19 @@ passport.use(new localStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+//
+
+// Flash setup
+
+app.use(flash());
+
+app.use((req, res, next) => {
+	res.locals.currentUser = req.user;
+	res.locals.success = req.flash("success"); // Middleware so that the flash messages
+	res.locals.error = req.flash("error"); // are automatically sent to the templates.
+	next();
+});
 
 //
 
