@@ -35,3 +35,15 @@ module.exports.editCampgroundForm = async (req, res) => {
 	}
 	res.render("campground/edit", { ground, cities });
 };
+
+module.exports.editCampgroundById = async (req, res) => {
+	const { id } = req.params;
+	const update = req.body.campground;
+	console.log(update);
+	const see = await Campground.findByIdAndUpdate(id, update, {
+		new: true,
+		runValidators: true,
+	});
+	req.flash("success", "Successfully updated the campground");
+	res.redirect(`/campgrounds/${see._id}`);
+};
