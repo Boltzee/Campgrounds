@@ -24,6 +24,9 @@ router
 
 //
 
+// The new campground template render route
+router.get("/new", isLoggedIn, campgrounds.newCampgroundForm);
+
 // The router club for '/:id' route (i.e. a perticular campground)
 
 router
@@ -38,9 +41,6 @@ router
 	.delete(isLoggedIn, isAuthor, catchAsync(campgrounds.deleteCampgroundById));
 
 //
-
-// The new campground template render route
-router.get("/new", isLoggedIn, campgrounds.newCampgroundForm);
 
 // The edit template render route --
 
