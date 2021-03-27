@@ -59,3 +59,14 @@ module.exports.deleteCampgroundById = async (req, res) => {
 	req.flash("success", "Successfully deleted the campground");
 	res.redirect("/campgrounds");
 };
+
+module.exports.createCampground = async (req, res, next) => {
+	// if (!req.body.campground)
+	// 	throw new ExpressError("Send required data please", 400);
+
+	const ground = new Campground(req.body.campground); // to handle the async error
+	ground.author = req.user._id;
+	await ground.save();
+	req.flash("success", "Created a new campground!!!");
+	res.redirect(`/campgrounds/${ground._id}`);
+};
