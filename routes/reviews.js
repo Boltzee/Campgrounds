@@ -6,11 +6,12 @@ const Review = require("../models/review");
 
 const catchAsync = require("../utils/catchAsync");
 
-const { validateReview } = require("../middleware");
+const { validateReview, isLoggedIn } = require("../middleware");
 // Route for creating a new review for a perticular campground
 
 router.post(
 	"/",
+	isLoggedIn,
 	validateReview,
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
