@@ -51,6 +51,7 @@
  				<div class="card mb-3" id="i<%=review._id%>">
 	 				<div class="card-body" >
 	 					<h5 class="card-title">Rating: <%=review.rating%></h5>
+	 					<h6 class="card-subtitle mb-2 text-muted">By <%=review.author.username%></h6>
 				    	<p class="card-text" id="edit-p">Review: <%=review.body%></p>
 	 				</div>
 	 				<div class="card-body pt-0">
