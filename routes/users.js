@@ -12,9 +12,7 @@ router.get("/register", users.registerForm);
 
 router.post("/register", catchAsync(users.createUser));
 
-router.get("/login", (req, res) => {
-	res.render("users/login");
-});
+router.get("/login", users.loginForm);
 
 router.post(
 	"/login",
