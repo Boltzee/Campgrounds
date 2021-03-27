@@ -47,3 +47,15 @@ module.exports.editCampgroundById = async (req, res) => {
 	req.flash("success", "Successfully updated the campground");
 	res.redirect(`/campgrounds/${see._id}`);
 };
+
+module.exports.deleteCampgroundById = async (req, res) => {
+	const { id } = req.params;
+	const ground = await Campground.findById(id);
+	if (!ground) {
+		req.flash("error", "Requested campground cannot be found");
+		return res.redirect("/campgrounds");
+	}
+	await Campground.findByIdAndDelete(id);
+	req.flash("success", "Successfully deleted the campground");
+	res.redirect("/campgrounds");
+};
