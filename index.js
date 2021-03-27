@@ -46,6 +46,7 @@ app.use(flash());
 
 app.use((req, res, next) => {
 	// console.log("we are inside");
+	res.locals.currentUser = req.user;
 	res.locals.success = req.flash("success"); // Middleware so that the flash messages
 	res.locals.error = req.flash("error"); // are automatically sent to the templates.
 	next();
