@@ -48,3 +48,20 @@ module.exports.deleteReviewById = async (req, res) => {
 	req.flash("success", "Successfully deleted the review");
 	res.redirect(`/campgrounds/${id}`);
 };
+
+module.exports.editReviewById = async (req, res) => {
+	const { id, reviewId } = req.params;
+	const update = req.body.review;
+	console.log(update);
+	const r = await Campground.findById(id);
+	if (!r) {
+		req.flash("error", "Requested review cannot be found");
+		return res.redirect("/campgrounds");
+	}
+	const see = await Review.findByIdAndUpdate(reviewId, update, {
+		new: true,
+	});
+	console.log(see);
+	req.flash("success", "Successfully edited the review");
+	res.redirect(`/campgrounds/${id}`);
+};
