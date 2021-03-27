@@ -9,6 +9,7 @@ const reviews = require("../controllers/reviews");
 const catchAsync = require("../utils/catchAsync");
 
 const { validateReview, isLoggedIn, isReviewAuthor } = require("../middleware");
+
 // Route for creating a new review for a perticular campground
 
 router.post(
@@ -20,26 +21,17 @@ router.post(
 
 //
 
-// Route for deleting a perticular review of a campground
+// The router club for '/:reviewId'
 
-router.delete(
-	"/:reviewId",
-	isLoggedIn,
-	isReviewAuthor,
-	catchAsync(reviews.deleteReviewById)
-);
-
-//
-
-// Route for Edit/Patch a perticular review
-
-router.patch(
-	"/:reviewId",
-	isLoggedIn,
-	isReviewAuthor,
-	validateReview,
-	catchAsync(reviews.editReviewById)
-);
+router
+	.route("/:reviewId")
+	.patch(
+		isLoggedIn,
+		isReviewAuthor,
+		validateReview,
+		catchAsync(reviews.editReviewById)
+	)
+	.delete(isLoggedIn, isReviewAuthor, catchAsync(reviews.deleteReviewById));
 
 //
 
