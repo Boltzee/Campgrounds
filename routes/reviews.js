@@ -1,25 +1,12 @@
 const express = require("express");
-const router = express.Router({mergeParams: true});
-
-
-const { reviewSchema } = require("../schemas.js");
+const router = express.Router({ mergeParams: true });
 
 const Campground = require("../models/campground");
 const Review = require("../models/review");
 
 const catchAsync = require("../utils/catchAsync");
-const ExpressError = require("../utils/expressError");
 
-const validateReview = (req, res, next) => {
-	const { error } = reviewSchema.validate(req.body);
-	if (error) {
-		const msg = error.details.map((el) => el.message).join(",");
-		throw new ExpressError(msg, 400);
-	} else {
-		next();
-	}
-};
-
+const { validateReview } = require("../middleware");
 // Route for creating a new review for a perticular campground
 
 router.post(
@@ -28,16 +15,16 @@ router.post(
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const campground = await Campground.findById(id);
-		if(!campground){
-			req.flash('error', 'Requested campground cannot be found');
-			return res.redirect('/campgrounds');
+		if (!campground) {
+			req.flash("error", "Requested campground cannot be found");
+			return res.redirect("/campgrounds");
 		}
 		const { review } = req.body;
 		const rev = new Review(review);
 		campground.reviews.push(rev);
 		await campground.save();
 		await rev.save();
-		req.flash('success', 'Successfully created a review');
+		req.flash("success", "Successfully created a review");
 		res.redirect(`/campgrounds/${campground._id}`);
 		// console.log(review);
 		// res.send(review);
@@ -66,9 +53,9 @@ router.delete(
 		// let ground = await Campground.findById(groundId).populate("reviews");
 		// console.log(ground);
 		const ground = await Campground.findById(id);
-		if(!ground){
-			req.flash('error', 'Requested campground cannot be found');
-			return res.redirect('/campgrounds');
+		if (!ground) {
+			req.flash("error", "Requested campground cannot be found");
+			return res.redirect("/campgrounds");
 		}
 		await Campground.findByIdAndUpdate(id, {
 			$pull: { reviews: reviewId },
@@ -80,13 +67,13 @@ router.delete(
 		// 	console.log(d);
 		// });
 		const r = await Campground.findById(id);
-		if(!r){
-			req.flash('error', 'Requested review cannot be found');
-			return res.redirect('/campgrounds');
+		if (!r) {
+			req.flash("error", "Requested review cannot be found");
+			return res.redirect("/campgrounds");
 		}
 		const review = await Review.findByIdAndDelete(reviewId);
 		console.log(review);
-		req.flash('success', 'Successfully deleted the review');
+		req.flash("success", "Successfully deleted the review");
 		res.redirect(`/campgrounds/${id}`);
 	})
 );
@@ -103,15 +90,15 @@ router.patch(
 		const update = req.body.review;
 		console.log(update);
 		const r = await Campground.findById(id);
-		if(!r){
-			req.flash('error', 'Requested review cannot be found');
-			return res.redirect('/campgrounds');
+		if (!r) {
+			req.flash("error", "Requested review cannot be found");
+			return res.redirect("/campgrounds");
 		}
 		const see = await Review.findByIdAndUpdate(reviewId, update, {
 			new: true,
 		});
 		console.log(see);
-		req.flash('success', 'Successfully edited the review');
+		req.flash("success", "Successfully edited the review");
 		res.redirect(`/campgrounds/${id}`);
 	})
 );
