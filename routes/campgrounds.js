@@ -24,40 +24,31 @@ router
 
 //
 
-// The details route -- shows info about a single campground
+// The router club for '/:id' route (i.e. a perticular campground)
 
-router.get("/new", isLoggedIn, campgrounds.newCampgroundForm);
-
-router.get("/:id", catchAsync(campgrounds.getCampgroundById));
+router
+	.route("/:id")
+	.get(catchAsync(campgrounds.getCampgroundById))
+	.patch(
+		isLoggedIn,
+		isAuthor,
+		validateCampground,
+		catchAsync(campgrounds.editCampgroundById)
+	)
+	.delete(isLoggedIn, isAuthor, catchAsync(campgrounds.deleteCampgroundById));
 
 //
 
-// The edit/patch route --
+// The new campground template render route
+router.get("/new", isLoggedIn, campgrounds.newCampgroundForm);
+
+// The edit template render route --
 
 router.get(
 	"/:id/edit",
 	isLoggedIn,
 	isAuthor,
 	catchAsync(campgrounds.editCampgroundForm)
-);
-
-router.patch(
-	"/:id",
-	isLoggedIn,
-	isAuthor,
-	validateCampground,
-	catchAsync(campgrounds.editCampgroundById)
-);
-
-//
-
-// The DELETE route --
-
-router.delete(
-	"/:id",
-	isLoggedIn,
-	isAuthor,
-	catchAsync(campgrounds.deleteCampgroundById)
 );
 
 //
