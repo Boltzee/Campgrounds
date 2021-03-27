@@ -9,27 +9,7 @@ const catchAsync = require("../utils/catchAsync");
 
 const cities = require("../seeds/cities");
 
-const { isLoggedIn } = require("../middleware");
-
-const validateCampground = (req, res, next) => {
-	const { error } = campgroundSchema.validate(req.body);
-	if (error) {
-		const msg = error.details.map((el) => el.message).join(",");
-		throw new ExpressError(msg, 400);
-	} else {
-		next();
-	}
-};
-
-const isAuthor = async (req, res, next) => {
-	const { id } = req.params;
-	const ground = await Campground.findById(id);
-	if (!ground.author.equals(req.user._id)) {
-		req.flash("error", "You do not have the permission to do that");
-		return res.redirect(`/campgrounds/${id}`);
-	}
-	next();
-};
+const { isLoggedIn, validateCampground, isAuthor } = require("../middleware");
 
 // The index route -- basically shows all the campgrounds in the database
 
