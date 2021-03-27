@@ -22,17 +22,6 @@ router.post(
 
 // Route for deleting a perticular review of a campground
 
-// var removeByAttr = function (arr, attr, value) {
-// 	/// function to delete an review from the reviews array
-// 	var i = arr.length;
-// 	while (i--) {
-// 		if (arr[i] && arr[i][attr] == value) {  				/// Once used now out of date.
-// 			arr.splice(i, 1);
-// 		}
-// 	}
-// 	return arr;
-// };
-
 router.delete(
 	"/:reviewId",
 	isLoggedIn,
