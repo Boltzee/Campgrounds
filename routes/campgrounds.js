@@ -57,6 +57,7 @@ router.get(
 
 router.get(
 	"/:id/edit",
+	isLoggedIn,
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const ground = await Campground.findById(id);
@@ -70,6 +71,7 @@ router.get(
 
 router.patch(
 	"/:id",
+	isLoggedIn,
 	validateCampground,
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
@@ -90,6 +92,7 @@ router.patch(
 
 router.delete(
 	"/:id",
+	isLoggedIn,
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const ground = await Campground.findById(id);
@@ -111,6 +114,7 @@ router.delete(
 
 router.post(
 	"/",
+	isLoggedIn,
 	validateCampground,
 	catchAsync(async (req, res, next) => {
 		// if (!req.body.campground)
