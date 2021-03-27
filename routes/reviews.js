@@ -4,7 +4,7 @@ const router = express.Router({ mergeParams: true });
 const Campground = require("../models/campground");
 const Review = require("../models/review");
 
-const reviews = require('../controllers/reviews');
+const reviews = require("../controllers/reviews");
 
 const catchAsync = require("../utils/catchAsync");
 
@@ -37,34 +37,7 @@ router.delete(
 	"/:reviewId",
 	isLoggedIn,
 	isReviewAuthor,
-	catchAsync(async (req, res) => {
-		const { id, reviewId } = req.params;
-		// let ground = await Campground.findById(groundId).populate("reviews");
-		// console.log(ground);
-		const ground = await Campground.findById(id);
-		if (!ground) {
-			req.flash("error", "Requested campground cannot be found");
-			return res.redirect("/campgrounds");
-		}
-		await Campground.findByIdAndUpdate(id, {
-			$pull: { reviews: reviewId },
-		}); // New more powerful
-
-		// removeByAttr(ground.reviews, "_id", reviewId);
-		// await ground.save().then((d) => {
-		// 	d.populate("reviews");
-		// 	console.log(d);
-		// });
-		const r = await Campground.findById(id);
-		if (!r) {
-			req.flash("error", "Requested review cannot be found");
-			return res.redirect("/campgrounds");
-		}
-		const review = await Review.findByIdAndDelete(reviewId);
-		console.log(review);
-		req.flash("success", "Successfully deleted the review");
-		res.redirect(`/campgrounds/${id}`);
-	})
+	catchAsync(reviews.deleteReviewById)
 );
 
 //
