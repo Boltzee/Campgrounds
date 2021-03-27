@@ -25,3 +25,10 @@ module.exports.createUser = async (req, res, next) => {
 module.exports.loginForm = (req, res) => {
 	res.render("users/login");
 };
+
+module.exports.userLogin = (req, res) => {
+	req.flash("success", "Welcome back");
+	const redirectUrl = req.session.returnTo || "/campgrounds";
+	delete req.session.returnTo;
+	res.redirect(redirectUrl);
+};
