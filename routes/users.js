@@ -8,20 +8,29 @@ const users = require("../controllers/users");
 
 const catchAsync = require("../utils/catchAsync");
 
-router.get("/register", users.registerForm);
+// The router club for '/register'
 
-router.post("/register", catchAsync(users.createUser));
+router
+	.route("/register")
+	.get(users.registerForm)
+	.post(catchAsync(users.createUser));
 
-router.get("/login", users.loginForm);
+//
 
-router.post(
-	"/login",
-	passport.authenticate("local", {
-		failureFlash: true,
-		failureRedirect: "/login",
-	}),
-	users.userLogin
-);
+// The router club for '/login'
+
+router
+	.route("/login")
+	.get(users.loginForm)
+	.post(
+		passport.authenticate("local", {
+			failureFlash: true,
+			failureRedirect: "/login",
+		}),
+		users.userLogin
+	);
+
+//
 
 router.get("/logout", users.userLogout);
 
