@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Campground = require("../models/campground");
 
-const campgrounds = require('../controllers/campgrounds');
+const campgrounds = require("../controllers/campgrounds");
 
 const catchAsync = require("../utils/catchAsync");
 
@@ -21,25 +21,7 @@ router.get("/", catchAsync(campgrounds.index));
 
 router.get("/new", isLoggedIn, campgrounds.newCampgroundForm);
 
-router.get(
-	"/:id",
-	catchAsync(async (req, res) => {
-		const { id } = req.params;
-		const ground = await Campground.findById(id)
-			.populate({
-				path: "reviews",
-				populate: {
-					path: "author",
-				},
-			})
-			.populate("author");
-		if (!ground) {
-			req.flash("error", "Requested campground cannot be found");
-			return res.redirect("/campgrounds");
-		}
-		res.render("campground/details", { ground });
-	})
-);
+router.get("/:id", catchAsync(campgrounds.getCampgroundById));
 
 //
 
