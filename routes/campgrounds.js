@@ -31,7 +31,12 @@ router.get(
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const ground = await Campground.findById(id)
-			.populate("reviews")
+			.populate({
+				path: "reviews",
+				populate: {
+					path: "author",
+				},
+			})
 			.populate("author");
 		if (!ground) {
 			req.flash("error", "Requested campground cannot be found");
