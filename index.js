@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const campgrounds = require("./routes/campgrounds");
 const reviews = require("./routes/reviews");
+const User = require('./routes/user');
 
 const methodOverride = require("method-override");
 const path = require("path");
@@ -55,6 +56,11 @@ app.use((req, res, next) => {
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.use(new localStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //
 
