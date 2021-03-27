@@ -22,6 +22,7 @@ router.post(
 		}
 		const { review } = req.body;
 		const rev = new Review(review);
+		rev.author = req.user._id;
 		campground.reviews.push(rev);
 		await campground.save();
 		await rev.save();
