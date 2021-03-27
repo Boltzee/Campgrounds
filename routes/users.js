@@ -4,30 +4,13 @@ const passport = require("passport");
 
 const User = require("../models/user");
 
-const users = require('../controllers/users');
+const users = require("../controllers/users");
 
 const catchAsync = require("../utils/catchAsync");
 
 router.get("/register", users.registerForm);
 
-router.post(
-	"/register",
-	catchAsync(async (req, res, next) => {
-		try {
-			const { username, password, email } = req.body;
-			const user = new User({ email, username });
-			const result = await User.register(user, password);
-			req.login(result, err => {
-				if(err) return next(err);
-				req.flash("success", "Welcome to yelpcamp");
-				res.redirect("/campgrounds");
-			})
-		} catch (e) {
-			req.flash("error", e.message);
-			res.redirect("/register");
-		}
-	})
-);
+router.post("/register", catchAsync(users.createUser));
 
 router.get("/login", (req, res) => {
 	res.render("users/login");
@@ -41,7 +24,7 @@ router.post(
 	}),
 	(req, res) => {
 		req.flash("success", "Welcome back");
-		const redirectUrl = req.session.returnTo || '/campgrounds';
+		const redirectUrl = req.session.returnTo || "/campgrounds";
 		delete req.session.returnTo;
 		res.redirect(redirectUrl);
 	}
