@@ -11,9 +11,16 @@ const cities = require("../seeds/cities");
 
 const { isLoggedIn, validateCampground, isAuthor } = require("../middleware");
 
-// The index route -- basically shows all the campgrounds in the database
+// the router club for '/' route
 
-router.get("/", catchAsync(campgrounds.index));
+router
+	.route("/")
+	.get(catchAsync(campgrounds.index))
+	.post(
+		isLoggedIn,
+		validateCampground,
+		catchAsync(campgrounds.createCampground)
+	);
 
 //
 
@@ -51,19 +58,6 @@ router.delete(
 	isLoggedIn,
 	isAuthor,
 	catchAsync(campgrounds.deleteCampgroundById)
-);
-
-//
-
-// NEW CAMPGROUND route
-
-/// order where the router.get(new ) is placed matters so i placed it in front of the /campgrounds/:id get req
-
-router.post(
-	"/",
-	isLoggedIn,
-	validateCampground,
-	catchAsync(campgrounds.createCampground)
 );
 
 //
