@@ -5,15 +5,15 @@ const mongoose = require("mongoose");
 
 const campgrounds = require("./routes/campgrounds");
 const reviews = require("./routes/reviews");
-const User = require('./routes/user');
+const users = require("./routes/users");
 
 const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const session = require("express-session");
 const flash = require("connect-flash");
-const passport = require('passport');
-const localStrategy = require('passport-local');
+const passport = require("passport");
+const localStrategy = require("passport-local");
 
 const ExpressError = require("./utils/expressError");
 
@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 
 //
 
-// Passport setup 
+// Passport setup
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -66,6 +66,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use("/campgrounds", campgrounds);
 app.use("/campgrounds/:id/review", reviews);
+app.use("/users", users);
 
 app.engine("ejs", ejsMate);
 
