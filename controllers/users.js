@@ -21,3 +21,7 @@ module.exports.createUser = async (req, res, next) => {
 		res.redirect("/register");
 	}
 };
+
+module.exports.loginForm = (req, res) => {
+	res.render("users/login");
+};
