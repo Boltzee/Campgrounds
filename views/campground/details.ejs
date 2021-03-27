@@ -54,12 +54,14 @@
 	 					<h6 class="card-subtitle mb-2 text-muted">By <%=review.author.username%></h6>
 				    	<p class="card-text" id="edit-p">Review: <%=review.body%></p>
 	 				</div>
-	 				<div class="card-body pt-0">
-				    	<a id="edit-button" class="user card-link btn btn-sm btn-success mb-1" data-rev="<%=review%>">Edit</a>
-					    <form style="display: inline;" method="POST" action="/campgrounds/<%=ground._id%>/review/<%=review._id%>?_method=DELETE">
-							<button class="btn btn-sm btn-danger mb-1">DELETE</button>
-					  	</form>
-				  	</div>
+	 				<% if((currentUser && review.author.equals(currentUser._id)) || (currentUser && ground.author.equals(currentUser._id))) {%>
+		 				<div class="card-body pt-0">
+					    	<a id="edit-button" class="user card-link btn btn-sm btn-success mb-1" data-rev="<%=review%>">Edit</a>
+						    <form style="display: inline;" method="POST" action="/campgrounds/<%=ground._id%>/review/<%=review._id%>?_method=DELETE">
+								<button class="btn btn-sm btn-danger mb-1">DELETE</button>
+						  	</form>
+					  	</div>
+				  	<% } %>
  				</div>
  			<%}%>
 		</div>
