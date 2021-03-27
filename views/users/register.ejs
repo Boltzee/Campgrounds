@@ -1,18 +1,36 @@
 <% layout('layouts/boilerplate') %>
 
-<h1>Form to register new user</h1>
-	<form action="/register" method="POST">
-		<div>
-			<label for="username">Enter the username:</label>
-			<input type="text" name="username" id="username" required>
+<h1>Register</h1>
+	<form action="/register" method="POST" class="validate-form" novalidate>
+		<div class="mb-1">
+			<label class="form-label" for="username">Enter the username:</label>
+			<input class="form-control" type="text" name="username" id="username" required>
+			<div class="valid-feedback">
+				Looks good
+			</div>
+			<div id="validationServerFeedback00" class="invalid-feedback">
+	      		Please provide a username.
+	  		</div>
 		</div>
-		<div>
-			<label for="email">Enter valid email:</label>
-			<input type="email" name="email" id="email" required>
+		<div class="mb-1">
+			<label class="form-label" for="email">Enter valid email:</label>
+			<input class="form-control" type="email" name="email" id="email" required>
+			<div class="valid-feedback">
+				Looks good
+			</div>
+			<div id="validationServerFeedback01" class="invalid-feedback">
+	      		Please provide a valid e-mail.
+	  		</div>
 		</div>
-		<div>
-			<label for="password">Enter the password:</label>
-			<input type="password" name="password" id="password">
+		<div class="mb-1">
+			<label class="form-label" for="password">Enter the password:</label>
+			<input class="form-control" type="password" name="password" id="password">
+			<div class="valid-feedback">
+				Looks good
+			</div>
+			<div id="validationServerFeedback02" class="invalid-feedback">
+	      		Please provide a valid password.
+	  		</div>
 		</div>
-		<button>Submit</button>
+		<button class="btn btn-success">Submit</button>
 	</form>
