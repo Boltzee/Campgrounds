@@ -9,6 +9,8 @@ const catchAsync = require("../utils/catchAsync");
 
 const cities = require("../seeds/cities");
 
+const { isLoggedIn } = require("../middleware");
+
 const validateCampground = (req, res, next) => {
 	const { error } = campgroundSchema.validate(req.body);
 	if (error) {
@@ -32,7 +34,7 @@ router.get(
 
 // The details route -- shows info about a single campground
 
-router.get("/new", (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
 	res.render("campground/new", { cities }); // route for displaying form to create a new campground
 });
 
@@ -41,9 +43,9 @@ router.get(
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const ground = await Campground.findById(id).populate("reviews");
-		if(!ground){
-			req.flash('error', 'Requested campground cannot be found');
-			return res.redirect('/campgrounds');
+		if (!ground) {
+			req.flash("error", "Requested campground cannot be found");
+			return res.redirect("/campgrounds");
 		}
 		res.render("campground/details", { ground });
 	})
@@ -58,9 +60,9 @@ router.get(
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const ground = await Campground.findById(id);
-		if(!ground){
-			req.flash('error', 'Requested campground cannot be found');
-			return res.redirect('/campgrounds');
+		if (!ground) {
+			req.flash("error", "Requested campground cannot be found");
+			return res.redirect("/campgrounds");
 		}
 		res.render("campground/edit", { ground, cities });
 	})
@@ -91,9 +93,9 @@ router.delete(
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const ground = await Campground.findById(id);
-		if(!ground){
-			req.flash('error', 'Requested campground cannot be found');
-			return res.redirect('/campgrounds');
+		if (!ground) {
+			req.flash("error", "Requested campground cannot be found");
+			return res.redirect("/campgrounds");
 		}
 		await Campground.findByIdAndDelete(id);
 		req.flash("success", "Successfully deleted the campground");
