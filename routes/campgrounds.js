@@ -31,15 +31,7 @@ router.get(
 	"/:id/edit",
 	isLoggedIn,
 	isAuthor,
-	catchAsync(async (req, res) => {
-		const { id } = req.params;
-		const ground = await Campground.findById(id);
-		if (!ground) {
-			req.flash("error", "Requested campground cannot be found");
-			return res.redirect("/campgrounds");
-		}
-		res.render("campground/edit", { ground, cities });
-	})
+	catchAsync(campgrounds.editCampgroundForm)
 );
 
 router.patch(
