@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Review = require("./review");
+const User = require("./user");
 
 const campgroundSchema = new mongoose.Schema({
 	title: {
@@ -20,6 +21,10 @@ const campgroundSchema = new mongoose.Schema({
 	location: {
 		type: String,
 	},
+	author: {
+		type: mongoose.Schema.Types.ObjectID,
+		ref: "User",
+	},
 	reviews: [
 		{
 			type: mongoose.Schema.Types.ObjectID,
@@ -28,12 +33,12 @@ const campgroundSchema = new mongoose.Schema({
 	],
 });
 
-campgroundSchema.post('findOneAndDelete', async function (ground) {
-	if(ground.reviews.length) {
-		const res = await Review.deleteMany({_id : {$in : ground.reviews}})
+campgroundSchema.post("findOneAndDelete", async function (ground) {
+	if (ground.reviews.length) {
+		const res = await Review.deleteMany({ _id: { $in: ground.reviews } });
 		console.log(res);
 	}
-})
+});
 
 const Campground = mongoose.model("Campground", campgroundSchema);
 
