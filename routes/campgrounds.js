@@ -21,6 +21,16 @@ const validateCampground = (req, res, next) => {
 	}
 };
 
+const isAuthor = async (req, res, next) => {
+	const { id } = req.params;
+	const ground = await Campground.findById(id);
+	if (!ground.author.equals(req.user._id)) {
+		req.flash("error", "You do not have the permission to do that");
+		return res.redirect(`/campgrounds/${id}`);
+	}
+	next();
+};
+
 // The index route -- basically shows all the campgrounds in the database
 
 router.get(
@@ -60,6 +70,7 @@ router.get(
 router.get(
 	"/:id/edit",
 	isLoggedIn,
+	isAuthor,
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const ground = await Campground.findById(id);
@@ -74,6 +85,7 @@ router.get(
 router.patch(
 	"/:id",
 	isLoggedIn,
+	isAuthor,
 	validateCampground,
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
@@ -95,6 +107,7 @@ router.patch(
 router.delete(
 	"/:id",
 	isLoggedIn,
+	isAuthor,
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		const ground = await Campground.findById(id);
