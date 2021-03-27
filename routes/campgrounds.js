@@ -3,6 +3,8 @@ const router = express.Router();
 
 const Campground = require("../models/campground");
 
+const campgrounds = require('../controllers/campgrounds');
+
 const catchAsync = require("../utils/catchAsync");
 
 const cities = require("../seeds/cities");
@@ -11,13 +13,8 @@ const { isLoggedIn, validateCampground, isAuthor } = require("../middleware");
 
 // The index route -- basically shows all the campgrounds in the database
 
-router.get(
-	"/",
-	catchAsync(async (req, res) => {
-		const grounds = await Campground.find({});
-		res.render("campground/show", { grounds });
-	})
-);
+router.get("/", catchAsync(campgrounds.index));
+
 //
 
 // The details route -- shows info about a single campground
