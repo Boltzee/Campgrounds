@@ -67,7 +67,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/review", reviewRoutes);
-app.use("/users", userRoutes);
+app.use("/", userRoutes);
 
 app.engine("ejs", ejsMate);
 
