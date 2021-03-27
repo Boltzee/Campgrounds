@@ -1,5 +1,7 @@
 const Campground = require("../models/campground");
 
+const cities = require("../seeds/cities");
+
 module.exports.index = async (req, res) => {
 	const grounds = await Campground.find({});
 	res.render("campground/show", { grounds });
