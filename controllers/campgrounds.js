@@ -25,3 +25,13 @@ module.exports.getCampgroundById = async (req, res) => {
 	}
 	res.render("campground/details", { ground });
 };
+
+module.exports.editCampgroundForm = async (req, res) => {
+	const { id } = req.params;
+	const ground = await Campground.findById(id);
+	if (!ground) {
+		req.flash("error", "Requested campground cannot be found");
+		return res.redirect("/campgrounds");
+	}
+	res.render("campground/edit", { ground, cities });
+};
