@@ -96,8 +96,9 @@ module.exports.createCampground = async (req, res, next) => {
 			limit: 1,
 		})
 		.send();
-
+	// console.log(geoData.body.features[0].geometry);
 	const ground = new Campground(req.body.campground); // to handle the async error
+	ground.geometry = geoData.body.features[0].geometry;
 	ground.author = req.user._id;
 	ground.images = req.files.map((f) => ({
 		url: f.path,
