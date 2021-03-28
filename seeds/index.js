@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Campground = require("../models/campground");
 const cities = require("./cities");
 const { descriptors, places } = require("./seedHelpers");
+const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
+const mapboxToken = process.env.MAPBOX_TOKEN;
+
+const geocoder = mbxGeocoding({ accessToken: mapboxToken });
 
 mongoose.connect("mongodb://localhost:27017/YelpCamp", {
 	useNewUrlParser: true,
