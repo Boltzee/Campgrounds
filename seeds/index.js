@@ -3,8 +3,8 @@ const Campground = require("../models/campground");
 const cities = require("./cities");
 const { descriptors, places } = require("./seedHelpers");
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
-const mapboxToken = process.env.MAPBOX_TOKEN;
-
+const mapboxToken =
+	"pk.eyJ1IjoiY29kZmlzaCIsImEiOiJja210amo4OWEwc2gzMnVtcDBieWZmc3ozIn0.UlFT_LWz0wqEyXHz_p6nDA";
 const geocoder = mbxGeocoding({ accessToken: mapboxToken });
 
 mongoose.connect("mongodb://localhost:27017/YelpCamp", {
