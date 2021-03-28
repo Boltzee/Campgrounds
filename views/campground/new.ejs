@@ -24,28 +24,25 @@
     				</div>
 				</div>
 			</div>
-			<div class="mb-3">
+			<!-- <div class="mb-3">
   				<label for="formFileMultiple" class="form-label">Multiple files input example</label>
   				<input class="form-control" type="file" id="formFileMultiple" multiple>
-			</div>
-		    <div class="mb-3">
+			</div> -->
+		    <!-- <div class="mb-3">
 		        <label for="formFileMultiple" class="form-label">Upload Images</label>
 		        <input type="file" class="form-control" id="formFileMultiple" name="image" multiple required>
 		        <div class="invalid-feedback">
 		            This campground would look much better with a picture.
 		        </div>
+			</div> -->
+			<div class="form-file">
+				<input type="file" name="image" id="customFile" class="form-file-input">
+				<label for="customFile" class="form-file-label">
+					<span class="form-file-text">Choose file...</span>
+					<span class="form-file-button">Browse</span>
+				</label>
 			</div>
 			<input type="file" name="image" id="image" multiple>
-			<!-- <div class="mb-3">
-				<label class="form-label" for="image">Enter Image url</label>
-				<input class="form-control" type="text" id="image" name="campground[image]" required>
-				<div class="valid-feedback">
-					Looks good
-				</div>
-				<div id="validationServer02Feedback" class="invalid-feedback">
-      				Please enter valid image url.
-    			</div>
-			</div> -->
 			<div class="mb-3">
 				<label for="description" class="form-label">Enter description</label>
 				<textarea class="form-control" name="campground[description]" id="description" cols="30" rows="3" placeholder="Enter the description of the campground" required></textarea>
