@@ -46,12 +46,13 @@ module.exports.editCampgroundById = async (req, res) => {
 		filename: f.filename,
 	}));
 	console.log(update);
-	// const see = await Campground.findByIdAndUpdate(id, update, {
-	// 	new: true,
-	// 	runValidators: true,
-	// });
+	const see = await Campground.findByIdAndUpdate(id, update, {
+		new: true,
+		runValidators: true,
+	});
 	req.flash("success", "Successfully updated the campground");
 	res.redirect(`/campgrounds/${see._id}`);
+	// res.send("successful");
 };
 
 module.exports.deleteCampgroundById = async (req, res) => {
