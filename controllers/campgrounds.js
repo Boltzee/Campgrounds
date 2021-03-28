@@ -56,6 +56,13 @@ module.exports.editCampgroundById = async (req, res) => {
 		runValidators: true,
 	});
 	see.images.push(...images);
+	const geoData = await geocoder
+		.forwardGeocode({
+			query: req.body.campground.location,
+			limit: 1,
+		})
+		.send();
+	see.geometry = geoData.body.features[0].geometry;
 	await see.save();
 	if (req.body.deleteImages) {
 		for (let filename of req.body.deleteImages) {
