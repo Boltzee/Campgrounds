@@ -54,6 +54,9 @@ module.exports.editCampgroundById = async (req, res) => {
 	see.images.push(...images);
 	await see.save();
 	if (req.body.deleteImages) {
+		for (let filename of req.body.deleteImages) {
+			await cloudinary.uploader.destroy(filename);
+		}
 		await see.updateOne({
 			$pull: { images: { filename: { $in: req.body.deleteImages } } },
 		});
