@@ -77,6 +77,11 @@ module.exports.deleteCampgroundById = async (req, res) => {
 		req.flash("error", "Requested campground cannot be found");
 		return res.redirect("/campgrounds");
 	}
+	if (ground.images.length) {
+		for (let img of ground.images) {
+			await cloudinary.uploader.destroy(img.filename);
+		}
+	}
 	await Campground.findByIdAndDelete(id);
 	req.flash("success", "Successfully deleted the campground");
 	res.redirect("/campgrounds");
