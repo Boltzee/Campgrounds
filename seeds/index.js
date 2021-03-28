@@ -41,6 +41,13 @@ const seedDB = async () => {
 			description:
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum sit dolorem ipsum hic minus earum autem ab. Praesentium obcaecati assumenda, id placeat quae debitis aspernatur dolores facere ab fugiat! Ullam.",
 		});
+		const geoData = await geocoder
+			.forwardGeocode({
+				query: item.location,
+				limit: 1,
+			})
+			.send();
+		item.geometry = geoData.body.features[0].geometry;
 		await item.save();
 	}
 };
