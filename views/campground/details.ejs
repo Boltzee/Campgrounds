@@ -118,14 +118,14 @@
 			// console.log('the value of el.dataset.rev is', el.dataset.rev);
 			let n = remove_linebreaks(el.dataset.rev);
 			const user_name = el.dataset.author;
-			console.log(user_name);
+			// console.log(user_name);
 			var properties = n.split(',  ');
 			var obj = {};
 			properties.forEach(function(property) {
 			    var tup = property.split(': ');
 			    obj[tup[0]] = tup[1];
 			});
-			console.log('the value of obj is',obj)
+			// console.log('the value of obj is',obj)
 			const element = document.querySelector(`#i${obj._id}`);
 			element.style.outline = 'none !important';
 			element.style.borderColor = '#719ece';
