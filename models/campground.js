@@ -7,9 +7,12 @@ const campgroundSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	image: {
-		type: String,
-	},
+	image: [
+		{
+			url: String,
+			filename: String,
+		},
+	],
 	price: {
 		type: Number,
 		required: true,
