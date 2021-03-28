@@ -61,11 +61,13 @@
 			</div>
 			<div class="mb-3">
 				<% ground.images.forEach( function (img, i) {%>
-					<img src="<%=img.url%>" alt="">
+				<div>
+					<img style="max-width: 300px; max-height: 400px" src="<%=img.url%>" alt="">
 					<div class="form-check-inline">
 						<input type="checkbox" name="" id="">
 					</div>
 					<label for="">Delete</label>
+				</div>
 				<% })%>
 			</div>
 			<button class="btn btn-success mb-1">Submit</button>
