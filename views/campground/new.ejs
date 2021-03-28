@@ -10,8 +10,7 @@
 			<div id="validationServer00Feedback" class="invalid-feedback">
       			Title of the campground is required.
     		</div>
-			<br>
-			<div class="mb-3">
+			<div class="mb-3 pt-2">
 				<label class="form-label" for="price">Add a price</label>
 				<div class="input-group">
 	  				<span class="input-group-text" id="price-label">$</span>
@@ -24,23 +23,32 @@
     				</div>
 				</div>
 			</div>
-			<div class="form-file custom-file">
-				<input type="file" name="image" id="image" class="form-file-input" multiple>
-                <label for="image" class="form-file-label">
-                	<span class="form-file-text custom-file-label">Choose Image(s)...</span>
-                	<span class="form-file-button">Browse</span>
-                </label>
-			</div>
-		    <!-- <div class="mb-3">
-		        <label for="formFileMultiple" class="form-label">Upload Images</label>
-		        <input type="file" class="form-control" id="formFileMultiple" name="image" multiple required>
+			<!-- <div class="mb-3">
+				<label for="image" class="form-label">Upload Images</label>
+				<div class="form-file custom-file" >
+					<input type="file" name="image" id="image" class="form-control form-file-input" multiple required>
+	                <label for="image" class="form-file-label">
+	                	<span class="form-file-text custom-file-label">Choose Image(s)...</span>
+	                	<span class="form-file-button">Browse...</span>
+	                </label>
+	                <div class="valid-feedback">
+						Looks good
+					</div>
+		        	<div class="invalid-feedback">
+		            	This campground would look much better with a picture.
+		        	</div>
+				</div>
+			</div> -->
+		    <div class="mb-3">
+		        <label for="image" class="form-label">Upload Images</label>
+		        <input type="file" class="form-control" id="image" name="image" multiple required>
 		        <div class="valid-feedback">
 					Looks good
 				</div>
 		        <div class="invalid-feedback">
 		            This campground would look much better with a picture.
 		        </div>
-			</div> -->
+			</div>
 			<div class="mb-3">
 				<label for="description" class="form-label">Enter description</label>
 				<textarea class="form-control" name="campground[description]" id="description" cols="30" rows="3" placeholder="Enter the description of the campground" required></textarea>
