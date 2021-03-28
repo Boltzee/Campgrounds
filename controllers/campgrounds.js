@@ -90,13 +90,13 @@ module.exports.deleteCampgroundById = async (req, res) => {
 module.exports.createCampground = async (req, res, next) => {
 	// if (!req.body.campground)
 	// 	throw new ExpressError("Send required data please", 400);
-	geocoder
+	const geoData = await geocoder
 		.forwardGeocode({
 			query: req.body.campground.location,
 			limit: 1,
 		})
-		.send()
-		.then((d) => console.log(d.body));
+		.send();
+
 	const ground = new Campground(req.body.campground); // to handle the async error
 	ground.author = req.user._id;
 	ground.images = req.files.map((f) => ({
