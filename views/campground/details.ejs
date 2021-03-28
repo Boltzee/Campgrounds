@@ -1,8 +1,26 @@
 <% layout('layouts/boilerplate') %>
 	<div class="row mt-4">
 		<div class="col-6">
+			<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+				  <div class="carousel-inner">
+				  	<% let x = 0%>
+				  	<% for(let img of ground.images) {%>
+				  		<% x++ %>
+					    <div class="carousel-item <%= (x==1) ? 'active' : ''%>">
+					      <img src="<%=img.url%>" class="d-block w-100" alt="...">
+					    </div>
+				    <% } %>
+				  </div>
+				  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				    <span class="visually-hidden">Previous</span>
+				  </button>
+				  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				    <span class="visually-hidden">Next</span>
+				  </button>
+			</div>
 			<div class="card mb-3">
-				  <img src="<%=ground.image%>" class="card-img-top" alt="">
 				  <div class="card-body">
 				    <h5 class="card-title"><%=ground.title%></h5>
 				    <p class="card-text"><%=ground.description%></p>
@@ -82,12 +100,12 @@
 
 		const parentElement = document.querySelector('#main');
 
-		function remove_linebreaks( str ) {
-			str=str.replace("{","");
-			str= str.replace("}","");
-			str= str.replace( /[\r\n]+/gm, "" );
-			str= str.trim();
-			return str;
+		function remove_linebreaks( s ) {
+			s=s.replace("{","");
+			s= s.replace("}","");
+			s= s.replace( /[\r\n]+/gm, "" );
+			s= s.trim();
+			return s;
 		}
 		
 		const editFunction = function(e) {
@@ -115,19 +133,20 @@
 				}
 			<% }%>
 			// console.log(bod);
+			// ${ (obj.rating===1)? 'checked':''}
 			const str = 
 				`<form method="POST" action="/campgrounds/<%=ground._id%>/review/${obj._id}?_method=PATCH" class="validate-form mb-3 mx-3 mt-3" novalidate>
 				 	<div class="card-body pb-0">
 					 	<fieldset class="starability-checkmark" style="min-height: 40px">
-						  <input type="radio" id="1" name="review[rating]" value="1" <%=(review.rating===1)? 'checked' : '' %>/>
+						  <input type="radio" id="1" name="review[rating]" value="1" ${(obj.rating==1)? 'checked':''}/>
 						  <label for="1" title="Terrible">1 star</label>
-						  <input type="radio" id="2" name="review[rating]" value="2" <%=(review.rating===2)? 'checked' : '' %> />
+						  <input type="radio" id="2" name="review[rating]" value="2" ${ (obj.rating==2)? 'checked':''} />
 						  <label for="2" title="Not good">2 stars</label>
-						  <input type="radio" id="3" name="review[rating]" value="3" <%=(review.rating===3)? 'checked' : '' %>/>
+						  <input type="radio" id="3" name="review[rating]" value="3" ${ (obj.rating==3)? 'checked':''}/>
 						  <label for="3" title="Average">3 stars</label>
-						  <input type="radio" id="4" name="review[rating]" value="4" <%= (review.rating===4)? 'checked' : '' %>/>
+						  <input type="radio" id="4" name="review[rating]" value="4" ${ (obj.rating==4)? 'checked':''}/>
 						  <label for="4" title="Very good">4 stars</label>
-						  <input type="radio" id="5" name="review[rating]" value="5" <%= (review.rating===5)? 'checked' : '' %>/>
+						  <input type="radio" id="5" name="review[rating]" value="5" ${ (obj.rating==5)? 'checked':''}/>
 						  <label for="5" title="Amazing">5 stars</label>
 						</fieldset>
 					</div>
