@@ -7,6 +7,10 @@ const imageSchema = new mongoose.Schema({
 	filename: String,
 });
 
+imageSchema.virtual("thumbnail").get(function () {
+	this.url.replace("/upload", "/upload/w_300");
+});
+
 const campgroundSchema = new mongoose.Schema({
 	title: {
 		type: String,
