@@ -8,7 +8,7 @@ const imageSchema = new mongoose.Schema({
 });
 
 imageSchema.virtual("thumbnail").get(function () {
-	this.url.replace("/upload", "/upload/w_300");
+	return this.url.replace("/upload", "/upload/w_200");
 });
 
 const campgroundSchema = new mongoose.Schema({
