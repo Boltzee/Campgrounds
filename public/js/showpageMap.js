@@ -1,4 +1,4 @@
-mapboxgl.accessToken = "<%- process.env.MAPBOX_TOKEN %>";
+mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 var map = new mapboxgl.Map({
 	container: "map", // container ID
 	style: "mapbox://styles/mapbox/streets-v11", // style URL
