@@ -62,7 +62,7 @@
 			<div class="mb-3">
 				<% ground.images.forEach( function (img, i) {%>
 				<div>
-					<img style="max-width: 300px; max-height: 400px" src="<%=img.url%>" alt="">
+					<img style="max-width: 300px; max-height: 400px" src="<%=img.thumbnail%>" alt="">
 					<div class="form-check-inline">
 						<input type="checkbox" name="deleteImages[]" id="image-<%=i%>" value="<%=img.filename%>">
 					</div>
