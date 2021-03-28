@@ -64,7 +64,7 @@
 				<div>
 					<img style="max-width: 300px; max-height: 400px" src="<%=img.url%>" alt="">
 					<div class="form-check-inline">
-						<input type="checkbox" name="" id="image-<%i%>">
+						<input type="checkbox" name="deleteImage[]" id="image-<%=i%>" value="<%=img.filename%>">
 					</div>
 					<label for="image-<%=i%>">Delete</label>
 				</div>
