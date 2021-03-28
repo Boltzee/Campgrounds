@@ -87,7 +87,7 @@
 	 				</div>
 	 				<% if((currentUser && review.author.equals(currentUser._id)) || (currentUser && ground.author.equals(currentUser._id))) {%>
 		 				<div class="card-body pt-0">
-					    	<a id="edit-button" class="user card-link btn btn-sm btn-success mb-1" data-rev="<%=review%>">Edit</a>
+					    	<a id="edit-button" class="user card-link btn btn-sm btn-success mb-1" data-rev="<%=review%>" data-author="<%=review.author.username%>">Edit</a>
 						    <form style="display: inline;" method="POST" action="/campgrounds/<%=ground._id%>/review/<%=review._id%>?_method=DELETE">
 								<button class="btn btn-sm btn-danger mb-1">DELETE</button>
 						  	</form>
@@ -123,7 +123,7 @@
 			    var tup = property.split(': ');
 			    obj[tup[0]] = tup[1];
 			});
-			// console.log('the value of obj is',obj)
+			console.log('the value of obj is',obj)
 			const element = document.querySelector(`#i${obj._id}`);
 			element.style.outline = 'none !important';
 			element.style.borderColor = '#719ece';
@@ -176,11 +176,11 @@
 				let original = 
 					`<div class="card-body" >
 						<h5 class="card-title">Rating:</h5>
-						<p class="starability-result" data-rating="<%=review.rating%>">
-						  Rated: <%=review.rating%> stars
+						<p class="starability-result" data-rating="${obj.rating}">
+						  Rated: ${obj.rating} stars
 						</p>
-	 					<h6 class="card-subtitle mb-2 text-muted">By <%=review.author.username%></h6>
-				    	<p class="card-text" id="edit-p">Review: <%=review.body%></p>
+	 					
+				    	<p class="card-text" id="edit-p">Review: ${bod}</p>
 		 			 </div>
 	 				 <div class="card-body pt-0">
 				     	 <a id="edit-button" class="card-link btn btn-sm btn-success mb-1" data-rev="${o}">Edit</a>
