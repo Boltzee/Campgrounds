@@ -24,7 +24,8 @@
     				</div>
 				</div>
 			</div>
-			<div class="mb-3">
+			<input type="file" name="image" id="image" multiple>
+			<!-- <div class="mb-3">
 				<label class="form-label" for="image">Edit Image url</label>
 				<input required class="form-control" type="text" id="image" name="campground[image]" value="<%=ground.image%>">
 				<div class="valid-feedback">
@@ -33,7 +34,7 @@
 				<div id="validationServer02Feedback" class="invalid-feedback">
       				Please enter valid image url.
     			</div>
-			</div>
+			</div> -->
 			<div class="mb-3">
 				<label for="description" class="form-label">Edit description</label>
 				<textarea required class="form-control" name="campground[description]" id="description" cols="30" rows="3" placeholder="Edit the description of the campground"><%=ground.description%></textarea>
