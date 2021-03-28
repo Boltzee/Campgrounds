@@ -2,17 +2,17 @@ const mongoose = require("mongoose");
 const Review = require("./review");
 const User = require("./user");
 
+const imageSchema = new mongoose.Schema({
+	url: String,
+	filename: String,
+});
+
 const campgroundSchema = new mongoose.Schema({
 	title: {
 		type: String,
 		required: true,
 	},
-	images: [
-		{
-			url: String,
-			filename: String,
-		},
-	],
+	images: [imageSchema],
 	price: {
 		type: Number,
 		required: true,
