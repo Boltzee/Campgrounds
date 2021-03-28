@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
 	<h1 style="text-align: center;">Form to edit the campground</h1>
 	<div class="col-6 offset-3">
-		<form novalidate class="validate-form" action="/campgrounds/<%=ground._id%>?_method=PATCH" method="POST">
+		<form enctype="multipart/form-data" novalidate class="validate-form" action="/campgrounds/<%=ground._id%>?_method=PATCH" method="POST">
 			<label class="form-label" for="title">Edit the title:</label>
 			<input class="form-control" type="text" id="title" name="campground[title]" value="<%=ground.title%>" required>
 			<div class="valid-feedback">
