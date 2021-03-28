@@ -22,11 +22,11 @@ router
 	.get(catchAsync(campgrounds.index))
 	.post(
 		isLoggedIn,
+		upload.array("image"),
 		validateCampground,
-		upload.array('image'),
 		catchAsync(campgrounds.createCampground)
 	);
-	
+
 //
 
 // The new campground template render route
