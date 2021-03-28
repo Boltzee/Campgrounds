@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
 	<h1 class="text-center">Create a new campground</h1>;
 	<div class="col-6 offset-3">
-		<form action="/campgrounds" method="POST" class="validate-form" novalidate>
+		<form action="/campgrounds" method="POST" class="validate-form" enctype="multipart/form-data" novalidate>
 			<label class="form-label" for="title">Add a title for the campground:</label>
 			<input class="form-control" type="text" id="title" name="campground[title]" required>
 			<div class="valid-feedback">
