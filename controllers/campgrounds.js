@@ -91,7 +91,7 @@ module.exports.createCampground = async (req, res, next) => {
 			limit: 1,
 		})
 		.send()
-		.then((d) => console.log(d));
+		.then((d) => console.log(d.body));
 	const ground = new Campground(req.body.campground); // to handle the async error
 	ground.author = req.user._id;
 	ground.images = req.files.map((f) => ({
