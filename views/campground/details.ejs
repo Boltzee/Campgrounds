@@ -117,6 +117,8 @@
 			el = e.target;
 			// console.log('the value of el.dataset.rev is', el.dataset.rev);
 			let n = remove_linebreaks(el.dataset.rev);
+			const user_name = el.dataset.author;
+			console.log(user_name);
 			var properties = n.split(',  ');
 			var obj = {};
 			properties.forEach(function(property) {
@@ -179,7 +181,7 @@
 						<p class="starability-result" data-rating="${obj.rating}">
 						  Rated: ${obj.rating} stars
 						</p>
-	 					
+	 					<h6 class="card-subtitle mb-2 text-muted">By ${user_name}</h6>
 				    	<p class="card-text" id="edit-p">Review: ${bod}</p>
 		 			 </div>
 	 				 <div class="card-body pt-0">
