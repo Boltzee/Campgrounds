@@ -1,4 +1,5 @@
 const Campground = require("../models/campground");
+const { cloudinary } = require("../cloudinary");
 
 const cities = require("../seeds/cities");
 
@@ -40,7 +41,6 @@ module.exports.editCampgroundForm = async (req, res) => {
 
 module.exports.editCampgroundById = async (req, res) => {
 	const { id } = req.params;
-	console.log(req.body);
 	const update = req.body.campground;
 	images = req.files.map((f) => ({
 		url: f.path,
