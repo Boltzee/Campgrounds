@@ -59,6 +59,15 @@
 	    		</div>
 				<br>
 			</div>
+			<div class="mb-3">
+				<% ground.images.forEach( function (img, i) {%>
+					<img src="<%=img.url%>" alt="">
+					<div class="form-check-inline">
+						<input type="checkbox" name="" id="">
+					</div>
+					<label for="">Delete</label>
+				<% })%>
+			</div>
 			<button class="btn btn-success mb-1">Submit</button>
 	    </form>
 		<a class="btn btn-secondary mb-1" href="/campgrounds">Cancel the edit and return to the all campgrounds page</a>
