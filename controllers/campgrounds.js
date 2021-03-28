@@ -40,6 +40,7 @@ module.exports.editCampgroundForm = async (req, res) => {
 
 module.exports.editCampgroundById = async (req, res) => {
 	const { id } = req.params;
+	console.log(req.body);
 	const update = req.body.campground;
 	images = req.files.map((f) => ({
 		url: f.path,
@@ -52,6 +53,11 @@ module.exports.editCampgroundById = async (req, res) => {
 	});
 	see.images.push(...images);
 	await see.save();
+	if (req.body.deleteImages) {
+		await see.updateOne({
+			$pull: { images: { filename: { $in: req.body.deleteImages } } },
+		});
+	}
 	req.flash("success", "Successfully updated the campground");
 	res.redirect(`/campgrounds/${see._id}`);
 	// res.send("successful");
