@@ -11,16 +11,24 @@ const cities = require("../seeds/cities");
 
 const { isLoggedIn, validateCampground, isAuthor } = require("../middleware");
 
+const { storage } = require("../cloudinary");
+const multer = require("multer");
+const upload = multer({ storage });
+
 // the router club for '/' route
 
 router
 	.route("/")
 	.get(catchAsync(campgrounds.index))
-	.post(
-		isLoggedIn,
-		validateCampground,
-		catchAsync(campgrounds.createCampground)
-	);
+	// .post(
+	// 	isLoggedIn,
+	// 	validateCampground,
+	// 	catchAsync(campgrounds.createCampground)
+	// );
+	.post(upload.array("image"), (req, res) => {
+		console.log(req.body, req.files);
+		res.send("it worked");
+	});
 
 //
 
