@@ -68,7 +68,13 @@ module.exports.createCampground = async (req, res, next) => {
 
 	const ground = new Campground(req.body.campground); // to handle the async error
 	ground.author = req.user._id;
-	await ground.save();
+	ground.images = req.files.map((f) => ({
+		url: f.path,
+		filename: f.filename,
+	}));
+	await ground.save().then((d) => {
+		console.log(d);
+	});
 	req.flash("success", "Created a new campground!!!");
 	res.redirect(`/campgrounds/${ground._id}`);
 };
