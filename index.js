@@ -14,6 +14,8 @@ const reviewRoutes = require("./routes/reviews");
 const userRoutes = require("./routes/users");
 const User = require("./models/user");
 
+const mongoSanitize = require('express-mongo-sanitize');
+
 const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
@@ -28,6 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public"))); // all the middlewares
 app.use(methodOverride("_method"));
+app.use(mongoSanitize);
 
 // Setting up the session for the application.
 
