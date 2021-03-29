@@ -1,6 +1,7 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/map.css">
 <body>
-	<div id="map" style="width: 100%; height: 500px;"></div>
+	<div id="map" class="cluster-map"></div>
 	<h1>This is the page to show all the campgrounds in the database</h1>
 		<% for(let x of grounds) {%>
 		    <div class="card mb-3">
