@@ -51,6 +51,10 @@ const campgroundSchema = new mongoose.Schema({
 	],
 });
 
+campgroundSchema.virtual("properties.popUpMarkup").get(function () {
+	return "I am popup text";
+});
+
 campgroundSchema.post("findOneAndDelete", async function (ground) {
 	if (ground.reviews.length) {
 		const res = await Review.deleteMany({ _id: { $in: ground.reviews } });
