@@ -104,15 +104,8 @@ map.on("load", function () {
 	// the location of the feature, with
 	// description HTML from its properties.
 	map.on("click", "unclustered-point", function (e) {
+		console.log(e.features);
 		var coordinates = e.features[0].geometry.coordinates.slice();
-		var mag = e.features[0].properties.mag;
-		var tsunami;
-
-		if (e.features[0].properties.tsunami === 1) {
-			tsunami = "yes";
-		} else {
-			tsunami = "no";
-		}
 
 		// Ensure that if the map is zoomed out such that
 		// multiple copies of the feature are visible, the
