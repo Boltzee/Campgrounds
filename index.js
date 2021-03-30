@@ -56,7 +56,7 @@ db.once("open", () => {
 
 // Setting up the session for the application.
 
-const store = MongoStore.create({
+const store = MongoDBStore.create({
 	mongoUrl: dbUrl,
 	touchAfter: 24 * 60 * 60,
 	crypto: {
