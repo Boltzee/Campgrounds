@@ -24,7 +24,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const helmet = require("helmet");
-const MongDBStore = require("connect-mongo")(session);
+const MongDBStore = require("connect-mongo");
 
 const ExpressError = require("./utils/expressError");
 
