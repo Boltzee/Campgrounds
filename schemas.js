@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const baseJoi = require("joi");
 
 const extension = (joi) => ({
 	type: "string",
@@ -20,6 +20,8 @@ const extension = (joi) => ({
 		},
 	},
 });
+
+const Joi = baseJoi.extend(extension);
 
 module.exports.campgroundSchema = Joi.object({
 	campground: Joi.object({
