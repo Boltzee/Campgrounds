@@ -133,9 +133,9 @@ app.set("views", path.join(__dirname, "views"));
 
 /// Connecting to the mongo database
 
-const db_url = process.env.DB_URL;
+// const db_url = process.env.DB_URL;
 // "mongodb://localhost:27017/YelpCamp"
-mongoose.connect(db_url, {
+mongoose.connect("mongodb://localhost:27017/YelpCamp", {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
