@@ -35,6 +35,7 @@ app.use(mongoSanitize());
 // Setting up the session for the application.
 
 const sessionConfig = {
+	name: "session",
 	secret: "thisisnotagoodsecret",
 	// secure: true,
 	resave: false,
