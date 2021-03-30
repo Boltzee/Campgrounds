@@ -38,7 +38,7 @@ app.use(mongoSanitize());
 
 // const db_url = process.env.DB_URL;
 // "mongodb://localhost:27017/YelpCamp"
-const dbUrl = "mongodb://localhost:27017/YelpCamp";
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/YelpCamp";
 mongoose.connect(dbUrl, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
