@@ -34,6 +34,25 @@ app.use(express.static(path.join(__dirname, "public"))); // all the middlewares
 app.use(methodOverride("_method"));
 app.use(mongoSanitize());
 
+/// Connecting to the mongo database
+
+// const db_url = process.env.DB_URL;
+// "mongodb://localhost:27017/YelpCamp"
+mongoose.connect("mongodb://localhost:27017/YelpCamp", {
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false,
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+	console.log("Database Connected");
+});
+
+//
+
 // Setting up the session for the application.
 
 const store = MongoStore.create({
@@ -139,25 +158,6 @@ app.engine("ejs", ejsMate);
 
 app.set("view engine", "ejs"); /// all the app sets
 app.set("views", path.join(__dirname, "views"));
-
-/// Connecting to the mongo database
-
-// const db_url = process.env.DB_URL;
-// "mongodb://localhost:27017/YelpCamp"
-mongoose.connect("mongodb://localhost:27017/YelpCamp", {
-	useNewUrlParser: true,
-	useCreateIndex: true,
-	useUnifiedTopology: true,
-	useFindAndModify: false,
-});
-
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
-	console.log("Database Connected");
-});
-
-//
 
 // The / route
 
