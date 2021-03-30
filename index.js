@@ -24,7 +24,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const helmet = require("helmet");
-const MongDBStore = require("connect-mongo");
+const MongoDBStore = require("connect-mongo");
 
 const ExpressError = require("./utils/expressError");
 
@@ -35,6 +35,14 @@ app.use(methodOverride("_method"));
 app.use(mongoSanitize());
 
 // Setting up the session for the application.
+
+const store = MongoStore.create({
+	mongoUrl: dbUrl,
+	touchAfter: 24 * 60 * 60,
+	crypto: {
+		secret: "squirrel",
+	},
+});
 
 const sessionConfig = {
 	name: "session",
