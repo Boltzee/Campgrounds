@@ -78,6 +78,7 @@ app.use((req, res, next) => {
 //
 
 const scriptSrcUrls = [
+	"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css",
 	"https://stackpath.bootstrapcdn.com/",
 	"https://api.tiles.mapbox.com/",
 	"https://api.mapbox.com/",
