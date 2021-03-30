@@ -56,11 +56,13 @@ db.once("open", () => {
 
 // Setting up the session for the application.
 
+const secret = process.env.SECRET || "thisisnotagoodsecret";
+
 const store = MongoDBStore.create({
 	mongoUrl: dbUrl,
 	touchAfter: 24 * 60 * 60,
 	crypto: {
-		secret: "squirrel",
+		secret,
 	},
 });
 
@@ -71,7 +73,7 @@ store.on("error", function (err) {
 const sessionConfig = {
 	store,
 	name: "session",
-	secret: "thisisnotagoodsecret",
+	secret,
 	// secure: true,
 	resave: false,
 	saveUninitialized: true,
