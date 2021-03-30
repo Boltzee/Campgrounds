@@ -64,7 +64,12 @@ const store = MongoStore.create({
 	},
 });
 
+store.on("error", function (err) {
+	console.log("session store error :", err);
+});
+
 const sessionConfig = {
+	store,
 	name: "session",
 	secret: "thisisnotagoodsecret",
 	// secure: true,
