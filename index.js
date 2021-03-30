@@ -23,6 +23,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
+const helmet = require('helmet');
 
 const ExpressError = require("./utils/expressError");
 
@@ -75,6 +76,8 @@ app.use((req, res, next) => {
 });
 
 //
+
+app.use(helmet({contentSecurityPolicy: false}));
 
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/review", reviewRoutes);
