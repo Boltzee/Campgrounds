@@ -1,5 +1,26 @@
 const Joi = require("joi");
 
+const extension = (joi) => ({
+	type: "string",
+	base: joi.string(),
+	messages: {
+		"string.escepeHTML": "{{#label}} must include HTML!",
+	},
+	rules: {
+		escepeHTML: {
+			validate(value, helpers) {
+				const clean = sanitizeHTML(value, {
+					allowedTags: [],
+					allowedAttributes: {},
+				});
+				if (clean !== value)
+					return helpers.error("string.escepeHTML", { value });
+				return clean;
+			},
+		},
+	},
+});
+
 module.exports.campgroundSchema = Joi.object({
 	campground: Joi.object({
 		title: Joi.string().required(),
