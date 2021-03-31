@@ -141,7 +141,7 @@ const fontSrcUrls = [];
 app.use(
 	helmet.contentSecurityPolicy({
 		directives: {
-			defaultSrc: ["'self"],
+			defaultSrc: [],
 			connectSrc: ["'self'", ...connectSrcUrls],
 			scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
 			styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
@@ -154,6 +154,7 @@ app.use(
 				"https://res.cloudinary.com/chadchampion/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
 				"https://images.unsplash.com/",
 			],
+			mediaSrc: ["'self'"],
 			fontSrc: ["'self'", ...fontSrcUrls],
 		},
 	})
