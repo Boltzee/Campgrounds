@@ -9,11 +9,19 @@ body {
 }
 
 video {
+	object-fit: cover;
+	/*position: fixed;*/
+	/*right: 0;*/
+	/*bottom: 0;*/
+	overflow: hidden;
+	border-radius: 2rem;
 	min-width: 100%;
 	min-height: 100%;
+	/*filter: blur(4px);*/
 }
 
 .cover-container {
+	position: relative;
 	max-width: 60vw;
 }
 
