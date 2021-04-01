@@ -52,7 +52,13 @@ body {
 }
 
 @media (min-width: 674px) and (max-width: 916px) {
-	button {
+	#Mystyles {
+		position: relative;
+		top: 30px;
+		display: flex;
+		justify-content: center;
+	}
+	#button {
 		border-radius: 19px;
 		align-self: center;
 		width: 77%;
@@ -107,7 +113,13 @@ body {
 }
 
 @media (min-width: 917px) {
-	button {
+	#Mystyles {
+		position: relative;
+		top: 30px;
+		display: flex;
+		justify-content: center;
+	}
+	#button {
 		border-radius: 19px;
 		align-self: center;
 		width: 77%;
