@@ -1,6 +1,30 @@
 body {
-	background-color: rgb(2, 51, 41);
-	object-fit: fill;
+	/*background-color: rgb(2, 51, 41);*/
+}
+
+#one,
+#two {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 50%;
+	height: 100%;
+}
+#one {
+	width: 100%;
+	left: 0;
+	/*transform: rotateZ(45deg);*/
+	/*transform: scale(5);*/
+	background-color: black;
+}
+#two {
+	left: 73vw;
+	right: 0;
+	/*transform: translate(10px, 10px);*/
+	transform-origin: top left;
+	transform: rotateZ(23deg) scaleY(11.5) translateY(-4vw) translateX(1vw)
+		scaleX(2);
+	background-color: green;
 }
 
 /*rgb(2, 51, 41)*/
@@ -38,6 +62,12 @@ body {
 }
 #toBeRemoved img {
 	visibility: hidden;
+}
+
+@media (max-height: 678px) {
+	.col-xs {
+		margin-top: 10px;
+	}
 }
 
 @media (max-width: 575px) {
