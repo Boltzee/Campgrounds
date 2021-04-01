@@ -104,6 +104,6 @@ dist
 .tern-port
 
 #additional 
-.sh
-.txt
-.q
+*.sh
+*.txt
+*.q
