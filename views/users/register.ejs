@@ -23,8 +23,8 @@
 			<div class="row">
 				<div class="col-xs col-lmd col-md-6 offset-md-3 large-row-md large-row">
 					<div class="card shadow">
-						<img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-		                alt="" class="img-fluid" />
+						<!-- <img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+		                alt="" class="img-fluid" /> -->
 						<div class="card-body">
 							<h1 class="card-title">Register</h1>
 							<form action="/register" method="POST" class="validate-form" novalidate>
@@ -69,6 +69,46 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>	
 
 	<script src="/js/validateForm.js"></script>
+
+	<script>
+		const element = document.querySelector('.card.shadow');
+		const str = `
+			<div class="col-6" id="toBeRemoved">
+				<img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+	        	alt="" class="img-fluid" />
+	        </div>
+		`
+		const str2 = `
+        	<img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        	alt="" class="img-fluid" />
+		`
+		var instinct;
+		window.addEventListener('DOMContentLoaded', (event) => {
+   			console.log('DOM fully loaded and parsed');
+   			if(document.body.clientWidth>=674){
+				element.innerHTML = str + element.innerHTML;
+				instinct= true;
+			} else {
+				element.innerHTML = str2 + element.innerHTML;
+				instinct = false;
+			}
+		});
+
+		window.addEventListener('resize', function(e) {
+			if(document.body.clientWidth>=674 && !instinct){
+				const l = document.querySelector('img');
+				l.remove();
+				element.innerHTML = str + element.innerHTML;
+				instinct = true;
+			}
+			else if (document.body.clientWidth<674 && instinct) {
+				const r = document.querySelector('#toBeRemoved');
+				r.remove();
+				element.innerHTML = str2 + element.innerHTML;
+				instinct = false;
+			}
+		});
+	</script>
 	
 </body>
 </html>
