@@ -1,0 +1,488 @@
+[33m4a91e56[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m Removed the video asset
+[33m12ac8e3[m Final changes.
+[33m0c56ce5[m Removed the one and two split styling. Instead used the single background style.
+[33meed9715[m Added in the registration form asset
+[33m6444c8d[m Added in some margin when the height falls below 678px;
+[33m36dd83a[m Finally made it!!!!
+[33m204dfa1[m Removed all the wrong auto correct characters.
+[33m8007f30[m Made changes to the style of the background image.
+[33m57ce257[m Removed the image from the #toBeRemoved.
+[33m743c19f[m Required the register.js file.
+[33m23b0a3c[m Created a new js file to contain all the custom functionality for register.ejs.
+[33m66fed2d[m Made all the required changes to make the different elements on diff screen sizes possible.
+[33m361f1f5[m Completed the markup for the button position.
+[33mfc780b6[m Finally styled the button.
+[33mbff1a8a[m Made the button into its own div.
+[33m43cbb0f[m Added in styling for the button.
+[33m944a94a[m Made the margin top to be negative.
+[33maf2578c[m Made margin botton to be 3.
+[33m13f8962[m Removed the labels and added suitable placeholders.
+[33m91d2a51[m Made changes to the form items.
+[33mb930dc8[m Made the card title to h1.
+[33m0fd51f2[m Aligned the text of the card to center.
+[33mf27237d[m Used all the required class to make the page responsive.
+[33mdbf8a2a[m Finally made the registration page completely responsive.
+[33mee22eb0[m Completely changed the register page.
+[33m50dea29[m Removed all previously done changes.
+[33m6afb7fd[m Created the registration form stylesheet.
+[33me07c41f[m Included the register stylesheet.
+[33m6390c25[m Removed the in document styles and moved it to its own file.
+[33mc1958e2[m Changed the background color to forest green.
+[33mc9fd233[m Added some styling of the video content.
+[33m36d235c[m Made some changes to the home page.
+[33m3a8e4c8[m Added in media src to self.
+[33m748bb32[m Made the database to local for development purposes.
+[33m5f37eba[m Added in the default source of self.
+[33mc815180[m Added some basic styling to make the video centered on the page.
+[33m542038a[m Added in the autoplay feature.
+[33mc74c2e1[m Added in video element.
+[33m2737453[m Added a video asset for the home page.
+[33m200dc5a[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31mheroku/main[m[33m)[m Made minor changes.
+[33m8137529[m Configured the port.
+[33m8762cbd[m Changed the package.json file to comply with heroku's requirements
+[33m3ee2a39[m Configured the secrets.
+[33m28cb40a[m Configured the dbUrl
+[33mbd1fd1c[m Corrected the mistake.
+[33mb1270f9[m Changed the sessionConfig to use our new mongo session store.
+[33m7022103[m Created a new dbUrl variable.
+[33m6786f7c[m Changed the location of the mongodb connection logic.
+[33ma7137ad[m Created a new store variable.
+[33meffcce5[m Read the mongodbs docs and made the required changes.
+[33m31e16c6[m Imported the mongoDBS package.
+[33m5f7b27b[m Installed connect-mongo
+[33m2c9ea4f[m Back to normal
+[33madabc57[m Connected to the cloud database.
+[33m0c1cb02[m Made new changes to the resource links
+[33ma4fa0c0[m Added in bootstrap beta2 cdn resource location.
+[33m200c877[m Made the required changes to the csp.
+[33m828b231[m Removed the previous contentsecurity policy and added in new one.
+[33md5ad695[m Re
+[33md5cc505[m Imported the helmet package.
+[33m83efbec[m Installed helmet
+[33mb9ef479[m Added the conditional to show the error stack only in dev mode.
+[33m3bba054[m Changed the name of the session.
+[33m3e5e1dc[m Added the secure attribute so that it can be used when deploying.
+[33mf57b7bb[m Corrected the error message.
+[33md2f0d11[m Imported the sanitize package.
+[33m7788730[m Used the defined extension to sanitise where ever we have text inputs.
+[33m9eeccff[m Named it baseJoi before the extension and Joi after extending it with the given extension.
+[33m0427175[m Installed the sanitize-html package
+[33m57d9ca0[m Added in a joi extension.
+[33me4a63d5[m Corrected mistake
+[33md2d2676[m Included the mongo sanitize package.
+[33m6ce79a6[m Installed the express mongo sanitize package
+[33mca0c02d[m Added map control.
+[33m4a781b9[m Added a map navigation.
+[33m8c09271[m Finished styling the details.ejs file.
+[33m08ab78d[m Corrected the bug in the position of the map.
+[33m2772bdd[m Changed the selectors from id selectors to class selectors.
+[33m10591ec[m Moved the map over the comment form.
+[33mc47b506[m Imported the map.css and used to customise the cluster map.
+[33m0147176[m Made a map.css file for styling maps.
+[33m0750b02[m Added margin bottom.
+[33m565f045[m Made the edit form responsive.
+[33md96f31a[m Made the form responsive.
+[33me1ea912[m Completed the registration form.
+[33m2ed9d2e[m Completely changed the registration form.
+[33m0b062dd[m cleaned up the code
+[33m34f989a[m made the button into a block
+[33m2add3e1[m Set the autofocus on the username input.
+[33m802c41f[m Added an image.
+[33m2433116[m Placed the form inside of card-body.
+[33m6514fab[m Introduced changes into the login page.
+[33mfb464c5[m Changed Submit to login.
+[33md484f64[m Completed the home styles.
+[33m7ecc490[m Added the introductory text on the homepage.
+[33m7dbfe02[m Removed the text-white class
+[33m2b6e69d[m Added more stylings. Do read the code
+[33m2b432c9[m Changed the background image properties.
+[33m1c3d217[m Added a background image to the home.ejs
+[33m46a1611[m Added a footer and additional classes to the button on the page.
+[33mb63a837[m Gave body 100vh
+[33mabb4461[m Added basic content to the home page.
+[33m05db604[m Created a new stylesheet for the home page.
+[33m52e3399[m Included the home.css stylesheet.
+[33m780f3c9[m Added login, Register and logout to the home page.
+[33m6fd2392[m Added some default markup to the home.ejs file
+[33m71a4212[m Included all the bootstrap dependencies to the home.ejs
+[33m829eacf[m Updated the virtual property to include the intended markup.
+[33m935e475[m Changed to color to deep blue.
+[33m8ac8b6a[m Changed the campground button color to neon green and increased the radius
+[33mdb79078[m Added the functionality when a hovers over a campground the cursor changes to pointer.
+[33me5223e8[m Used the popUpMarkup property and used it to create new popups;
+[33m28e9aac[m Removed the tsunami and earthquake info.
+[33mea5f652[m Send the options to the campgroundSchema so that it may now include the virtuals when calling JSON.stringfy
+[33mfab5bc2[m Created the options for the campgroundSchema to include virtuals when calling JSON.stringify
+[33m32853df[m Created a new campground virtual for addressing the issue with mapbox having properties required to render popup text.
+[33m5e444dd[m Changed the map style back to dark
+[33m208059b[m Changed the cluster colors and the cluster radius.
+[33m0220975[m Changed the map style to be light.
+[33mfedf7d9[m Changed the cluster radius.
+[33me081804[m Changed the color coding of the cluster sizes.
+[33m14c6603[m Changed the number of initial seeds from 50 to 400
+[33m0b9bcbc[m changed the source name form earthquakes to campgrounds.
+[33m38cecac[m used the campgrounds passed by the server.
+[33mad51beb[m Passed the campgrounds data to client side.
+[33mcf82209[m Set the geometry using cities array.
+[33mcc9eb66[m Optimised the seeds file so that it does not send unnesseary requests to the mapbox just to get the latlong of already available infor.
+[33m7c2b0da[m Added the mapbox token.
+[33m157ee77[m Added the cluster map functionality.
+[33md3528a8[m Added a script to send the mapbox token to the client side.
+[33mea0878e[m Added a map tag to the show.ejs to include the cluster map coming up.
+[33m997cd5e[m Added to functionality to update the geometry of campground whenever user changes its location.
+[33m6467a04[m Nothing much changed
+[33mea484b5[m map style changed to navigation-guidance-night-v4
+[33mc1ed94a[m Changed the map style to dark .
+[33mf712330[m Included the location of the campground in the popup.
+[33m7123bf6[m Imported the entire campground and used its various properties.
+[33mb68b799[m Passed the campground to the showpageMap.js file
+[33m3ac442b[m Included the access token
+[33m49508f3[m Included all the mapbax dependencies.
+[33mc098367[m Fixed the seeds.js bug that seed campgrounds dont have any geometry object.
+[33mb563c07[m Added the conditional if there is no image then we set a default image.
+[33m5057a58[m Used the longlat array created in the details.ejs file
+[33mfe6965c[m created a loc array which contains the loglat of the location.
+[33md370f05[m Corrected how we import while using public resources.
+[33ma03977b[m included the script tag which uses /js/showpageMap.js
+[33ma310d15[m Changed how we get the mapToken
+[33mf44edbf[m Modified the showpageMap.js file.
+[33m0e5481f[m Included the showpageMap.js inside the details.ejs file.
+[33m6a371f4[m The map funcionality that i moved from the details.js page.
+[33m6ef96de[m Moved the map functionality to its seperate file.
+[33m960f046[m Added the map to the details page of a perticular campground.
+[33md5e432e[m Added the mapbox css and javascript dependencies.
+[33meb6be5b[m Saved the ground.geometry with the appropriate information.
+[33mec26044[m Added getJSON field in the campground model.
+[33m6ac9de2[m Used await instead of then
+[33m9471906[m Added the functionality to delete all the images of a perticular campground when a campground is deleted.
+[33m582b5a4[m Changed d to d.body
+[33m4240020[m Used to forwardGeocoding method to get the longitude and latitude of the location.
+[33m0bae365[m Created a new instance of the mapbox geocoder object.
+[33m08e6978[m Imported the maxbox geocoding library.
+[33ma7be1b0[m Added the mapbox node sdk
+[33mac3e9f1[m Made the thumbnails to be of 200px wide.
+[33m3dc8e6c[m removed img.url and added img.thumbnail
+[33mdb8f993[m Created a thumbnail virtual on each image of the campground.
+[33mcd570b3[m Created a seperate image schema and used it inside of campground schema.
+[33m300ac19[m Added functionality to delete images from the cloud storage.
+[33me35afd8[m Imported cloudinary to delete images from the hosting site also.
+[33ma5268f2[m added the deleteImage functionality.
+[33md7567b1[m changed deleteImage to deleteImages
+[33m63f9e9a[m Added deleteImages as Joi.array
+[33m4b0a4f3[m Removed the required attribute.
+[33ma629d6c[m Added value attribute to each image.
+[33m4fc2036[m Added ids to each image.
+[33m3f780d4[m Added max width and max height to each image for deletion.
+[33m659fa72[m Basic functionality to delete a image from a campground.
+[33m6b76555[m Removed the previous input code for uploading images.
+[33m133b375[m Changed the edit.js file to include the new image upload functioanlity.
+[33m9579886[m Commented out the other approach so that we can use it whenever it seems good.
+[33m5651c87[m Again included the videos markup.
+[33m695fb99[m Added bsCustomfileinput.
+[33mbe809b0[m New test ..crazy.
+[33me68d25c[m Removed the in-build file input.
+[33m0367d06[m Added the form validations to the image input.
+[33m2a0bd3b[m Removed all included video markup again. Decided to go with the current version.
+[33m805c2d5[m Back to normal version.
+[33m96b0df4[m Again included the markup given in the video.
+[33m45d38b5[m Changed the bootstrap version and also included the bs-file-input script tag.
+[33m5e9ce66[m Added the markup given by someone else in the comments.
+[33m5a99020[m Included according to the current bootstrap documentation.
+[33m06c93e3[m Added the bootstram form file markup.
+[33m178694d[m Reintroduced the removed image input div and placed the constructed file input in it.
+[33m5eb300c[m Now user can add new images instead of overriding them.
+[33mc7081c7[m updated the incoming new images to the images directory of db.
+[33m0eee6ac[m Changed the edit form to include the input file and removed the preexisting once.
+[33m10d04b6[m Added images property to update object to check.
+[33m46502c8[m added upload option to edit route of a perticular campground.
+[33m65d87c4[m Changed the form type to multipart/form-data.
+[33ma830581[m Cleanup the code a little bit.
+[33m673dc6b[m Updated the show page to show the first image in the database as its thumbnail.
+[33ma535ec0[m Included the user_name in the original string template.
+[33mf836f9e[m Inluded the auther's username of the review inside of a data-attibute.
+[33m2b62842[m Removed the image property. Instead added the images field and placed the default images in it.
+[33mf9df438[m Swapped the positions of upload.array with validateCampground for now.
+[33m9a723ce[m Removed the image requirement for now.
+[33mabad9ce[m Changed the createCampground script to include for new image upload functionality using multer.
+[33md0435cc[m Removed the image input which asks for image url. Instead created a new file input which can be used to upload multiple images.
+[33mce3e2a4[m Cleaned up the a markup a little bit.
+[33m819a885[m Added the functionality to show buttons only when there are multiple images.
+[33m2f73288[m Added a image carousel.
+[33ma20777a[m Nothing much changed.
+[33m58c33bf[m Removed the testing script of multer and cloudinary. Placed the required middleware inside the original post request after joi validations.
+[33m735c207[m Modified the campground model to account for the new image schema.
+[33m3fb59c0[m Cleared the console log to check whether my dotenv package is working.
+[33m8879fda[m Corrected the mistake and placed my configs in the params sub object.
+[33m927fe82[m Required the multer package and the cloudinary storage package.
+[33m60416ae[m Configured the index.js file of cloudinary to include the env variables.
+[33m161edb1[m Created a new sub-directory for cloudinary with a index file.
+[33m4d17f2a[m Installed cloudinary and multer-storage-cloudinary
+[33m7bfd201[m Set up of dotenv module only when app is in development mode.
+[33meab90e5[m Installed dotenv package
+[33mc644469[m Installed multer to parse form encoding
+[33m73fa075[m Changed the form encoding type to multipart/form-data
+[33ma3dfe6c[m Made major changes to the details.ejs
+[33m8af1698[m Found where my app was crashing.
+[33m6f0a455[m Added the starablity-checkmark styles.
+[33mf5cdf7f[m clubbed the routes for /register and /login.
+[33ma68fea0[m Clubbed the routes for :reviewId
+[33m52f24ff[m Moved the /new upwards to maintain the order.
+[33m58ea6c0[m Clubbed the /:id routes together.
+[33m9fba86c[m Clubbed all http verbs for a same route using router.route
+[33m140688f[m used userLogout.
+[33mc5ba3c8[m implemented userLogout.
+[33ma94e03a[m used userLogin.
+[33m199673b[m Implemented userLogin.
+[33me8c5dc9[m Used loginForm
+[33ma5109d9[m implemented loginForm
+[33med1bc92[m Used the createUser property.
+[33mc62218a[m Implemented the createUser functionality.
+[33m83e66ce[m moved the required code to the users controller and imported the same.
+[33m6d20d2e[m Created a new controller for users.
+[33mcd5bfe6[m Cleaned up the code.
+[33m1e9aabc[m Added the function that was once used to delete the ref of a review from its respective campground.
+[33m03f7300[m Used editReviewById.
+[33m6d5db88[m Implemented editReviewById.
+[33m927fcc0[m used deleteReviewById.
+[33m6bd6922[m Created deleteReviewById.
+[33md7f2440[m Moved the create review for campground functionality to its controller.
+[33m5eec409[m Created a new controller for review.
+[33m8fd2988[m Imported the cities database.
+[33m8296e33[m Used createCampground.
+[33m63c8c52[m Implemented CreateCampground.
+[33mb37e667[m Used deleteCampgroundById.
+[33m11d376a[m Implemented deleteCampgroundById
+[33mabda949[m used editCampgroundById.
+[33mc05f245[m Implemented edit campground by id
+[33m53fed70[m Used editCampgroundForm.
+[33mbbc076b[m Implemented editCampgroundForm.
+[33ma07604c[m Used getCampgroundById.
+[33m041a7e6[m Implemented getCampgroundById.
+[33mfcc6ea0[m Used the newCampgroundForm.
+[33mc2e2a3b[m Created the new campground form controller.
+[33m4e0d107[m Imported the campground model.
+[33m579c6f9[m Imported the campgrounds controller to the campground route and impletemented the index method.
+[33m850f199[m Moved the show all campgrounds logic to index.
+[33m88435d5[m Created a controller sub directory.
+[33mc85e559[m Imported isReviewAuthor in the reviews routes and used to check the authority of the user to perform anything on the review.
+[33m3ed05df[m Wrote the isReviewAuthor middleware to check whether the user is allowed to perform anything on a perticular review.
+[33m9a3af61[m Added the functionality to delete a review by only its owner or by the campground owner.
+[33md5fd227[m Added the username against each review.
+[33me13fb4d[m Added the functionality of nested populate of campground and its reviews.
+[33m681761b[m set the review's author using req.
+[33m2c74554[m Imported the isLoggedIn middleware and used it to prevent anyone from creating a review without logging in.
+[33m265e965[m Corrected the typo.
+[33meab5a76[m Added the functionality that only loggin users can submit a review.
+[33m7f682be[m Added the author field to the review model and also imported the User model.
+[33m815b21e[m Required reviewSchema and validateReview.
+[33mebb7794[m Moved the validateReview middleware to the middleware.js file.
+[33m5fab8fc[m Required expresserror and Campground.
+[33m9d11ad6[m Shifted the required dependencies to the middleware file.
+[33m7e090ad[m Added the validateCampground and isAuthor middlewares.
+[33m9eea23f[m Moved the middlewares from campground.js to the middlewares file.
+[33md3ebc90[m Added the middleware to check if the current user is the author of the campground before editing or doing any operations on it.
+[33m5eff036[m Added the functionality that only the author can delete the campground.
+[33m0d9e2d6[m Set the campground author to req.user._id while creating a new campground.
+[33m50b4572[m Created a li to show the author of the campground.
+[33m29c8dcb[m Populated the author while getting a campground.
+[33mce9c8e2[m Made the author of the all the campgrounds to be 'kira'.
+[33m48bb4b3[m Added in the User model and created author field in the campground schema.
+[33ma21167b[m Delete the redirectUrl after it has been redirected to its actual page.
+[33m6e6cac7[m Made to redirect to the page from where it originally came.
+[33me2fb318[m Added a session property returnTo which contains the url to return to after logging in.
+[33mbf48642[m Added the functionality that whenever a user registers he is automatically logged in.
+[33maeae91b[m Wrote the script which enable showing different log options based on user's log state.
+[33mb0a40c6[m Changed the location of flash setup so that it can access req.user.
+[33m3d23b2e[m Added the user info to the res.locals so that it can be accessed in any template.
+[33m714f46f[m Added the login, register , and sign out links in the navbar.
+[33m5947c85[m Added a logout route.
+[33m1038262[m Refactored the code to look nicer.
+[33m8f5e9d0[m Added the login protection to all the possible danger routes(i.e. the routes where a hacker can potentially infiltrate our application)
+[33m74bfc79[m Imported the check loggedin middleware and used it to check when creating a new campground.
+[33m78e5dd5[m Created a seperate middleware file to check whether a user is logged in or not.
+[33m091e1a2[m Created get and post login routes.
+[33m4799218[m Created a login template.
+[33mc8304b3[m Imported catchAsync in the users route and used it.
+[33m50d7e01[m Made a flash message whenever someone makes a new user account.
+[33m588024b[m Added the registration logic.
+[33mddc2604[m Corrected the silly mistake of not adding required to the password input.
+[33m00312b1[m Wrapped the entire form inside of bootstrap container with col-6 offset-3.
+[33m2c65404[m Changed the form to use the bootstrap stylings.
+[33m710d32b[m included the layout/boilerplate file in the ejs to make to the template require the basic bootstrap styles.
+[33m436bd7a[m Changed the /users path to /.
+[33m9bbf852[m Changed the routes variable names to make it more intuitive to understand.
+[33m4e71286[m Created a post route for the register.
+[33mb8dd03f[m Corrected the route.
+[33m908bc7d[m rendered the users/register.ejs file to its repective route.
+[33mf36b324[m Created a new register.ejs file to create a form for users registry.
+[33m1b48b33[m This is the newly created user route with some basic implementation.
+[33m1ace709[m Made a users route and shifted all the required code to its respective route.
+[33m80656b2[m Worte the setup middleware for the passport to use the localStrategy.
+[33m0fe51d4[m Imported passport into the app and ran the basic setup.
+[33m12d48d2[m Imported the passport-local-mongoose into the user model.
+[33mcf5889f[m Created a user model to save user data.
+[33m6f6a34b[m Installed passport passport-local passport-local-mongoose
+[33m91b75ef[m Added the error flash messages whenever we cant find a review or its corresponding campground.
+[33mfb9a164[m Added the error flash whenever a campground is not found.
+[33m1455e6b[m Added the functionality to show error flash if the campground was not found.
+[33m5088c2b[m Added the functionality to show the error flash messages.
+[33m3c9a791[m Added flash messages for the respective http verbs for campgrounds.
+[33mecf8f64[m Made flash messages available for their corresponding http verbs.
+[33md773054[m Added flash whenever someone edits a campground.
+[33mb9bb542[m Added dismissable functinality for the flash message.
+[33m030b669[m Corrected my mistake of lenght to length.
+[33m2f73c90[m Included the flash partial.
+[33m7917104[m Added some logic so that success shows only if there is a success message in the res.locals.success.
+[33mf1ea1ef[m Added a new partial flash.ejs for the flash messages.
+[33mcdc33d5[m Used the flash to throw message that a new campground has been created.
+[33ma899d48[m Setup flash and chagned the position of initializing session.
+[33m53d1f78[m Made use of the flash in the campgrounds create new route.
+[33m2b30793[m Used the res.locals.session in the template by writing the required ejs.
+[33m9b3c471[m Required the connect-flash and wrote the basic setup to use the flash.
+[33mbcd0c08[m Installed connect-flash
+[33m170e411[m Added the required additional options for the session to work without deprecation warnings.
+[33mb801fa1[m Installed express-session
+[33ma39856a[m Added the middleware for the session.
+[33m37370d2[m Included session and created the sessionConfig object.
+[33m8686a01[m Transferred the validate form script over to the js/validateForm.js
+[33m3d4ee4e[m Moved the javascripts into its own directory and served it using public.
+[33m72cbb1f[m Corrected groundId to id.
+[33m5fa862f[m Cleaned up the file a little bit.
+[33m12040e3[m Transffered all the dependencies to their respective files.
+[33mcb83c3b[m Cleaned up the file to look better.
+[33m8f325fc[m Made mergeParams: true
+[33m80f6cf5[m Included the campground model.
+[33m436068e[m Imported all the review routes from the index file and renamed app to router.
+[33m7a2819d[m Created a review route and moved the dependencies and reviewSchema middleware.
+[33m753bc23[m Cross checked if all the dependencies are working fine.
+[33m39942a2[m required the dependincies and made required changes to the dependency paths.
+[33mb1e265b[m Moved the dependecies to campgrounds.js
+[33m8f91d82[m Imported the campground routes into the index file.
+[33m0e44309[m Edited all the paths to camply with the router.
+[33m508ce7b[m modified app to router
+[33md030762[m Moved from the index.js all the routes belonging to the campgrounds.
+[33m30be527[m Moved all the campground routes to its respective route handler.
+[33m8bbf4a3[m Created routes sub directory and created campgrounds.js file within it containing camground routes.
+[33m0a323d8[m Moved the validation campground middleware to its respective route.
+[33m2f250a2[m Corrected the deletion middleware... took me lot of time to realise.
+[33mf6df7db[m Changed some styles.
+[33mdc33102[m Changed the bold tags to p tags with class of card-title.
+[33me521bd6[m Placed rating and review in bold tags.
+[33mfa90780[m Added the option useFindAndModify: false in the mongoose.connect
+[33m9a92acc[m Completed changed the delete route to use the newer version.
+[33m73e91f1[m Created a new more powerful way of deleting a perticular review from a campground.
+[33m05d9bf5[m Made all the review buttons small.
+[33mca5e03d[m Made the buttons in the review form smaller.
+[33m2d287a0[m Added a debugging cl in the code
+[33m380f1ab[m Added the deletion middleware for each campground.
+[33mdeb6d80[m Corrected <%=review._id%> to ${obj._id} since review is not passed to the ejs template.
+[33mef5bd54[m Added a basic debugger to the delete review path.
+[33mda8b559[m Corrected the silly mistake of req.body.campground instead of req.body.review
+[33m901b4d8[m Corrected the reveiw delete button in the original string literal.
+[33m31a1d9a[m Changed this to el since we cannot assign values to this.
+[33m77b4202[m Used the event delegation setup in the last commit.
+[33m556e746[m Added event listener for the main element of the reviews section.
+[33mffc8b86[m Made the eventhandler as a stand-alone function.
+[33m290d706[m Changed the delay to 6500 for the browser-sync to kick in
+[33m8e49aa4[m Successfully integrated browser-sync with my server using a proxy
+[33m42343d8[m A try to integrate browser-sync with nodemon
+[33md6f5579[m Added a script in the package.json so as to directly start nodemon on index.js whenever there is a change
+[33m5da7a1b[m Moved the app.css to its own directory (i.e /css)
+[33mcbb3640[m Added two additional routes.
+[33ma8a9843[m This is the MOST MOST IMPORTANT PIECE OF CHANGE I MADE
+[33m5027840[m Added the custom app.css file to the document
+[33mf812780[m Added a delete route to delete a perticular review
+[33m31fa333[m Improved upon those basic stylings
+[33m5b7daf5[m Added basic styling for viewing the reviews for a perticular campground
+[33m0e1f8ef[m Changed the details page to show all the reviews for the perticular campground
+[33m7130792[m populated the reviews while viewing a perticular campground using /campgrounds/:id request
+[33mfa78275[m made the max rating to be 5
+[33m34c7022[m Changed the details.ejs file to include client side validations using bootstrap
+[33m1bc1ff2[m Corrected the mistake of not include a sub-document of review in the reviewSchema
+[33mfbabda4[m This is a imp commit, please read the desc
+[33m5f53373[m Added the validation schema for reviews in schemas.js
+[33m715cc34[m Removed all the debugging cls from the route
+[33m1f3f902[m Made the route to redirect to the perticular campground after submitting
+[33m2350e68[m Corrected the mistake of not awaiting for the response while doing findByID
+[33m34a5316[m Edited the campgrounds/:id/review route to save the perticular review with the respective campground.
+[33mf33105e[m corrected the mistake of making a get route instead of a post route
+[33m3348fc5[m Changed the details.ejs file to account for the creation of the recent campground review post route
+[33m1ac8d2b[m Created a new POST route for campground/:id/review
+[33m1879760[m Added basic styling for the create review form using bootstrap
+[33me079e04[m Added a reviews form in the details.ejs file
+[33mc1be6c1[m Added a mongo relation from campground to its corresponding review
+[33ma1f1267[m Added a new model for reviews
+[33mf5c7154[m Just nicely formatted the schemas.js file.. nothing great
+[33m6ff8643[m Modified the index.js file to include for the schemas.js file
+[33mc3811e8[m Created a seperate file schemas.js to collect all the validator schemas for the application
+[33mcec7703[m Added a new middleware for pre-mongoose validations
+[33m587c492[m Added validations for image,location , description
+[33m3f82e20[m Created the error message from the error created from the joi error
+[33m7636219[m Include the joi package to validate the incoming requests using Joi campground schema
+[33m0d5d66d[m Added a new package==joi
+[33m2c362af[m Changed the error message template by passing it the err message from the index.js
+[33m2240eb5[m Added an error template
+[33m479440b[m wrote code so that err.message has a default if not has value by itself
+[33mc5cf035[m Added the conditional to check whether req.body has campground object in it;
+[33m9f9ce00[m Corrected the 404 response page middleware, i.e removed throw
+[33mf2cae41[m Added a new 404 request handler, and correspondigly modified the custom error handler
+[33mdbb234b[m Wrapped all the async callbacks with the defined async error wrapper
+[33mb897033[m Added an async error function wrapper
+[33m314e195[m Added an Error class for the application
+[33me374e61[m Added a basic error handler for the cast-type error in the new page at price
+[33mffb5baa[m Added the required javascript template for the bootstrap form validations.
+[33m5d4bb0b[m Added the form validations for the new.ejs file.
+[33mb4b935a[m Added the required form validations for the edit page of the campgrounds.
+[33m9e73ee4[m Removed the old ejs script from the details.ejs file
+[33m3e0b36e[m Added a card boolstrap model for the detail page,, also made the form inline
+[33m7c6906a[m Completely changed the edit.ejs file to include the bootstrap stuff and form styling
+[33mb847747[m Completely changed the new.ejs file.. primarily used a lot of bootstrap to format the form
+[33mb44fb85[m Added button classes to the links
+[33mae9204b[m Completely changed the show.ejs file
+[33m1934ea0[m changed the details page to include the image and the description of the yelpcamp
+[33m32cf7e3[m Corrected the wrong image source url
+[33me9e5a2c[m Changed the model to include image url as a string
+[33mc330c40[m Added a random image url and a description for all the campgrounds
+[33m19190dc[m made the body a flex container with main axis as column. Also gave it a view height of 100
+[33m2eecbe8[m Added the footer file with basic styling
+[33m29211c6[m Changed the boilerplate to include the navbar partial
+[33mcc4d1fb[m Added a new navbar partial in the partial sub-directory
+[33m5681b32[m Changed the navbar to comply with the project
+[33m4a6605b[m added a navbar to the boilerplate.ejs
+[33mf01124b[m Added the cdn for bootstrap5 including its javascript dependencies
+[33m3f135e4[m changed all the views to comply with the just created layouts files
+[33m675dcb7[m Added the common layouts file containing the boilerplate.ejs
+[33m5cf011e[m added ejs-mate as a new ejs parsing engine
+[33m6bba26c[m Added the edit.ejs file with all the default configurations.
+[33m0656c20[m Again a very important commit read the desc
+[33m5c5bef8[m Added the edit.ejs and patch routes
+[33m9467df2[m Made the req.body contain inside of campground container
+[33m3ccf398[m THERE ARE QUITE A FEW IMPORTANT NOTES HERE SO READ THE DESC
+[33m62df3ec[m added the link to route to the new page in the show.ejs file
+[33m9d00f8b[m Added new.ejs file to create a new campground through a form
+[33m8cf767a[m added a post route for submitting requests to the database
+[33m3c0905f[m Added the route to add new campgrounds
+[33m855d92a[m Removed the background color of the button
+[33m0179db2[m Corrected the mistakes made in the code.
+[33m28ccd31[m Added a button to delete a campground with background color set to red
+[33m722e809[m Added the delete route
+[33ma1d5764[m Added details.ejs to view info about a perticular campground
+[33m2f14a47[m Added a details route to show the details about each campground.
+[33mdfa629f[m Added the campground sub-directory to the views folder
+[33mb191d32[m added the index route to show all the campgrounds
+[33mac19c73[m I dont know what i changed but git shows something changed
+[33ma448e3b[m No major changes in the index.js file
+[33m788dccf[m Created an array to fill out the database
+[33m9ce38f7[m Added a index file to seed the pre-requisite data for the application
+[33m98f9e36[m Added a city dataset and seeds directory
+[33me3f6a9b[m used the new method to connect to the database
+[33mf768529[m Nothing much has been changed
+[33m1b08411[m applied useCreateIndex=true
+[33mf734a26[m required the model directory into the index file
+[33mfda31ee[m Added the model directory
+[33m965358d[m added basic styles for the body of the ducument
+[33mc711577[m added the public file
+[33m6107372[m added the views directory
+[33m70bc176[m Added the basic index.js file with all the requirements
+[33m0824fab[m Added the package.json file
+[33m5798227[m Initial commit
