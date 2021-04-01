@@ -1,6 +1,11 @@
 const element = document.querySelector(".card.shadow");
 const str = `
 			<div class="col-6" id="toBeRemoved">
+				<img
+	src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+	alt=""
+	class="img-fluid"
+/>
 	        </div>
 		`;
 const str2 = `
