@@ -1,3 +1,137 @@
 body {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(42, 87, 78, 1));
+	background-color: rgb(2, 51, 41);
+	object-fit: fill;
+}
+
+/*rgb(2, 51, 41)*/
+
+.card.shadow {
+	border-radius: 1.2rem;
+	color: #dde0e3;
+	background-color: rgb(11, 11, 11);
+}
+
+.form-label {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.img-fluid {
+	object-fit: cover;
+	border-radius: 1.2rem;
+}
+
+.form-control,
+.form-control:focus {
+	color: #b0b1b3;
+	border-color: rgba(0, 0, 0, 0.7);
+	/*background-color: rgba(85, 78, 78, 0.18);*/
+	background-color: rgba(0, 0, 0);
+}
+
+@media (max-width: 575px) {
+	.row {
+		display: flex;
+		justify-content: center;
+	}
+	.col-xs {
+		/*margin-left: auto;*/
+		width: 75vw;
+		max-width: 334px;
+	}
+}
+
+@media (min-width: 576px) and (max-width: 673px) {
+	.row {
+		display: flex;
+		justify-content: center;
+	}
+	.col-lmd {
+		width: 75vw;
+		max-width: 390px;
+	}
+}
+
+@media (min-width: 674px) and (max-width: 916px) {
+	.row {
+		justify-content: center;
+	}
+	.container {
+		margin-left: 0px;
+		margin-right: 0px;
+		max-width: 100vw;
+	}
+	.card.shadow {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	.card-body {
+		align-self: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.card-title {
+		margin-bottom: 25%;
+	}
+	.large-row-md {
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		margin-left: 0px;
+		width: 90vw;
+		height: 67vw;
+	}
+	.img-fluid {
+		width: 50%;
+		border-radius: 0px;
+		border-top-left-radius: 1.2rem;
+		border-bottom-left-radius: 1.2rem;
+		/*display: inline;*/
+		max-width: 50%;
+	}
+}
+
+@media (min-width: 917px) {
+	.row {
+		justify-content: center;
+	}
+	.container {
+		margin-left: 0px;
+		margin-right: 0px;
+		max-width: 100vw;
+	}
+	.card.shadow {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	.card-body {
+		align-self: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.card-title {
+		margin-bottom: 25%;
+	}
+	.large-row {
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		margin-left: 0px;
+		width: 90vw;
+		height: 67vw;
+		max-width: 1003px;
+		max-height: 634.483px;
+		/*max-height: 50vw;*/
+	}
+	.img-fluid {
+		width: 50%;
+		border-radius: 0px;
+		border-top-left-radius: 1.2rem;
+		border-bottom-left-radius: 1.2rem;
+		/*display: inline;*/
+		max-width: 50%;
+	}
 }
