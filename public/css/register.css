@@ -1,30 +1,8 @@
 body {
 	/*background-color: rgb(2, 51, 41);*/
-}
-
-#one,
-#two {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	width: 50%;
-	height: 100%;
-}
-#one {
-	width: 100%;
-	left: 0;
-	/*transform: rotateZ(45deg);*/
-	/*transform: scale(5);*/
-	background-color: black;
-}
-#two {
-	left: 73vw;
-	right: 0;
-	/*transform: translate(10px, 10px);*/
-	transform-origin: top left;
-	transform: rotateZ(23deg) scaleY(11.5) translateY(-4vw) translateX(1vw)
-		scaleX(2);
-	background-color: green;
+	background-image: url("/assets/asset_pic_1.jpg");
+	background-size: fill;
+	background-repeat: no-repeat;
 }
 
 /*rgb(2, 51, 41)*/
@@ -55,13 +33,27 @@ body {
 #toBeRemoved {
 	border-top-left-radius: 1.2rem;
 	border-bottom-left-radius: 1.2rem;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
-		url("https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)),
+		url("/assets/asset_pic_1.jpg");
 	background-size: cover;
 	background-position: center;
 }
 #toBeRemoved img {
 	visibility: hidden;
+}
+#toBeRemoved button {
+	padding: 0px;
+	border: 0px;
+}
+
+#toBeRemoved {
+	position: relative;
+}
+
+svg {
+	color: #171010;
+	position: absolute;
+	top: 7px;
 }
 
 @media (max-height: 678px) {
