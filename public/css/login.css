@@ -63,6 +63,13 @@ svg {
 }
 
 @media (max-width: 575px) {
+	.card-title {
+		margin-bottom: 1rem;
+	}
+	#horizon {
+		visibility: hidden;
+		margin: 3px;
+	}
 	.row {
 		display: flex;
 		justify-content: center;
@@ -75,6 +82,13 @@ svg {
 }
 
 @media (min-width: 576px) and (max-width: 673px) {
+	.card-title {
+		margin-bottom: 1rem;
+	}
+	#horizon {
+		visibility: hidden;
+		margin: 3px;
+	}
 	.row {
 		display: flex;
 		justify-content: center;
