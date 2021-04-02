@@ -12,7 +12,7 @@
 	<link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 
 	<link rel="stylesheet" href="/css/app.css">
-	<link rel="stylesheet" type="text/css" href="/css/register.css">
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
 	<title>Boilerplate</title>
 </head>
 
@@ -26,8 +26,8 @@
 				<div class="col-xs col-lmd col-md-6 offset-md-3 large-row-md large-row">
 					<div class="card shadow">
 						<div class="card-body">
-							<h1 class="card-title">Register</h1>
-							<form action="/register" method="POST" class="validate-form" novalidate>
+							<h1 class="card-title">Login</h1>
+							<form action="/login" method="POST" class="validate-form" novalidate>
 								<div class="mb-3">
 									<input class="form-control" type="text" name="username" id="username" placeholder="Username" autofocus required>
 									<div class="valid-feedback">
@@ -35,15 +35,6 @@
 									</div>
 									<div id="validationServerFeedback00" class="invalid-feedback">
 							      		Please provide a username.
-							  		</div>
-								</div>
-								<div class="mb-3">
-									<input class="form-control" type="email" name="email" id="email" placeholder="Email" required>
-									<div class="valid-feedback">
-										Looks good
-									</div>
-									<div id="validationServerFeedback01" class="invalid-feedback">
-							      		Please provide a valid e-mail.
 							  		</div>
 								</div>
 								<div class="mb-3">
@@ -56,7 +47,7 @@
 							  		</div>
 								</div>
 								<div id="Mystyles">
-									<button class="btn btn-success btn-block mt-2" id="button">Register</button>
+									<button class="btn btn-success btn-block mt-2" id="button">Login</button>
 								</div>
 							</form>
 						</div>
@@ -70,7 +61,7 @@
 
 	<script src="/js/validateForm.js"></script>
 
-	<script src="/js/register.js"></script>
+	<script src="/js/login.js"></script>
 
 </body>
 </html>
