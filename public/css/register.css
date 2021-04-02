@@ -63,6 +63,13 @@ svg {
 }
 
 @media (max-width: 575px) {
+	.card-title {
+		margin-bottom: 1rem;
+	}
+	#horizon {
+		visibility: hidden;
+		margin: 3px;
+	}
 	.row {
 		display: flex;
 		justify-content: center;
@@ -75,6 +82,13 @@ svg {
 }
 
 @media (min-width: 576px) and (max-width: 673px) {
+	.card-title {
+		margin-bottom: 1rem;
+	}
+	#horizon {
+		visibility: hidden;
+		margin: 3px;
+	}
 	.row {
 		display: flex;
 		justify-content: center;
@@ -86,10 +100,21 @@ svg {
 }
 
 @media (min-width: 674px) and (max-width: 916px) {
+	#horizon {
+		width: 49%;
+		align-self: center;
+		margin-top: 17px;
+	}
+	#button2 {
+		width: 77%;
+		border-radius: 19px;
+		align-self: center;
+	}
 	#Mystyles {
 		position: relative;
 		top: 30px;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 	}
 	#button {
@@ -147,10 +172,21 @@ svg {
 }
 
 @media (min-width: 917px) {
+	#horizon {
+		width: 49%;
+		align-self: center;
+		margin-top: 17px;
+	}
+	#button2 {
+		width: 77%;
+		border-radius: 19px;
+		align-self: center;
+	}
 	#Mystyles {
 		position: relative;
 		top: 30px;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 	}
 	#button {
