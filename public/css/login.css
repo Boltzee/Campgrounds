@@ -86,6 +86,16 @@ svg {
 }
 
 @media (min-width: 674px) and (max-width: 916px) {
+	#horizon {
+		width: 49%;
+		align-self: center;
+		margin-top: 17px;
+	}
+	#button2 {
+		width: 77%;
+		border-radius: 19px;
+		align-self: center;
+	}
 	#Mystyles {
 		position: relative;
 		top: 30px;
@@ -147,6 +157,16 @@ svg {
 }
 
 @media (min-width: 917px) {
+	#horizon {
+		width: 49%;
+		align-self: center;
+		margin-top: 17px;
+	}
+	#button2 {
+		width: 77%;
+		border-radius: 19px;
+		align-self: center;
+	}
 	#Mystyles {
 		position: relative;
 		top: 30px;
