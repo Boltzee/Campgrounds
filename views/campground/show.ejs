@@ -1,31 +1,12 @@
 <% layout('layouts/boilerplate') %>
 <link rel="stylesheet" href="/css/map.css">
 <body>
+	<% let k ="https://res.cloudinary.com/chadchampion/image/upload/v1616938179/YelpCamp/onsqcoe4194je2pxi5jm.jpg"%>
 	<div id="map" class="cluster-map"></div>
 	<h1 id="first-heading">Campgrounds</h1>
 		<% for(let x of grounds) {%>
-		    <div class="card mb-3">
-		    	<div class="row">
-		    		<div class="col-md-4">
-		    			<% if(x.images.length) {%>
-		    				<img class="img-fluid" src="<%=x.images[0].url%>" alt="">
-		    			<% }else{ %>
-		    				<img src="https://res.cloudinary.com/chadchampion/image/upload/v1616938179/YelpCamp/onsqcoe4194je2pxi5jm.jpg" alt="" class="img-fluid">
-		    			<% }%>
-		    		</div>
-		    		<div class="col-md-8">
-		    			<div class="card-body">
-		    				<h5 class="card-title">
-		    					<%=x.title%>
-		    				</h5>
-		    				<p class="card-text"><%=x.description%></p>
-		    				<p class="card-text">
-		    					<small class="text-muted"><%=x.location%></small>
-		    				</p>
-		    				<a href="/campgrounds/<%=x._id%>" class="btn btn-primary">View <%=x.title%></a>
-		    			</div>
-		    		</div>
-		    	</div>
+		    <div class="card mb-3" data-src="<%=(x.images.length > 0)? x.images[0].url : k%>">
+		    	
 		    </div>
 		<%}%>
 	<a href="/campgrounds/new">Add a new campground</a>
@@ -34,4 +15,13 @@
 		const campgrounds = { features: <%-JSON.stringify(grounds)%>};
 	</script>
 	<script src="/js/clusterMap.js"></script>
+	<script>
+		let cards = document.querySelectorAll('div.card');
+
+		cards.forEach(card => {
+			card.style.backgroundImage = `url(${card.dataset.src})`;
+			card.style.backgroundRepeat = 'no-repeat';
+			card.style.height = "39vw";	
+		})	
+	</script>	
 </body>
