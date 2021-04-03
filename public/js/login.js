@@ -10,16 +10,43 @@ const str = `
 					alt=""
 					class="img-fluid"
 				/>
-				<div class="mt-4 ms-4 pt-5" style="color: white">
-				    <h1 style="font-size: 2.7rem"><b>Keep it special</b></h1>
-				    <p style="font-size:1.27rem">Capture your personal memories<br>in a unique way anywhere</p>
+				<div class="mt-4 ms-4 pt-5" style="color: cornsilk">
+				    <p style="font-size:1.27rem; margin-bottom:0px;">Life is best<br>when you're</p>
+				    <h1 style="font-size: 2.7rem"><b>Camping</b></h1>
 				</div>
 	        </div>
 		`;
 const str2 = `
-        	<img src="/assets/asset_pic_1.jpg"
+        	<img src="/assets/asset_pic_2.jpg"
         	alt="" class="img-fluid" />
 		`;
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+function validityFunction() {
+	"use strict";
+
+	bsCustomFileInput.init();
+
+	// Fetch all the forms we want to apply custom Bootstrap validation styles to
+	var forms = document.querySelectorAll(".validate-form");
+
+	// Loop over them and prevent submission
+	Array.prototype.slice.call(forms).forEach(function (form) {
+		form.addEventListener(
+			"submit",
+			function (event) {
+				if (!form.checkValidity()) {
+					event.preventDefault();
+					event.stopPropagation();
+				}
+
+				form.classList.add("was-validated");
+			},
+			false
+		);
+	});
+}
+
 var instinct;
 window.addEventListener("DOMContentLoaded", (event) => {
 	console.log("DOM fully loaded and parsed");
@@ -30,6 +57,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		element.innerHTML = str2 + element.innerHTML;
 		instinct = false;
 	}
+	validityFunction();
 });
 
 window.addEventListener("resize", function (e) {
@@ -37,11 +65,13 @@ window.addEventListener("resize", function (e) {
 		const l = document.querySelector("img");
 		l.remove();
 		element.innerHTML = str + element.innerHTML;
+		validityFunction();
 		instinct = true;
 	} else if (document.body.clientWidth < 674 && instinct) {
 		const r = document.querySelector("#toBeRemoved");
 		r.remove();
 		element.innerHTML = str2 + element.innerHTML;
+		validityFunction();
 		instinct = false;
 	}
 });
