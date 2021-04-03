@@ -63,6 +63,9 @@ svg {
 }
 
 @media (max-width: 575px) {
+	form div.mb-3 {
+		margin-bottom: 0.48rem !important;
+	}
 	.card-title {
 		margin-bottom: 1rem;
 	}
@@ -82,6 +85,9 @@ svg {
 }
 
 @media (min-width: 576px) and (max-width: 673px) {
+	form div.mb-3 {
+		margin-bottom: 0.48rem !important;
+	}
 	.card-title {
 		margin-bottom: 1rem;
 	}
