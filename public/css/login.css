@@ -1,7 +1,8 @@
 body {
 	/*background-color: rgb(2, 51, 41);*/
-	background-image: url("/assets/asset_pic_1.jpg");
+	background-image: url("/assets/asset_pic_2.jpg");
 	background-size: fill;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
@@ -34,7 +35,7 @@ body {
 	border-top-left-radius: 1.2rem;
 	border-bottom-left-radius: 1.2rem;
 	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)),
-		url("/assets/asset_pic_1.jpg");
+		url("/assets/asset_pic_2.jpg");
 	background-size: cover;
 	background-position: center;
 }
@@ -64,7 +65,13 @@ svg {
 
 @media (max-width: 575px) {
 	.card-title {
-		margin-bottom: 1rem;
+		margin-bottom: 1.15rem;
+	}
+	form > .mb-3 {
+		margin-bottom: 0.6rem !important;
+	}
+	.img-fluid {
+		max-height: 43vw;
 	}
 	#horizon {
 		visibility: hidden;
@@ -83,7 +90,13 @@ svg {
 
 @media (min-width: 576px) and (max-width: 673px) {
 	.card-title {
-		margin-bottom: 1rem;
+		margin-bottom: 1.15rem;
+	}
+	form > .mb-3 {
+		margin-bottom: 0.6rem !important;
+	}
+	.img-fluid {
+		max-height: 43vw;
 	}
 	#horizon {
 		visibility: hidden;
@@ -96,6 +109,12 @@ svg {
 	.col-lmd {
 		width: 75vw;
 		max-width: 390px;
+	}
+}
+
+@media (min-width: 674px) and (max-width: 730px) {
+	.mt-4.ms-4 {
+		padding-top: 0.5rem !important;
 	}
 }
 
