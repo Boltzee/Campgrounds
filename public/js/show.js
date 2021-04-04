@@ -48,8 +48,8 @@ function cards_generator(start, end, division, spec = false) {
 			}">
 				<div class="card-body">
 					<a href="/campgrounds/${campground_list[i]._id}" class="btn">View ${
-			campground_list[i].title.length > 16
-				? campground_list[i].title.slice(0, 16) + "..."
+			campground_list[i].title.length > 10
+				? campground_list[i].title.slice(0, 10) + "..."
 				: campground_list[i].title
 		}</a>
 				</div>
@@ -97,6 +97,7 @@ function cardImageAllocator() {
 	let cards = document.querySelectorAll("div.card");
 	cards.forEach((card) => {
 		card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)),url(${card.dataset.src})`;
+		card.style.height = `${Math.random() * 31 + 39}vw`;
 	});
 }
 
