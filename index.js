@@ -137,7 +137,7 @@ const connectSrcUrls = [
 	"https://b.tiles.mapbox.com/",
 	"https://events.mapbox.com/",
 ];
-const fontSrcUrls = ["https://fonts.google.com/"];
+const fontSrcUrls = ["https://fonts.gstatic.com/"];
 app.use(
 	helmet.contentSecurityPolicy({
 		directives: {
