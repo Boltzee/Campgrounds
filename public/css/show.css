@@ -45,3 +45,9 @@
 .card-body:hover .card-text .text-muted {
 	color: #6c757d !important;
 }
+
+@media (min-width: 862px) and (max-width: 1140px) {
+	h5 + p.card-text {
+		margin-bottom: 7rem;
+	}
+}
