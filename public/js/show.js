@@ -93,66 +93,74 @@ let str = func2(2, 6);
 
 let special = func2(2, 6, true);
 
-function cardImageAllocator() {
+function cardImageAllocator(high = false) {
 	let cards = document.querySelectorAll("div.card");
 	cards.forEach((card) => {
 		card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)),url(${card.dataset.src})`;
-		card.style.height = `${Math.random() * 31 + 39}vw`;
+		if (!high) {
+			card.style.height = `${Math.min(
+				49 - Math.random() * 23,
+				46 + Math.random() * 10 - Math.random() * 20
+			)}vw`;
+		} else {
+			card.style.height = `${Math.max(
+				36 +
+					Math.random() * 30 +
+					Math.random() * 30 -
+					Math.random() * 2,
+				38 + Math.random() * 30 - Math.random() * 4
+			)}vw`;
+		}
 	});
 }
 
 var instinct;
 window.addEventListener("DOMContentLoaded", (event) => {
 	console.log("DOM fully loaded and parsed");
-	if (document.body.clientWidth >= 1141) {
+	if (window.innerWidth >= 1141) {
 		gallery.innerHTML = str2;
 		instinct = 2;
 		cardImageAllocator();
-	} else if (
-		document.body.clientWidth < 1141 &&
-		document.body.clientWidth >= 725
-	) {
+	} else if (window.innerWidth < 1141 && window.innerWidth >= 725) {
 		gallery.innerHTML = str1;
 		instinct = 1;
 		cardImageAllocator();
-	} else if (
-		document.body.clientWidth < 725 &&
-		document.body.clientWidth >= 434
-	) {
+	} else if (window.innerWidth < 725 && window.innerWidth > 434) {
+		console.log("hello guys i am here");
 		gallery.innerHTML = str;
 		instinct = 0;
-		cardImageAllocator();
-	} else {
+		cardImageAllocator(true);
+	} else if (window.innerWidth <= 433) {
 		gallery.innerHTML = special;
 		instinct = 4;
-		cardImageAllocator();
+		cardImageAllocator(true);
 	}
 });
 
 window.addEventListener("resize", function (e) {
-	if (document.body.clientWidth >= 1141 && instinct != 2) {
+	if (window.innerWidth >= 1141 && instinct != 2) {
 		gallery.innerHTML = str2;
 		instinct = 2;
 		cardImageAllocator();
 	} else if (
-		document.body.clientWidth < 1141 &&
-		document.body.clientWidth >= 725 &&
+		window.innerWidth < 1141 &&
+		window.innerWidth >= 725 &&
 		instinct != 1
 	) {
 		gallery.innerHTML = str1;
 		instinct = 1;
 		cardImageAllocator();
 	} else if (
-		document.body.clientWidth < 725 &&
-		document.body.clientWidth >= 434 &&
+		window.innerWidth < 725 &&
+		window.innerWidth >= 434 &&
 		instinct != 0
 	) {
 		gallery.innerHTML = str;
 		instinct = 0;
-		cardImageAllocator();
-	} else if (document.body.clientWidth < 434 && instinct != 4) {
+		cardImageAllocator(true);
+	} else if (window.innerWidth <= 433 && instinct != 4) {
 		gallery.innerHTML = special;
 		instinct = 4;
-		cardImageAllocator();
+		cardImageAllocator(true);
 	}
 });
