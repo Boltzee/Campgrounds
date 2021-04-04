@@ -51,3 +51,33 @@
 		margin-bottom: 7rem;
 	}
 }
+
+/*@media (min-width: 417px) and (max-width: 433px) {
+	body {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	.card-body {
+		justify-content: center;
+	}
+	.card-body .btn {
+		color: rgba(255, 255, 255, 0.7);
+	}
+	.card-body .btn:hover {
+		color: white;
+	}
+}*/
+
+@media (max-width: 433px) {
+	body {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	.card-body {
+		justify-content: center;
+	}
+	.card-body .btn {
+		color: rgba(255, 255, 255, 0.7);
+	}
+	.card-body .btn:hover {
+		color: white;
+	}
+}
