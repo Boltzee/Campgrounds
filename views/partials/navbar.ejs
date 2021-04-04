@@ -21,3 +21,21 @@
 		    </div>
 	  	</div>
 </nav>
+<script>
+	const nav = document.querySelector('nav.navbar');
+	let flag;
+	function fixedFunction(e) {
+		if(window.scrollY>=612 && !flag){
+			nav.classList.remove('sticky-top');
+			nav.classList.add('fixed-top');
+			flag=true;
+		}
+		else if(window.scrollY<612 && flag){
+			nav.classList.remove('fixed-top');
+			nav.classList.add('sticky-top');
+			flag= false;
+		}
+	}
+
+	window.addEventListener('scroll', fixedFunction );
+</script>
