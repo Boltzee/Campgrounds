@@ -4,12 +4,26 @@
 	top: 56.4px;
 	width: 100%;
 	/*width: 100%;*/
-	height: 375px;
+	height: 450px;
+	box-shadow: 0 1rem 7rem rgba(0, 0, 0, 0.15) !important;
+}
+
+body {
+	/*background-color: #0e1012;*/
+	/*background-image: linear-gradient(to right, #434343 0%, black 100%);*/
+	background-size: fill;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 #first-heading {
+	margin-top: 458px;
+	height: min(26vw, 4.5rem);
 	text-align: center;
-	margin-top: 375px;
+	color: rgba(0, 0, 0, 0.9);
+	/*font-family: "Kaushan Script", cursive;*/
+	font-family: "Amatic SC", cursive;
+	font-size: min(14vw, 3rem);
 }
 
 .details-map {
@@ -22,7 +36,7 @@
 	background-position: center;
 	height: 39vw;
 	background-repeat: no-repeat;
-	border-radius: 1rem;
+	/*border-radius: 1rem;*/
 }
 
 .card-text .text-muted {
@@ -36,7 +50,6 @@
 	color: rgba(255, 255, 255);
 	transform: scale(0.9);
 	transition: transform 0.1s linear;
-	border-radius: 1rem;
 }
 
 .card-body:hover {
@@ -50,7 +63,7 @@
 
 @media (min-width: 862px) and (max-width: 1140px) {
 	h5 + p.card-text {
-		margin-bottom: 7rem;
+		margin-bottom: 5rem;
 	}
 }
 
