@@ -1,6 +1,26 @@
 const gallery = document.querySelector("#gallery");
 const campground_list = campgrounds.features;
 
+setTimeout(function () {
+	window.scrollTo(0, 255);
+}, 500);
+
+let on = false;
+document
+	.querySelector("button.navbar-toggler")
+	.addEventListener("click", function (e) {
+		if (nav.classList.contains("fixed-top")) {
+			return;
+		}
+		if (!on) {
+			document.getElementById("first-heading").style.marginTop = "203px";
+			on = true;
+		} else {
+			document.getElementById("first-heading").style.marginTop = "383px";
+			on = false;
+		}
+	});
+
 function cards_generator(start, end, division, spec = false) {
 	let ar = ``;
 	for (let i = start; i < end && !spec; i++) {
@@ -18,14 +38,21 @@ function cards_generator(start, end, division, spec = false) {
 						division != 6
 							? `<p class="card-text">${
 									division == 3
-										? campground_list[i].description
-										: campground_list[i].description.slice(
+										? ""
+										: division == 5
+										? campground_list[i].description.slice(
 												0,
 												60
 										  )
+										: division == 4
+										? campground_list[i].description.slice(
+												0,
+												35
+										  )
+										: ""
 							  }</p>`
-							: ""
-					} 
+							: campground_list[i].description.slice(0, 10)
+					}
 					<p class="card-text">
 						<small class="text-muted">${campground_list[i].location}</small>
 					</p>
@@ -77,9 +104,18 @@ function func2(cols, div, sp = false) {
 		arr[i]++;
 		i++;
 	}
+	arr4 = [2, 5, 3, 2];
+	arr3 = [4, 3, 5];
+	if (cols == 4) {
+		div = arr4[0];
+	} else if (cols == 3) {
+		div = arr3[0];
+	}
 	let str2 = cards_generator(0, arr[0], div, sp);
 	for (let i = 1; i <= cols - 1; i++) {
 		arr[i] += arr[i - 1];
+		if (cols == 4) div = arr4[i];
+		if (cols == 3) div = arr3[i];
 		str2 = str2 + cards_generator(arr[i - 1], arr[i], div, sp);
 	}
 	return str2;
@@ -96,10 +132,10 @@ function cardImageAllocator(high = false) {
 	cards.forEach((card) => {
 		card.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)),url(${card.dataset.src})`;
 		if (!high) {
-			card.style.height = `${Math.min(
-				49 - Math.random() * 23,
-				46 + Math.random() * 10 - Math.random() * 20
-			)}vw`;
+			card.style.height = `${
+				Math.max(26, Math.random() * 40) + Math.random() * 10
+				// 26 + Math.random() * 15 - Math.random() * 5
+			}vw`;
 		} else {
 			card.style.height = `${Math.min(
 				36 +
@@ -113,6 +149,7 @@ function cardImageAllocator(high = false) {
 }
 
 var instinct;
+var hmm;
 window.addEventListener("DOMContentLoaded", (event) => {
 	console.log("DOM fully loaded and parsed");
 	if (window.innerWidth >= 1141) {
@@ -132,6 +169,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		gallery.innerHTML = special;
 		instinct = 4;
 		cardImageAllocator(true);
+	}
+	if (window.innerWidth > 450 && window.innerWidth <= 465) {
+		document
+			.querySelectorAll("a.btn")
+			.forEach((ele) => ele.classList.add("btn-sm"));
+		hmm = 1;
 	}
 });
 
@@ -160,5 +203,16 @@ window.addEventListener("resize", function (e) {
 		gallery.innerHTML = special;
 		instinct = 4;
 		cardImageAllocator(true);
+	}
+	if (window.innerWidth > 450 && window.innerWidth <= 465 && instinct != 1) {
+		document
+			.querySelectorAll("a.btn")
+			.forEach((ele) => ele.classList.add("btn-sm"));
+		hmm = 1;
+	} else {
+		document
+			.querySelectorAll("a.btn")
+			.forEach((ele) => ele.classList.remove("btn-sm"));
+		hmm = 0;
 	}
 });
