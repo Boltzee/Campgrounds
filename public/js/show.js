@@ -5,7 +5,7 @@ function cards_generator(start, end, division, spec = false) {
 	let ar = ``;
 	for (let i = start; i < end && !spec; i++) {
 		let u = `
-			<div class="card mb-3" data-src="${
+			<div class="card shadow mb-3" data-src="${
 				campground_list[i].images.length > 0
 					? campground_list[i].images[0].url
 					: k
@@ -41,7 +41,7 @@ function cards_generator(start, end, division, spec = false) {
 	}
 	for (let i = start; i < end && spec; i++) {
 		let u = `
-			<div class="card mb-3" data-src="${
+			<div class="card shadow mb-3" data-src="${
 				campground_list[i].images.length > 0
 					? campground_list[i].images[0].url
 					: k
@@ -65,8 +65,6 @@ function cards_generator(start, end, division, spec = false) {
 	return temp;
 }
 
-// (division==4) ? campground_list[i].description : (division==3)? campground_list[i].description.slice(0,30): ''
-// ${(division!=2) ? `<p class="card-text">${(division==4) ? campground_list[i].description : campground_list[i].description.slice(0,30)}</p>` : ''}
 function func2(cols, div, sp = false) {
 	let k = Math.floor(campground_list.length / cols);
 	const arr = [];
@@ -103,7 +101,7 @@ function cardImageAllocator(high = false) {
 				46 + Math.random() * 10 - Math.random() * 20
 			)}vw`;
 		} else {
-			card.style.height = `${Math.max(
+			card.style.height = `${Math.min(
 				36 +
 					Math.random() * 30 +
 					Math.random() * 30 -
@@ -125,12 +123,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		gallery.innerHTML = str1;
 		instinct = 1;
 		cardImageAllocator();
-	} else if (window.innerWidth < 725 && window.innerWidth > 434) {
+	} else if (window.innerWidth < 725 && window.innerWidth >= 451) {
 		console.log("hello guys i am here");
 		gallery.innerHTML = str;
 		instinct = 0;
 		cardImageAllocator(true);
-	} else if (window.innerWidth <= 433) {
+	} else if (window.innerWidth <= 450) {
 		gallery.innerHTML = special;
 		instinct = 4;
 		cardImageAllocator(true);
@@ -152,13 +150,13 @@ window.addEventListener("resize", function (e) {
 		cardImageAllocator();
 	} else if (
 		window.innerWidth < 725 &&
-		window.innerWidth >= 434 &&
+		window.innerWidth >= 451 &&
 		instinct != 0
 	) {
 		gallery.innerHTML = str;
 		instinct = 0;
 		cardImageAllocator(true);
-	} else if (window.innerWidth <= 433 && instinct != 4) {
+	} else if (window.innerWidth <= 450 && instinct != 4) {
 		gallery.innerHTML = special;
 		instinct = 4;
 		cardImageAllocator(true);
