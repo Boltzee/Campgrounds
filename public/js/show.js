@@ -1,25 +1,10 @@
 const gallery = document.querySelector("#gallery");
+const load = document.getElementById("load");
 const campground_list = campgrounds.features;
 
 setTimeout(function () {
 	window.scrollTo(0, 255);
 }, 500);
-
-let on = false;
-document
-	.querySelector("button.navbar-toggler")
-	.addEventListener("click", function (e) {
-		if (nav.classList.contains("fixed-top")) {
-			return;
-		}
-		if (!on) {
-			document.getElementById("first-heading").style.marginTop = "203px";
-			on = true;
-		} else {
-			document.getElementById("first-heading").style.marginTop = "383px";
-			on = false;
-		}
-	});
 
 function cards_generator(
 	start,
@@ -158,8 +143,118 @@ function cardImageAllocator(high = false) {
 	});
 }
 
+//PAGINATION FUNCTIONALITY =========================================================================
+
+function updateColumns(event, cols = 0) {
+	let layout_4 = [2, 5, 3, 2];
+	let layout_3 = [4, 3, 5];
+	let layout_2 = [6, 6];
+
+	let start = end;
+	end =
+		campgrounds_list.length - start >= 12
+			? end + 12
+			: campgrounds_list.length;
+
+	for (let cols = 4; cols >= 2; cols--) {
+		let temp = document.createElement("DIV");
+		temp.innerHTML = cols == 4 ? str2 : cols == 3 ? str1 : str;
+		layout = cols == 4 ? layout_4 : cols == 3 ? layout_3 : layout_2;
+		let k = Math.floor(end - start / cols);
+		const arr = [];
+		for (let i = 0; i < cols; i++) {
+			arr.push(k);
+		}
+		let y = end - (start % cols);
+		let i = 0;
+		while (y--) {
+			arr[i]++;
+			i++;
+		}
+		let start_2 = start;
+		for (let i = 0; i < layout.length; i++) {
+			let element = temp.querySelector(`.user-${i}`);
+			element.innerHTML =
+				elememt.innerHTML +
+				cards_generator(
+					start_2,
+					start_2 + arr[i],
+					layout[i],
+					0,
+					false,
+					true
+				);
+			start_2 = start_2 + arr[i];
+		}
+		if (cols == 4) str2 = temp.innerHTML;
+		else if (cols == 3) str1 = temp.innerHTML;
+		else str = temp.innerHTML;
+
+		if (cols == 2) {
+			temp.innerHTML = special;
+			let start_2 = start;
+			for (let i = 0; i < layout.length; i++) {
+				let element = temp.querySelector(`.user-${i}`);
+				element.innerHTML =
+					elememt.innerHTML +
+					cards_generator(
+						start_2,
+						start_2 + arr[i],
+						layout[i],
+						0,
+						true,
+						true
+					);
+				start_2 = start_2 + arr[i];
+			}
+			special = temp.innerHTML;
+		}
+	}
+
+	//str2,str1,str,special // and update all of them and then rerender.
+
+	if (window.innerWidth >= 1141) {
+		gallery.innerHTML = str2;
+		cardImageAllocator();
+	} else if (window.innerWidth < 1141 && window.innerWidth >= 725) {
+		gallery.innerHTML = str1;
+		cardImageAllocator();
+	} else if (window.innerWidth < 725 && window.innerWidth >= 451) {
+		gallery.innerHTML = str;
+		cardImageAllocator(true);
+	} else if (window.innerWidth <= 450) {
+		gallery.innerHTML = special;
+		cardImageAllocator(true);
+	}
+	if (window.innerWidth > 450 && window.innerWidth <= 465) {
+		document
+			.querySelectorAll("a.btn")
+			.forEach((ele) => ele.classList.add("btn-sm"));
+		hmm = 1;
+	}
+}
+
+// ALL THE EVENT LISTENERS =========================================================================
+
+let on = false;
+document
+	.querySelector("button.navbar-toggler")
+	.addEventListener("click", function (e) {
+		if (nav.classList.contains("fixed-top")) {
+			return;
+		}
+		if (!on) {
+			document.getElementById("first-heading").style.marginTop = "203px";
+			on = true;
+		} else {
+			document.getElementById("first-heading").style.marginTop = "383px";
+			on = false;
+		}
+	});
+
 var instinct;
 var hmm;
+
 window.addEventListener("DOMContentLoaded", (event) => {
 	console.log("DOM fully loaded and parsed");
 	if (window.innerWidth >= 1141) {
@@ -226,3 +321,5 @@ window.addEventListener("resize", function (e) {
 		hmm = 0;
 	}
 });
+
+load.addEventListener("click", updateColumns);
