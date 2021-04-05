@@ -90,10 +90,7 @@ function cards_generator(
 let topLevel_end;
 
 function func2(cols, div, sp = false) {
-	topLevel_end =
-		campgrounds_list.length > 12
-			? 12
-			: campgrounds_list.length;
+	topLevel_end = campground_list.length > 12 ? 12 : campground_list.length;
 	let k = Math.floor(topLevel_end / cols);
 	const arr = [];
 	for (let i = 0; i < cols; i++) {
@@ -149,9 +146,9 @@ function cardImageAllocator(high = false) {
 	});
 }
 
-function loadButton () {
-	if(topLevel_end>= campground_list.length){
-		load.style.display = 'none';
+function loadButton() {
+	if (topLevel_end >= campground_list.length) {
+		load.style.display = "none";
 	}
 }
 
@@ -163,40 +160,42 @@ function updateColumns(event, cols = 0) {
 	let layout_2 = [6, 6];
 
 	let start = topLevel_end;
-	let	end =
-		campgrounds_list.length - start > 12
-			? end + 12
-			: campgrounds_list.length;
+	let end =
+		campground_list.length - start > 12
+			? start + 12
+			: campground_list.length;
+	console.log(start, end);
 
 	for (let cols = 4; cols >= 2; cols--) {
 		let temp = document.createElement("DIV");
 		temp.innerHTML = cols == 4 ? str2 : cols == 3 ? str1 : str;
 		layout = cols == 4 ? layout_4 : cols == 3 ? layout_3 : layout_2;
-		let k = Math.floor(end - start / cols);
-		const arr = [];
+		let k = Math.floor((end - start) / cols);
+		// console.log("the value of k is", k);
+		const array = [];
 		for (let i = 0; i < cols; i++) {
-			arr.push(k);
+			array.push(k);
 		}
-		let y = end - (start % cols);
+		let y = (end - start) % cols;
 		let i = 0;
 		while (y--) {
-			arr[i]++;
+			array[i]++;
 			i++;
 		}
 		let start_2 = start;
 		for (let i = 0; i < layout.length; i++) {
 			let element = temp.querySelector(`.user-${i}`);
 			element.innerHTML =
-				elememt.innerHTML +
+				element.innerHTML +
 				cards_generator(
 					start_2,
-					start_2 + arr[i],
+					start_2 + array[i],
 					layout[i],
 					0,
 					false,
 					true
 				);
-			start_2 = start_2 + arr[i];
+			start_2 = start_2 + array[i];
 		}
 		if (cols == 4) str2 = temp.innerHTML;
 		else if (cols == 3) str1 = temp.innerHTML;
@@ -208,16 +207,16 @@ function updateColumns(event, cols = 0) {
 			for (let i = 0; i < layout.length; i++) {
 				let element = temp.querySelector(`.user-${i}`);
 				element.innerHTML =
-					elememt.innerHTML +
+					element.innerHTML +
 					cards_generator(
 						start_2,
-						start_2 + arr[i],
+						start_2 + array[i],
 						layout[i],
 						0,
 						true,
 						true
 					);
-				start_2 = start_2 + arr[i];
+				start_2 = start_2 + array[i];
 			}
 			special = temp.innerHTML;
 		}
@@ -248,7 +247,6 @@ function updateColumns(event, cols = 0) {
 	loadButton();
 
 	topLevel_end = end;
-
 }
 
 // ALL THE EVENT LISTENERS =========================================================================
@@ -269,8 +267,26 @@ document
 		}
 	});
 
+const t = document.querySelector("#top");
+let flag_1 = 1;
+function fixedFunction(e) {
+	if (window.scrollY >= 700 && flag_1 != 1) {
+		t.style.display = "flex";
+		flag_1 = 1;
+	} else if (window.scrollY < 700 && flag_1 != 0) {
+		t.style.display = "none";
+		flag_1 = 0;
+	}
+}
+
+window.addEventListener("scroll", fixedFunction);
+t.addEventListener("click", function (e) {
+	window.scrollTo(0, 257);
+});
+
 var instinct;
 var hmm;
+var hmm2;
 
 window.addEventListener("DOMContentLoaded", (event) => {
 	console.log("DOM fully loaded and parsed");
@@ -297,6 +313,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			.querySelectorAll("a.btn")
 			.forEach((ele) => ele.classList.add("btn-sm"));
 		hmm = 1;
+	}
+	if (window.innerWidth <= 496) {
+		document.getElementById("load-text").style.display = "none";
+		hmm2 = 1;
 	}
 	loadButton();
 });
@@ -327,16 +347,29 @@ window.addEventListener("resize", function (e) {
 		instinct = 4;
 		cardImageAllocator(true);
 	}
-	if (window.innerWidth > 450 && window.innerWidth <= 465 && instinct != 1) {
+	//==========
+	if (window.innerWidth > 450 && window.innerWidth <= 465 && hmm != 1) {
 		document
 			.querySelectorAll("a.btn")
 			.forEach((ele) => ele.classList.add("btn-sm"));
 		hmm = 1;
-	} else {
+	} else if (
+		hmm != 0 &&
+		(window.innerWidth > 465 || window.innerWidth <= 450)
+	) {
 		document
 			.querySelectorAll("a.btn")
 			.forEach((ele) => ele.classList.remove("btn-sm"));
 		hmm = 0;
+	}
+
+	//===================
+	if (window.innerWidth <= 496 && hmm2 != 1) {
+		document.getElementById("load-text").style.display = "none";
+		hmm2 = 1;
+	} else if (window.innerWidth > 496 && hmm2 != 0) {
+		document.getElementById("load-text").style.display = "inline";
+		hmm2 = 0;
 	}
 });
 
