@@ -87,13 +87,19 @@ function cards_generator(
 	return temp;
 }
 
+let topLevel_end;
+
 function func2(cols, div, sp = false) {
-	let k = Math.floor(campground_list.length / cols);
+	topLevel_end =
+		campgrounds_list.length > 12
+			? 12
+			: campgrounds_list.length;
+	let k = Math.floor(topLevel_end / cols);
 	const arr = [];
 	for (let i = 0; i < cols; i++) {
 		arr.push(k);
 	}
-	let y = campground_list.length % cols;
+	let y = topLevel_end % cols;
 	let i = 0;
 	while (y--) {
 		arr[i]++;
@@ -143,6 +149,12 @@ function cardImageAllocator(high = false) {
 	});
 }
 
+function loadButton () {
+	if(topLevel_end>= campground_list.length){
+		load.style.display = 'none';
+	}
+}
+
 //PAGINATION FUNCTIONALITY =========================================================================
 
 function updateColumns(event, cols = 0) {
@@ -150,9 +162,9 @@ function updateColumns(event, cols = 0) {
 	let layout_3 = [4, 3, 5];
 	let layout_2 = [6, 6];
 
-	let start = end;
-	end =
-		campgrounds_list.length - start >= 12
+	let start = topLevel_end;
+	let	end =
+		campgrounds_list.length - start > 12
 			? end + 12
 			: campgrounds_list.length;
 
@@ -232,6 +244,11 @@ function updateColumns(event, cols = 0) {
 			.forEach((ele) => ele.classList.add("btn-sm"));
 		hmm = 1;
 	}
+
+	loadButton();
+
+	topLevel_end = end;
+
 }
 
 // ALL THE EVENT LISTENERS =========================================================================
@@ -281,6 +298,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			.forEach((ele) => ele.classList.add("btn-sm"));
 		hmm = 1;
 	}
+	loadButton();
 });
 
 window.addEventListener("resize", function (e) {
