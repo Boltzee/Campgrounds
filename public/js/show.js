@@ -21,7 +21,14 @@ document
 		}
 	});
 
-function cards_generator(start, end, division, spec = false) {
+function cards_generator(
+	start,
+	end,
+	division,
+	index,
+	spec = false,
+	pagination = false
+) {
 	let ar = ``;
 	for (let i = start; i < end && !spec; i++) {
 		let u = `
@@ -84,8 +91,11 @@ function cards_generator(start, end, division, spec = false) {
 		`;
 		ar = ar + u;
 	}
+	if (pagination) {
+		return ar;
+	}
 	let temp = `
-		<div class="col-${division} mb-3">
+		<div class="col-${division} mb-3 user-${index}">
 			${ar}
 		</div>
 	`;
@@ -111,12 +121,12 @@ function func2(cols, div, sp = false) {
 	} else if (cols == 3) {
 		div = arr3[0];
 	}
-	let str2 = cards_generator(0, arr[0], div, sp);
+	let str2 = cards_generator(0, arr[0], div, 0, sp);
 	for (let i = 1; i <= cols - 1; i++) {
 		arr[i] += arr[i - 1];
 		if (cols == 4) div = arr4[i];
 		if (cols == 3) div = arr3[i];
-		str2 = str2 + cards_generator(arr[i - 1], arr[i], div, sp);
+		str2 = str2 + cards_generator(arr[i - 1], arr[i], div, i, sp);
 	}
 	return str2;
 }
