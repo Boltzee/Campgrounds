@@ -9,13 +9,18 @@
 	background-color: #dce0e9;
 }
 
+#slideInOut {
+	transition: padding 0.5s ease;
+}
+
 .cluster-map {
 	position: absolute;
-	left: 0px;
-	top: 56.4px;
-	width: 100%;
+	border-radius: 1.2rem;
+	left: 45vw;
+	top: 149.4px;
+	width: 50%;
 	/*width: 100%;*/
-	height: 450px;
+	height: 477px;
 	box-shadow: 0 1rem 7rem rgba(0, 0, 0, 0.15) !important;
 }
 
@@ -45,16 +50,40 @@ body {
 	background-size: fill;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	overflow-x: hidden;
+}
+
+#heading {
+	position: relative;
+	margin-bottom: 416px;
+	margin-top: 106px;
+	height: min(26vw, 4.5rem);
+}
+
+#heading2 {
+	position: absolute;
+	left: 6vw;
+	top: -70px;
+}
+
+#heading2 p {
+	font-family: "Lato", sans-serif;
+}
+
+nav {
+	transition: visibility 0.8s ease;
+}
+
+h1 {
+	color: #1e212c;
+	line-height: 1.2;
+	font-weight: 600;
+	font-family: "Lato", sans-serif;
+	font-size: min(14vw, 4.5rem) !important;
 }
 
 #first-heading {
-	margin-top: 458px;
-	height: min(26vw, 4.5rem);
-	text-align: center;
-	color: rgba(0, 0, 0, 0.9);
-	/*font-family: "Kaushan Script", cursive;*/
-	font-family: "Amatic SC", cursive;
-	font-size: min(14vw, 3rem);
+	font-size: min(14vw, 3.5rem) !important;
 }
 
 .details-map {
