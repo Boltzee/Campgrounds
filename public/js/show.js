@@ -81,7 +81,7 @@ function cards_generator(
 	}
 	let temp = `
 		<div class="col-${division} mb-3 user-${index}" ${
-		!spec ? `style="padding:21px"` : ""
+		!spec ? `style="padding:1rem"` : ""
 	}>
 			${ar}
 		</div>
