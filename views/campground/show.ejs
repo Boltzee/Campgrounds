@@ -13,23 +13,29 @@
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"> 
-	<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet"> 
-
+	<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/css/app.css">
 	<link rel="stylesheet" href="/css/show.css">
 	<title>Boilerplate</title>
 </head>
 <body class="d-flex flex-column">
 	<!-- <div id="one"></div> -->
-	<div id="two">
-		<%-include('../partials/navbar')%>
-	</div>
-	<main class="container-fluid mt-1">
+	<%-include('../partials/navbar')%>
+	<div id="two"></div>
+	<main class="container-fluid mt-1" style="z-index: 10">
 		<%-include('../partials/flash')%>
 		<% let k ="https://res.cloudinary.com/chadchampion/image/upload/v1616938179/YelpCamp/onsqcoe4194je2pxi5jm.jpg"%>
-		<!-- <div id="map" class="cluster-map"></div> -->
-		<h1 id="first-heading">Campgrounds</h1>
-		<div class="container-fluid">
+		<div id="map" class="cluster-map"></div>
+		<div id="heading">
+			<div id="heading2">
+				<h1 id="first-heading">Campgrounds<br>E<span class="text-primary">X</span>PLORE</h1>
+				<p>Feel free to share some of your own or review others!</p>
+				<!-- <h1>Explore</h1> -->
+			</div>
+		</div>
+		<div class="container-fluid" id="slideInOut">
 			<div class="row" id="gallery">
 			</div>
 		</div>
