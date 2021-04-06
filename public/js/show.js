@@ -2,9 +2,9 @@ const gallery = document.querySelector("#gallery");
 const load = document.getElementById("load");
 const campground_list = campgrounds.features;
 
-setTimeout(function () {
-	window.scrollTo(0, 255);
-}, 500);
+// setTimeout(function () {
+// 	window.scrollTo(0, 255);
+// }, 500);
 
 function cards_generator(
 	start,
@@ -261,7 +261,7 @@ document
 			return;
 		}
 		if (!on) {
-			document.getElementById("first-heading").style.marginTop = "203px";
+			document.getElementById("first-heading").style.marginTop = "233px";
 			on = true;
 		} else {
 			document.getElementById("first-heading").style.marginTop = "383px";
@@ -285,6 +285,35 @@ window.addEventListener("scroll", fixedFunction);
 t.addEventListener("click", function (e) {
 	window.scrollTo(0, 257);
 });
+
+const slider = document.querySelector("#slideInOut");
+let flag_2 = 0;
+function sliderFunction(e) {
+	// console.log("iamhere");
+	if (window.scrollY > 254 && flag_2 != 1) {
+		slider.style.paddingTop = "40px";
+		flag_2 = 1;
+	} else if (window.scrollY <= 254 && flag_2 != 0) {
+		slider.style.paddingTop = "300px";
+		flag_2 = 0;
+	}
+}
+
+window.addEventListener("scroll", sliderFunction);
+
+// const nav = document.querySelector("nav");
+let flag_3 = 0;
+function navbarHider(e) {
+	if (window.scrollY > 50 && window.scrollY < 306 && flag_3 != 1) {
+		nav.style.visibility = "hidden";
+		flag_3 = 1;
+	} else if ((window.scrollY <= 50 || window.scrollY >= 306) && flag_3 != 0) {
+		nav.style.visibility = "inherit";
+		flag_3 = 0;
+	}
+}
+
+window.addEventListener("scroll", navbarHider);
 
 var instinct;
 var hmm;
@@ -320,6 +349,21 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		document.getElementById("load-text").style.display = "none";
 		hmm2 = 1;
 	}
+	if (window.scrollY < 700 && flag_1 != 0) {
+		t.style.display = "none";
+		flag_1 = 0;
+	}
+	//=======================
+	if (window.scrollY <= 254) {
+		slider.style.paddingTop = "300px";
+		flag_2 = 0;
+	}
+	//========================
+	if (window.scrollY > 50 && window.scrollY < 306 && flag_3 != 1) {
+		nav.style.visibility = "hidden";
+		flag_3 = 1;
+	}
+	//=========================
 	loadButton();
 });
 
