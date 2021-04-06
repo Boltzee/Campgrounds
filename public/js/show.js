@@ -17,7 +17,7 @@ function cards_generator(
 	let ar = ``;
 	for (let i = start; i < end && !spec; i++) {
 		let u = `
-			<div class="card shadow mb-3" data-src="${
+			<div class="card shadow mb-5" data-src="${
 				campground_list[i].images.length > 0
 					? campground_list[i].images[0].url
 					: k
@@ -60,7 +60,7 @@ function cards_generator(
 	}
 	for (let i = start; i < end && spec; i++) {
 		let u = `
-			<div class="card shadow mb-3" data-src="${
+			<div class="card shadow mb-5" data-src="${
 				campground_list[i].images.length > 0
 					? campground_list[i].images[0].url
 					: k
@@ -80,7 +80,9 @@ function cards_generator(
 		return ar;
 	}
 	let temp = `
-		<div class="col-${division} mb-3 user-${index}">
+		<div class="col-${division} mb-3 user-${index}" ${
+		!spec ? `style="padding:21px"` : ""
+	}>
 			${ar}
 		</div>
 	`;
