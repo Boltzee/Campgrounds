@@ -1,3 +1,28 @@
+#one,
+#two {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 50%;
+	height: 100%;
+}
+#one {
+	width: 100%;
+	left: 0;
+	/*transform: rotateZ(45deg);*/
+	/*transform: scale(5);*/
+	background-color: black;
+}
+#two {
+	left: 73vw;
+	right: 0;
+	/*transform: translate(10px, 10px);*/
+	transform-origin: top left;
+	transform: rotateZ(23deg) scaleY(11.5) translateY(-4vw) translateX(1vw)
+		scaleX(2);
+	background-color: green;
+}
+
 .cluster-map {
 	position: absolute;
 	left: 0px;
@@ -57,6 +82,13 @@ body {
 	height: 39vw;
 	background-repeat: no-repeat;
 	border-radius: 1.2rem;
+	border: 0px;
+	transition: transform 0.5s ease;
+}
+
+.card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.35) !important;
 }
 
 .card-text .text-muted {
@@ -74,7 +106,7 @@ body {
 }
 
 .shadow {
-	box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.35) !important;
+	box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.25) !important;
 }
 
 .card-body:hover {
