@@ -1,15 +1,15 @@
 #two {
-	position: fixed;
+	/*position: fixed;*/
 	left: 0;
 	right: 0;
 	width: 100%;
-	height: 511px;
+	height: 535px;
 	/*left: 73vw;*/
 	/*right: 0;*/
 	/*transform: translate(10px, 10px);*/
-	transform-origin: top left;
-	transform: rotateZ(23deg) scaleY(11.5) translateY(-4vw) translateX(1vw)
-		scaleX(2);
+	transform-origin: bottom right;
+	transform: rotateZ(5.5deg) scaleX(1.3);
+	background-color: #dce0e9;
 	background-color: green;
 }
 
