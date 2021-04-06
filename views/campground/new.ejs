@@ -2,7 +2,7 @@
 	<link rel="stylesheet" href="/css/new.css">
 	<!-- <div class="card shadow mb-3 mt-3"> -->
 		<!-- <h1 class="text-center">Create a new campground</h1> -->
-		<div class="col-md-6 offset-md-3">
+		<div class="col-md-6 offset-e-3">
 			<form action="/campgrounds" method="POST" class="validate-form" enctype="multipart/form-data" novalidate>
 				<label class="form-label" for="title">Add a title for the campground:</label>
 				<input class="form-control" type="text" id="title" name="campground[title]" required>
@@ -25,22 +25,6 @@
 	    				</div>
 					</div>
 				</div>
-				<!-- <div class="mb-3">
-					<label for="image" class="form-label">Upload Images</label>
-					<div class="form-file custom-file" >
-						<input type="file" name="image" id="image" class="form-control form-file-input" multiple required>
-		                <label for="image" class="form-file-label">
-		                	<span class="form-file-text custom-file-label">Choose Image(s)...</span>
-		                	<span class="form-file-button">Browse...</span>
-		                </label>
-		                <div class="valid-feedback">
-							Looks good
-						</div>
-			        	<div class="invalid-feedback">
-			            	This campground would look much better with a picture.
-			        	</div>
-					</div>
-				</div> -->
 			    <div class="mb-3">
 			        <label for="image" class="form-label">Upload Images</label>
 			        <input type="file" class="form-control" id="image" name="image" multiple required>
