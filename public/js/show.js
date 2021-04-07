@@ -1,5 +1,6 @@
 const gallery = document.querySelector("#gallery");
 const load = document.getElementById("load");
+const map_1 = document.getElementById("map");
 const campground_list = campgrounds.features;
 
 // setTimeout(function () {
@@ -257,14 +258,13 @@ let on = false;
 document
 	.querySelector("button.navbar-toggler")
 	.addEventListener("click", function (e) {
-		if (nav.classList.contains("fixed-top")) {
-			return;
-		}
 		if (!on) {
-			document.getElementById("first-heading").style.marginTop = "233px";
+			console.log("im here");
+			// document.querySelector("nav.navbar").style.opacity = "0.95";
+			document.getElementById("heading").style.marginTop = "162px";
 			on = true;
 		} else {
-			document.getElementById("first-heading").style.marginTop = "383px";
+			document.getElementById("heading").style.marginTop = "162px";
 			on = false;
 		}
 	});
@@ -290,10 +290,10 @@ const slider = document.querySelector("#slideInOut");
 let flag_2 = 0;
 function sliderFunction(e) {
 	// console.log("iamhere");
-	if (window.scrollY > 254 && flag_2 != 1) {
-		slider.style.paddingTop = "40px";
+	if (window.scrollY > 710 && flag_2 != 1) {
+		slider.style.paddingTop = "104px";
 		flag_2 = 1;
-	} else if (window.scrollY <= 254 && flag_2 != 0) {
+	} else if (window.scrollY <= 710 && flag_2 != 0) {
 		slider.style.paddingTop = "300px";
 		flag_2 = 0;
 	}
@@ -318,6 +318,7 @@ window.addEventListener("scroll", navbarHider);
 var instinct;
 var hmm;
 var hmm2;
+let flag_4 = 0;
 
 window.addEventListener("DOMContentLoaded", (event) => {
 	console.log("DOM fully loaded and parsed");
@@ -354,7 +355,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		flag_1 = 0;
 	}
 	//=======================
-	if (window.scrollY <= 254) {
+	if (window.scrollY <= 710) {
 		slider.style.paddingTop = "300px";
 		flag_2 = 0;
 	}
@@ -364,6 +365,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		flag_3 = 1;
 	}
 	//=========================
+	if (window.innerWidth <= 375 && flag_4 != 1) {
+		document
+			.querySelector("#first-heading span")
+			.classList.remove("text-primary");
+		map_1.style.display = "none";
+		flag_4 = 1;
+	}
+	//==========================
 	loadButton();
 });
 
@@ -416,6 +425,20 @@ window.addEventListener("resize", function (e) {
 	} else if (window.innerWidth > 496 && hmm2 != 0) {
 		document.getElementById("load-text").style.display = "inline";
 		hmm2 = 0;
+	}
+	//====================
+	if (window.innerWidth <= 375 && flag_4 != 1) {
+		map_1.style.display = "none";
+		document
+			.querySelector("#first-heading span")
+			.classList.remove("text-primary");
+		flag_4 = 1;
+	} else if (window.innerWidth > 375 && flag_4 != 0) {
+		map_1.style.display = "inherit";
+		document
+			.querySelector("#first-heading span")
+			.classList.add("text-primary");
+		flag_4 = 0;
 	}
 });
 
