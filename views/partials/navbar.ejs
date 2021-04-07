@@ -3,6 +3,17 @@
 		background-color: transparent !important;
 		font-family: "Lato", sans-serif;
 	}
+	/*nav.navbar:hover {
+		background-color: white !important;
+		box-shadow: 0 1rem 7rem rgba(0, 0, 0, 0.15) !important;
+	}*/
+	nav.navbar.hovClass {
+		background-color: white !important;
+		box-shadow: 0 1rem 7rem rgba(0, 0, 0, 0.15) !important;
+	}
+	.navbar-dark .navbar-toggler-icon {
+    	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.6%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+	}
 	nav a {
 		color: #424551 !important;
 		transition: color 0.25s ease-in-out,background-color 0.25s ease-in-out,border-color 0.25s ease-in-out;
@@ -33,7 +44,13 @@
 		}
 	}
 </style>
-<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
+<style id="hoverStyle">
+	nav.navbar:hover {
+		background-color: white !important;
+		box-shadow: 0 1rem 7rem rgba(0, 0, 0, 0.15) !important;
+	}
+</style>
+<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark" id="navbar">
 		<div class="container-fluid">
 	    	<a class="navbar-brand" href="#">YelpCamp</a>
 	    	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,6 +78,8 @@
 	let flag;
 	function fixedFunction(e) {
 		if(window.scrollY>=612 && !flag){
+			document.getElementById('hoverStyle').remove();
+			document.getElementById('navbar').classList.add('hovClass');
 			nav.style.opacity='0.95';
 			flag=true;
 		}
