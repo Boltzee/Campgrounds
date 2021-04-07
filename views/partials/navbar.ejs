@@ -1,27 +1,54 @@
 <style>
 	nav.navbar {
 		background-color: transparent !important;
+		font-family: "Lato", sans-serif;
 	}
 	nav a {
-		color: black !important;
+		color: #424551 !important;
+		transition: color 0.25s ease-in-out,background-color 0.25s ease-in-out,border-color 0.25s ease-in-out;
+	}
+	nav .user a:hover {
+		color: #0d6efd !important;
+	}
+	@media (min-width: 768px) {
+		#login,#register {
+			transition: all .2s ease-in-out;
+			text-align: center;
+			vertical-align: middle;
+			border: 0.0625rem solid transparent;
+			font-weight: 600;
+			padding: .625rem 1.125rem;
+			font-size: 0.875rem;
+			line-height: 1.5;
+			border-radius: 0.25rem;
+			background-color: #0d6efd !important;
+			color: white !important;
+		}
+		#login:hover,#register:hover {
+			box-shadow: 0 1rem 7rem rgba(0, 0, 0, 0.15) !important;
+			transform: translateY(-5px);
+		}
+		#login {
+			margin-right: 8px;
+		}
 	}
 </style>
-<nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
 		<div class="container-fluid">
 	    	<a class="navbar-brand" href="#">YelpCamp</a>
 	    	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	      		<span class="navbar-toggler-icon"></span>
 	    	</button>
 		    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		      	<div class="navbar-nav">
+		      	<div class="navbar-nav user">
 		        	<a class="nav-link" href="/">Home</a>
 		        	<a class="nav-link" href="/campgrounds">Campgrounds</a>
 		        	<a class="nav-link" href="/campgrounds/new">New Campground</a>
 		      	</div>
 		      	<div class="navbar-nav ms-auto">
 		      		<% if(!currentUser) {%>
-		      			<a href="/login" class="nav-link">Login</a>
-		      			<a href="/register" class="nav-link">Sign Up</a>
+		      			<a href="/login" class="nav-link" id="login">Login</a>
+		      			<a href="/register" class="nav-link" id="register">Sign Up</a>
 		      		<% }else {%>
 		      			<a href="/logout" class="nav-link">Logout</a>
 		      		<% }%>
@@ -34,14 +61,10 @@
 	let flag;
 	function fixedFunction(e) {
 		if(window.scrollY>=612 && !flag){
-			nav.classList.remove('sticky-top');
-			nav.classList.add('fixed-top');
 			nav.style.opacity='0.95';
 			flag=true;
 		}
 		else if(window.scrollY<612 && flag){
-			nav.classList.remove('fixed-top');
-			nav.classList.add('sticky-top');
 			nav.style.opacity='1';
 			flag= false;
 		}
