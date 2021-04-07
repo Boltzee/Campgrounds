@@ -283,7 +283,7 @@ function fixedFunction(e) {
 
 window.addEventListener("scroll", fixedFunction);
 t.addEventListener("click", function (e) {
-	window.scrollTo(0, 257);
+	window.scrollTo(0, 0);
 });
 
 const slider = document.querySelector("#slideInOut");
