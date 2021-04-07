@@ -75,6 +75,7 @@
 </nav>
 <script>
 	const nav = document.querySelector('nav.navbar');
+	const mainStyle = document.getElementById('hoverStyle');
 	let flag;
 	function fixedFunction(e) {
 		if(window.scrollY>=612 && !flag){
@@ -84,6 +85,8 @@
 			flag=true;
 		}
 		else if(window.scrollY<612 && flag){
+			document.getElementById('navbar').classList.remove('hovClass');
+			document.body.appendChild(mainStyle);
 			nav.style.opacity='1';
 			flag= false;
 		}
