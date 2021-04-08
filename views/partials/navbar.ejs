@@ -22,7 +22,7 @@
 		color: #0d6efd !important;
 	}
 	@media (min-width: 768px) {
-		#login,#register {
+		#login,#register,#logout {
 			transition: all .2s ease-in-out;
 			text-align: center;
 			vertical-align: middle;
@@ -35,7 +35,7 @@
 			background-color: #0d6efd !important;
 			color: white !important;
 		}
-		#login:hover,#register:hover {
+		#login:hover,#register:hover,#logout:hover {
 			box-shadow: 0 1rem 7rem rgba(0, 0, 0, 0.15) !important;
 			transform: translateY(-5px);
 		}
@@ -67,7 +67,7 @@
 		      			<a href="/login" class="nav-link" id="login">Login</a>
 		      			<a href="/register" class="nav-link" id="register">Sign Up</a>
 		      		<% }else {%>
-		      			<a href="/logout" class="nav-link">Logout</a>
+		      			<a href="/logout" class="nav-link" id="logout">Logout</a>
 		      		<% }%>
 		      	</div>
 		    </div>
