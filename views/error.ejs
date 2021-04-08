@@ -14,3 +14,24 @@
 		</div>
 	</div>
 </div>
+<script>
+			
+			
+			let flag_error;
+			function fixedFunction(e) {
+				if(window.scrollY>=12 && !flag_error){
+					document.getElementById('hoverStyle').remove();
+					document.getElementById('navbar').classList.add('hovClass');
+					nav.style.opacity='0.95';
+					flag_error=true;
+				}
+				else if(window.scrollY<12 && flag_error){
+					document.getElementById('navbar').classList.remove('hovClass');
+					document.body.appendChild(mainStyle);
+					nav.style.opacity='1';
+					flag_error= false;
+				}
+			}
+
+			window.addEventListener('scroll', fixedFunction );
+</script>
