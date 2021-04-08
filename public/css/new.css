@@ -45,6 +45,8 @@ body {
 	width: 11vw;
 	height: 11vw;
 	background-color: wheat;
+	background-image: url("/assets/asset_pic_13");
+	background-size: contain;
 }
 #pic-2 {
 	bottom: -14vw;
@@ -53,6 +55,8 @@ body {
 	width: 11vw;
 	height: 38vh;
 	background-color: crimson;
+	background-image: url("/assets/asset_pic_18");
+	background-size: contain;
 }
 #pic-3 {
 	scale: 4;
@@ -62,6 +66,8 @@ body {
 	width: 6.6vw;
 	height: 10vw;
 	background-color: maroon;
+	background-image: url("/assets/asset_pic_20");
+	background-size: contain;
 }
 #pic-4 {
 	right: -31vw;
@@ -70,6 +76,8 @@ body {
 	width: 24vw;
 	height: 31vw;
 	background-color: red;
+	background-image: url("/assets/asset_pic_19");
+	background-size: contain;
 }
 @media (min-width: 736px) and (max-width: 924px) {
 	#pic-1 {
