@@ -1,6 +1,137 @@
-/*.card.shadow {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
+body {
+	overflow-x: hidden;
 }
-*/
+#one,
+#two {
+	position: fixed;
+	width: 100vw;
+	height: 50vh;
+	left: 0;
+	right: 0;
+}
+#one {
+	transform-origin: bottom right;
+	transform: rotateZ(28deg) scaleX(3);
+	top: 0;
+	height: 65vh;
+	z-index: 1;
+	background-color: #dce0e9;
+}
+#two {
+	transform-origin: top right;
+	transform: rotateZ(-42deg) scaleX(4);
+	bottom: 0;
+	z-index: 0;
+	height: 60vh;
+	background-color: #007bff !important;
+}
+.pic-container {
+	left: 55vw;
+	width: 10vw;
+	height: 20vh;
+	position: relative;
+	top: 30vh;
+}
+.pic-container div {
+	position: absolute;
+}
+#pic-1 {
+	right: 1vw;
+	bottom: 8vw;
+	z-index: 17;
+	width: 11vw;
+	height: 11vw;
+	background-color: wheat;
+}
+#pic-2 {
+	bottom: -14vw;
+	right: 5vw;
+	z-index: 18;
+	width: 11vw;
+	height: 38vh;
+	background-color: crimson;
+}
+#pic-3 {
+	scale: 4;
+	z-index: 20;
+	right: -9vw;
+	bottom: -9vw;
+	width: 6.6vw;
+	height: 10vw;
+	background-color: maroon;
+}
+#pic-4 {
+	right: -31vw;
+	z-index: 19;
+	bottom: -10.8vw;
+	width: 24vw;
+	height: 31vw;
+	background-color: red;
+}
+@media (min-width: 736px) and (max-width: 924px) {
+	#pic-1 {
+		bottom: 10vw;
+	}
+	#pic-2 {
+		bottom: -20vw;
+	}
+	#pic-3 {
+		right: -10vw;
+		bottom: -11vw;
+	}
+	#pic-4 {
+		right: -28vw;
+		bottom: -7.8vw;
+	}
+}
+@media (min-width: 478px) and (max-width: 735px) {
+	#pic-1 {
+		right: -1vw;
+		bottom: 6vw;
+		width: 18vw;
+		height: 18vw;
+	}
+	#pic-2 {
+		display: none;
+	}
+	#pic-3 {
+		scale: 5;
+		right: -10vw;
+		bottom: -11vw;
+	}
+	#pic-4 {
+		right: -28vw;
+		bottom: -0.8vw;
+	}
+}
+@media (max-width: 477px) and (min-width: 375px) {
+	#pic-1,
+	#pic-2 {
+		display: none;
+	}
+	#pic-3 {
+		scale: 6;
+		right: -9vw;
+		bottom: -21vw;
+	}
+	#pic-4 {
+		right: -33vw;
+		bottom: -4.8vw;
+		width: 27vw;
+	}
+}
+@media (max-width: 374px) {
+	#pic-1,
+	#pic-2,
+	#pic-4 {
+		display: none;
+	}
+	#pic-3 {
+		scale: 6;
+		border-radius: 5vw;
+		right: -15vw;
+		bottom: 22vh;
+		width: 10vw;
+		height: 10vw;
+	}
+}
