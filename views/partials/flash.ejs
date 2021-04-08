@@ -1,5 +1,17 @@
+<style>
+	.alert {
+		position: fixed;
+		top: 601px;
+		z-index: 1000;
+		padding-top: 8px;
+		padding-bottom: 10px;
+	}
+	.button.btn-close {
+		padding-top: 8px;
+	}
+</style>
 <% if(success && success.length) {%>
-	<div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 60px z-index: 1000;">
+	<div class="alert alert-success alert-dismissible fade show" role="alert" style="background-color: mediumspringgreen">
 		<%= success %>
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
