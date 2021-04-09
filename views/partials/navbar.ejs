@@ -100,19 +100,31 @@
 
 	window.addEventListener('scroll', fixedFunction );
 
+
 	const toggleButton = document.querySelector("button.navbar-toggler");
 
+	const animator = async () => {
+		toggleButton.click();	
+	}
+
+	let on = false;
 	toggleButton.addEventListener('focus', (event) => {
-	  	if(window.scrollY<612) {
+	  	if(window.scrollY<612 && !on) {
 	  		document.getElementById('navbar').classList.add('hovClass');
 			nav.style.opacity='0.95';	
+			on = true;
 	  	}
 	});
 
-	toggleButton.addEventListener('blur', (event) => {
-	  	if(window.scrollY<612) {
-	  		document.getElementById('navbar').classList.remove('hovClass');
-			nav.style.opacity='1';	
+	toggleButton.addEventListener('blur', async (event) => {
+	  	if(window.scrollY<612 && on) {
+	  		animator().then(() => {
+	  			setTimeout(function() {
+		  			document.getElementById('navbar').classList.remove('hovClass');
+					nav.style.opacity='1';
+					on = false;
+	  			}, 400);
+	  		});
 	  	}
 	});
 </script>
