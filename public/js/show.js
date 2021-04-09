@@ -290,6 +290,7 @@ const slider = document.querySelector("#slideInOut");
 let flag_2 = 0;
 function sliderFunction(e) {
 	// console.log("iamhere");
+	if (window.innerWidth <= 450) return;
 	if (window.scrollY > 710 && flag_2 != 1) {
 		slider.style.paddingTop = "104px";
 		flag_2 = 1;
@@ -355,7 +356,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		flag_1 = 0;
 	}
 	//=======================
-	if (window.scrollY <= 710) {
+	if (window.scrollY <= 710 && window.innerWidth > 450) {
 		slider.style.paddingTop = "300px";
 		flag_2 = 0;
 	}
