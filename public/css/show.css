@@ -218,13 +218,6 @@ h1 {
 	}
 }
 
-@media (max-width: 375px) {
-	#leaf {
-		background-color: mediumspringgreen !important;
-		transform: rotateZ(3deg) skew(10deg, 10deg) scale(3.1);
-	}
-}
-
 @media (min-width: 862px) and (max-width: 1140px) {
 	h5 + p.card-text {
 		margin-bottom: 5rem;
@@ -232,6 +225,20 @@ h1 {
 }
 
 @media (max-width: 450px) {
+	#leaf {
+		background-color: mediumspringgreen !important;
+		transform: rotateZ(3deg) skew(10deg, 10deg) scale(2);
+		left: 20%;
+	}
+	.container-user {
+		top: -16vh !important;
+	}
+	#two {
+		display: none;
+	}
+	#top {
+		right: 3vw;
+	}
 	.card-body {
 		justify-content: center;
 	}
