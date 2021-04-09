@@ -2,7 +2,7 @@
 	nav.navbar {
 		background-color: transparent !important;
 		font-family: "Lato", sans-serif;
-		width: 100vw;
+		/*width: 100vw;*/
 	}
 	/*nav.navbar:hover {
 		background-color: white !important;
@@ -21,6 +21,11 @@
 	}
 	nav .user a:hover {
 		color: #0d6efd !important;
+	}
+	@media (max-width: 450px) {
+		nav.navbar {
+			width: 100vw;
+		}
 	}
 	@media (min-width: 768px) {
 		#login,#register,#logout {
