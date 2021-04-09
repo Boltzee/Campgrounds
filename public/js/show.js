@@ -254,21 +254,6 @@ function updateColumns(event, cols = 0) {
 
 // ALL THE EVENT LISTENERS =========================================================================
 
-let on = false;
-document
-	.querySelector("button.navbar-toggler")
-	.addEventListener("click", function (e) {
-		if (!on) {
-			console.log("im here");
-			// document.querySelector("nav.navbar").style.opacity = "0.95";
-			document.getElementById("heading").style.marginTop = "162px";
-			on = true;
-		} else {
-			document.getElementById("heading").style.marginTop = "162px";
-			on = false;
-		}
-	});
-
 const t = document.querySelector("#top");
 let flag_1 = 1;
 function fixedFunction(e) {
