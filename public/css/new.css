@@ -59,7 +59,7 @@ body {
 	background-size: cover;
 }
 #pic-3 {
-	scale: 4;
+	transform: scale(4);
 	z-index: 20;
 	right: -9vw;
 	bottom: -9vw;
@@ -111,7 +111,8 @@ body {
 		display: none;
 	}
 	#pic-3 {
-		scale: 5;
+		transform: scale(5);
+		/*scale: 5;*/
 		right: -10vw;
 		bottom: -11vw;
 	}
@@ -126,7 +127,8 @@ body {
 		display: none;
 	}
 	#pic-3 {
-		scale: 6;
+		transform: scale(6);
+		/*scale: 6;*/
 		right: -9vw;
 		bottom: -21vw;
 	}
@@ -143,7 +145,8 @@ body {
 		display: none;
 	}
 	#pic-3 {
-		scale: 6;
+		transform: scale(6);
+		/*scale: 6;*/
 		border-radius: 5vw;
 		right: -26vw;
 		bottom: 26vh;
