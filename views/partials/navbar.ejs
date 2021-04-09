@@ -94,4 +94,20 @@
 	}
 
 	window.addEventListener('scroll', fixedFunction );
+
+	const toggleButton = document.querySelector("button.navbar-toggler");
+
+	toggleButton.addEventListener('focus', (event) => {
+	  	if(window.scrollY<612) {
+	  		document.getElementById('navbar').classList.add('hovClass');
+			nav.style.opacity='0.95';	
+	  	}
+	});
+
+	toggleButton.addEventListener('blur', (event) => {
+	  	if(window.scrollY<612) {
+	  		document.getElementById('navbar').classList.remove('hovClass');
+			nav.style.opacity='1';	
+	  	}
+	});
 </script>
