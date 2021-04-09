@@ -79,6 +79,11 @@ body {
 	background-image: url("/assets/asset_pic_12.jpg");
 	background-size: cover;
 }
+@media (max-width: 1160px) {
+	#pic-2 {
+		width: 15vw;
+	}
+}
 @media (min-width: 736px) and (max-width: 924px) {
 	#pic-1 {
 		bottom: 10vw;
