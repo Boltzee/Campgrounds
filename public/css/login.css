@@ -69,6 +69,25 @@ body {
 	right: 0;
 }
 
+@media (min-width: 581px) and (max-width: 991px) {
+	#pic {
+		width: 580.417px;
+		height: 499.65px;
+	}
+}
+
+@media (max-width: 580px) {
+	#pic {
+		width: 93vw;
+	}
+}
+
+@media (max-width: 488px) {
+	#pic {
+		width: 98vw;
+	}
+}
+
 #newForm {
 	position: relative;
 	z-index: 40;
