@@ -5,3 +5,46 @@ body {
 #pic {
 	right: 0;
 }
+
+#newForm {
+	position: relative;
+	z-index: 40;
+	left: 7.5vw;
+	top: -4vw;
+	display: flex;
+	justify-content: center;
+	width: 33%;
+	box-shadow: 0 0.5rem 1.7rem rgba(0, 0, 0, 0.35) !important;
+	min-height: 84vh;
+	background-color: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(2px);
+	font-family: "Lato", sans-serif;
+}
+
+.validate-form {
+	width: 80%;
+	margin-top: 25px;
+	color: black !important;
+}
+
+#form-submit {
+	padding: 0.525rem 1.125rem;
+	font-size: 0.875rem;
+	transition: transform 0.2s ease;
+}
+#form-submit:hover {
+	transform: translateY(-4px);
+}
+
+label.form-label {
+	font-size: 0.75rem;
+	font-weight: 400 !important;
+	line-height: 1.5;
+	/*text-align: center;*/
+}
+
+.invalid-feedback,
+.valid-feedback {
+	font-size: 0.75rem;
+	margin: 0;
+}
