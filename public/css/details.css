@@ -2,6 +2,7 @@ body {
 	overflow-x: hidden;
 }
 #one {
+	z-index: -1;
 	height: 93vh;
 	width: 100vw;
 	background: #dce0e9;
@@ -13,5 +14,19 @@ body {
 }
 
 #prime {
-	margin-top: 4rem;
+	margin-top: 5rem;
+	padding: 0px 4rem !important;
+}
+
+#detailCard {
+	padding: 0px;
+}
+
+#campgroundCarousel {
+	padding-left: 0px;
+}
+
+.carousel-item img {
+	object-fit: cover;
+	height: 50vh;
 }
