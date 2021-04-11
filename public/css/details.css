@@ -1,13 +1,17 @@
 body {
 	overflow-x: hidden;
 }
-#one{
+#one {
 	height: 93vh;
 	width: 100vw;
 	background: #dce0e9;
-	clip-path: polygon(0 0,100% 0, 100% 43%,0 66%);
+	clip-path: polygon(0 0, 100% 0, 100% 43%, 0 66%);
 	shape-margin: 20px;
 	position: fixed;
 	right: 0;
 	top: 0;
+}
+
+#prime {
+	margin-top: 4rem;
 }
