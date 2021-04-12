@@ -51,6 +51,8 @@ button.btn-danger:hover {
 #prime {
 	margin-top: 5rem;
 	padding: 0px 4rem !important;
+	position: relative;
+	left: -23px;
 }
 
 #detailCard {
@@ -63,7 +65,10 @@ button.btn-danger:hover {
 
 #map-col {
 	position: fixed;
-	right: 1vw;
+	right: 2vw;
+	box-shadow: 0 0.5rem 1.7rem rgba(0, 0, 0, 0.35) !important;
+	padding-top: 1rem;
+	border-radius: 1rem;
 }
 
 .carousel-item img {
@@ -101,6 +106,7 @@ ul li {
 	border-radius: 1rem;
 	background-color: rgba(255, 255, 255, 0.25);
 	backdrop-filter: blur(7px);
+	box-shadow: 0 0.5rem 1.7rem rgba(0, 0, 0, 0.35) !important;
 }
 
 .card-body {
@@ -169,6 +175,11 @@ a.user {
 	top: -95px;
 }
 
+.carousel-inner {
+	box-shadow: 0 0.5rem 1.7rem rgba(0, 0, 0, 0.35) !important;
+	border-radius: 1rem;
+}
+
 @media (max-width: 1107px) and (min-width: 1013px) {
 	#prime {
 		padding: 0px 3rem !important;
@@ -181,13 +192,13 @@ a.user {
 @media (max-width: 1012px) {
 	#prime {
 		position: relative;
-		left: -56px;
+		left: -73px;
 		padding: 0 7rem !important;
 		margin-top: 6rem;
 	}
 	#map-col {
 		width: 31%;
-		right: 2vw;
+		right: 3.5vw;
 	}
 	#campgroundCarousel {
 		padding-right: 0px;
@@ -208,7 +219,7 @@ a.user {
 @media (max-width: 761px) {
 	#map-col {
 		width: 36%;
-		right: 2.2vw;
+		right: 4.2vw;
 	}
 	#map {
 		height: 272px;
