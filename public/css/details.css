@@ -15,6 +15,39 @@ body {
 	top: 0;
 }
 
+a.btn-success,
+button.btn-success {
+	transition: all 0.2s ease-in-out;
+	text-align: center;
+	vertical-align: middle;
+	border: 0.0625rem solid transparent;
+	font-weight: 600;
+	font-size: 0.875rem;
+	line-height: 1.5;
+	border-radius: 0.25rem;
+	background-color: #0d6efd !important;
+	color: white !important;
+}
+button.btn-danger {
+	transition: all 0.2s ease-in-out;
+	text-align: center;
+	vertical-align: middle;
+	border: 0.0625rem solid transparent;
+	font-weight: 600;
+	font-size: 0.875rem;
+	line-height: 1.5;
+	border-radius: 0.25rem;
+	background-color: #dc3545 !important;
+	color: white !important;
+}
+a.btn-success:hover,
+button.btn-success:hover,
+button.btn-danger:hover {
+	box-shadow: 0 1rem 7rem rgba(0, 0, 0, 0.15) !important;
+	transform: translateY(-5px);
+	border-color: transparent !important;
+}
+
 #prime {
 	margin-top: 5rem;
 	padding: 0px 4rem !important;
@@ -28,7 +61,209 @@ body {
 	padding-left: 0px;
 }
 
+#map-col {
+	position: fixed;
+	right: 1vw;
+}
+
 .carousel-item img {
+	border-radius: 1rem;
 	object-fit: cover;
-	height: 50vh;
+	height: 46vh;
+	min-height: 250px;
+	width: 100%;
+}
+
+#addReviewMin {
+	display: none;
+}
+
+#request {
+	height: 6vh;
+	display: flex;
+	justify-content: center;
+	padding: 0px;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+	background-color: rgba(255, 255, 255, 0.25);
+	backdrop-filter: blur(7px);
+}
+
+ul li {
+	background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.carousel-control-next {
+	right: 13px;
+}
+
+.card {
+	border-radius: 1rem;
+	background-color: rgba(255, 255, 255, 0.25);
+	backdrop-filter: blur(7px);
+}
+
+.card-body {
+	font-size: 0.875rem !important;
+}
+
+.card-title {
+	font-size: 0.975rem !important;
+}
+
+.card-subtitle {
+	font-size: 0.875rem !important;
+}
+
+#detailCard .card-title {
+	font-size: 1.25rem !important;
+}
+
+#reviewDiv1,
+#reviewDiv2 {
+	/*border: 1px solid rgba(0, 0, 0, 0.125);*/
+	border-radius: 0.25rem;
+	background-color: rgba(255, 255, 255, 0.25);
+	backdrop-filter: blur(7px);
+}
+
+#request a {
+	padding-top: 10px;
+}
+
+textarea {
+	background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+#body1 {
+	background-color: rgba(255, 255, 255, 0.25) !important;
+	font-size: 0.875rem;
+}
+
+#main div.card {
+	transform-origin: top left;
+	transform: scale(0.9);
+	width: min(71%, 639.77px);
+	min-width: 353px;
+}
+
+#main div.card-body {
+	position: relative;
+	padding: 0;
+}
+
+#main div.card div.card-body:first-child {
+	padding-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+a.user {
+	position: absolute;
+	right: 0;
+	top: -131px;
+}
+
+#deleteForm {
+	position: absolute;
+	right: 0;
+	top: -95px;
+}
+
+@media (max-width: 1107px) and (min-width: 1013px) {
+	#prime {
+		padding: 0px 3rem !important;
+	}
+	.carousel-item img {
+		height: 310.917px;
+	}
+}
+
+@media (max-width: 1012px) {
+	#prime {
+		position: relative;
+		left: -56px;
+		padding: 0 7rem !important;
+		margin-top: 6rem;
+	}
+	#map-col {
+		width: 31%;
+		right: 2vw;
+	}
+	#campgroundCarousel {
+		padding-right: 0px;
+	}
+	.carousel-item img {
+		width: 100%;
+		height: 31vw;
+	}
+}
+
+@media (max-width: 876px) {
+	#map-col {
+		width: 33%;
+		right: 3vw;
+	}
+}
+
+@media (max-width: 761px) {
+	#map-col {
+		width: 36%;
+		right: 2.2vw;
+	}
+	#map {
+		height: 272px;
+	}
+}
+
+@media (max-width: 639px) {
+	#prime {
+		left: -85px;
+	}
+	#map-col {
+		width: 42%;
+	}
+	#main div.card {
+		width: 100%;
+	}
+}
+
+@media (max-width: 594px) {
+	.carousel-item img {
+		border-radius: 0;
+		border-top-right-radius: 1rem;
+		border-top-left-radius: 1rem;
+	}
+	#detailCard {
+		border-radius: 0;
+		border-bottom-right-radius: 1rem;
+		border-bottom-left-radius: 1rem;
+	}
+	#campgroundCarousel {
+		margin-bottom: 0px !important;
+	}
+	#prime {
+		left: 0px;
+		padding: 0 16vw !important;
+	}
+	#addReviewMin {
+		display: block;
+	}
+	#map-col {
+		display: none;
+	}
+	#reviewDiv1,
+	#reviewDiv2 {
+		border: 1px solid rgba(0, 0, 0, 0.125);
+	}
+	#main div.card {
+		transform: scale(1);
+		margin-bottom: 1rem;
+		min-width: 0px;
+	}
+}
+
+@media (max-width: 485px) {
+	#prime {
+		padding: 0 10vw !important;
+	}
 }
