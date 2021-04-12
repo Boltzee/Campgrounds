@@ -3,16 +3,16 @@ body {
 	font-family: "Lato", sans-serif;
 	font-size: 0.875rem;
 }
-#one {
-	z-index: -1;
-	height: 93vh;
-	width: 100vw;
-	background: #dce0e9;
-	clip-path: polygon(0 0, 100% 0, 100% 43%, 0 66%);
-	shape-margin: 20px;
+
+#wave {
+	transform: rotateZ(0);
 	position: fixed;
-	right: 0;
-	top: 0;
+	bottom: 0;
+}
+
+#wave2 {
+	position: fixed;
+	top: -181px;
 }
 
 a.btn-success,
@@ -69,6 +69,8 @@ button.btn-danger:hover {
 	box-shadow: 0 0.5rem 1.7rem rgba(0, 0, 0, 0.35) !important;
 	padding-top: 1rem;
 	border-radius: 1rem;
+	background-color: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(7px);
 }
 
 .carousel-item img {
@@ -125,12 +127,11 @@ ul li {
 	font-size: 1.25rem !important;
 }
 
-#reviewDiv1,
-#reviewDiv2 {
+#reviewDiv1 {
 	/*border: 1px solid rgba(0, 0, 0, 0.125);*/
 	border-radius: 0.25rem;
-	background-color: rgba(255, 255, 255, 0.25);
-	backdrop-filter: blur(7px);
+	/*background-color: rgba(255, 255, 255, 0.25);*/
+	/*backdrop-filter: blur(7px);*/
 }
 
 #request a {
