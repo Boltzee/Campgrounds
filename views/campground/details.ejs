@@ -30,16 +30,16 @@
 
 		<!-- Beginning of the main content -->
 		<div class="container-fluid" id="prime">
-			<div class="row">
-				<div class="col-9">
-					<div class="row">
+			<div class="row" id="mainRow">
+				<div class="col-9" id="contentCol">
+					<div class="row" id="card-row">
 						<div id="campgroundCarousel" class="col-4 mb-3 carousel slide carousel-fade" data-bs-ride="carousel">
 							  <div class="carousel-inner">
 							  	<% let x = 0%>
 							  	<% for(let img of ground.images) {%>
 							  		<% x++ %>
 								    <div class="carousel-item <%= (x==1) ? 'active' : ''%>">
-								      <img src="<%=img.url%>" class="" alt="...">
+								      <img src="<%=img.url%>" class="d-block w-100" alt="...">
 								    </div>
 							    <% } %>
 							  </div>
@@ -57,7 +57,7 @@
 						<div class="col-8 card mb-3" id="detailCard">
 							  <div class="card-body">
 							    <h5 class="card-title"><%=ground.title%></h5>
-							    <p class="card-text"><%=ground.description%></p>
+							    <p class="card-text" style="font-size: 0.8rem !important;"><%=ground.description%></p>
 							  </div>
 							  <ul class="list-group list-group-flush">
 							    <li class="list-group-item text-muted"><%=ground.location%></li>
@@ -74,10 +74,46 @@
 							  <% } %>
 			 			</div>
 					</div>
+					<div class="row" id="addReviewMin">
+						<% if(currentUser) {%>
+						<div id="reviewDiv1" class="pt-3 mb-3">
+							<h2 style="font-size: 0.975rem">Leave a review</h2>
+				 			<form class="mb-3 validate-form" action="/campgrounds/<%=ground._id%>/review" method="POST" novalidate>
+				 				<fieldset class="starability-checkmark" style="min-height: 40px">
+									  <input type="radio" id="first-rate1" name="review[rating]" value="1" checked />
+									  <label for="first-rate1" title="Terrible">1 star</label>
+									  <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+									  <label for="first-rate2" title="Not good">2 stars</label>
+									  <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+									  <label for="first-rate3" title="Average">3 stars</label>
+									  <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+									  <label for="first-rate4" title="Very good">4 stars</label>
+									  <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+									  <label for="first-rate5" title="Amazing">5 stars</label>
+								</fieldset>
+				 				<div class="mb-3 pt-0">
+				 					<label class="form-label" for="body" style="font-size: 0.875rem">Add review</label>
+				 					<textarea class="form-control" name="review[body]" style="font-size: 0.875rem" id="body" cols="30" rows="3" required></textarea>
+				 					<div class="valid-feedback">
+										Looks good
+									</div>
+									<div id="validationServerFeedback" class="invalid-feedback">
+					      				Please provide a review.
+					    			</div>
+				 				</div>
+				 				<button class="btn btn-success">Submit</button>
+				 			</form>
+				 		</div>
+			 			<% } else {%>
+			 				<div class="mb-3 pt-0" id="request">
+			 					<a href="/login" class="btn btn-primary btn-block" style="font-size: 0.75rem">Please sign in to add a review</a>
+			 				</div>
+			 			<% }%>
+					</div>
 					<div class="row" id="main">
 			 			<% for(review of ground.reviews) {%>
-			 				<div class="card mb-3" id="i<%=review._id%>">
-				 				<div class="card-body" >
+			 				<div class="card" id="i<%=review._id%>">
+				 				<div class="card-body px-0" >
 				 					<h5 class="card-title">Rating:</h5>
 									  <p class="starability-result" data-rating="<%=review.rating%>">
 									    Rated: <%=review.rating%> stars
@@ -86,9 +122,9 @@
 							    	<p class="card-text" id="edit-p">Review: <%=review.body%></p>
 				 				</div>
 				 				<% if((currentUser && review.author.equals(currentUser._id)) || (currentUser && ground.author.equals(currentUser._id))) {%>
-					 				<div class="card-body pt-0">
+					 				<div class="card-body pt-0 px-0">
 								    	<a id="edit-button" class="user card-link btn btn-sm btn-success mb-1" data-rev="<%=review%>" data-author="<%=review.author.username%>">Edit</a>
-									    <form style="display: inline;" method="POST" action="/campgrounds/<%=ground._id%>/review/<%=review._id%>?_method=DELETE">
+									    <form id="deleteForm" style="display: inline;" method="POST" action="/campgrounds/<%=ground._id%>/review/<%=review._id%>?_method=DELETE">
 											<button class="btn btn-sm btn-danger mb-1">DELETE</button>
 									  	</form>
 								  	</div>
@@ -97,26 +133,27 @@
 			 			<%}%>
 					</div>
 				</div>
-				<div class="col-3">
+				<div class="col-3" id="map-col">
+					<div id="reviewDiv2" class="mb-3">
 					<div id='map' class="details-map mb-3"></div>
 					<% if(currentUser) {%>
-						<h2>Leave a review</h2>
+						<h2 style="font-size: 0.975rem">Leave a review</h2>
 			 			<form class="mb-3 validate-form" action="/campgrounds/<%=ground._id%>/review" method="POST" novalidate>
 			 				<fieldset class="starability-checkmark" style="min-height: 40px">
-							  <input type="radio" id="first-rate1" name="review[rating]" value="1" checked />
-							  <label for="first-rate1" title="Terrible">1 star</label>
-							  <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-							  <label for="first-rate2" title="Not good">2 stars</label>
-							  <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-							  <label for="first-rate3" title="Average">3 stars</label>
-							  <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-							  <label for="first-rate4" title="Very good">4 stars</label>
-							  <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-							  <label for="first-rate5" title="Amazing">5 stars</label>
+								  <input type="radio" id="first-rate01" name="review[rating]" value="1" checked />
+								  <label for="first-rate01" title="Terrible">1 star</label>
+								  <input type="radio" id="first-rate02" name="review[rating]" value="2" />
+								  <label for="first-rate02" title="Not good">2 stars</label>
+								  <input type="radio" id="first-rate03" name="review[rating]" value="3" />
+								  <label for="first-rate03" title="Average">3 stars</label>
+								  <input type="radio" id="first-rate04" name="review[rating]" value="4" />
+								  <label for="first-rate04" title="Very good">4 stars</label>
+								  <input type="radio" id="first-rate05" name="review[rating]" value="5" />
+								  <label for="first-rate05" title="Amazing">5 stars</label>
 							</fieldset>
 			 				<div class="mb-3 pt-0">
-			 					<label class="form-label" for="body" style="font-size: 1.1rem">Add review</label>
-			 					<textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
+			 					<label class="form-label" for="body" style="font-size: 0.875rem">Add review</label>
+			 					<textarea class="form-control" name="review[body]" style="font-size: 0.875rem" id="body" cols="30" rows="3" required></textarea>
 			 					<div class="valid-feedback">
 									Looks good
 								</div>
@@ -126,6 +163,11 @@
 			 				</div>
 			 				<button class="btn btn-success">Submit</button>
 			 			</form>
+				 	</div>
+		 			<% } else {%>
+		 				<div class="mb-3 pt-0" id="request">
+		 					<a href="/login" class="btn btn-primary btn-block" style="font-size: 0.75rem">Please sign in to add a review</a>
+		 				</div>
 		 			<% }%>
 				</div>
 			</div>
@@ -140,8 +182,9 @@
 			const loc = [<%-ground.geometry.coordinates%>];
 			const campground = <%-JSON.stringify(ground)%>;
 		</script>
+		<script src="/js/validateForm.js"></script>
 		<script src="/js/showpageMap.js"></script>
-		
+		<script src="/js/details.js"></script>
 		<script>
 
 			const parentElement = document.querySelector("#main");
@@ -183,8 +226,8 @@
 				// console.log(bod);
 				// ${ (obj.rating===1)? 'checked':''}
 				const str = 
-					`<form method="POST" action="/campgrounds/<%=ground._id%>/review/${obj._id}?_method=PATCH" class="validate-form mb-3 mx-3 mt-3" novalidate>
-					 	<div class="card-body pb-0">
+					`<form method="POST" action="/campgrounds/<%=ground._id%>/review/${obj._id}?_method=PATCH" class="validate-form mb-3 mt-3" novalidate>
+					 	<div class="card-body pb-0 px-0">
 						 	<fieldset class="starability-checkmark" style="min-height: 40px">
 							  <input type="radio" id="1" name="review[rating]" value="1" ${(obj.rating==1)? 'checked':''}/>
 							  <label for="1" title="Terrible">1 star</label>
@@ -198,8 +241,8 @@
 							  <label for="5" title="Amazing">5 stars</label>
 							</fieldset>
 						</div>
-					 	<div class="mb-3 card-body pt-0">
-					 		<label for="body1" class="form-label card-title"><h3 class="card-title">Edit review</h3></label>
+					 	<div class="mb-3 card-body pt-0 px-0">
+					 		<label for="body1" class="form-label card-title"><h3 class="card-title" style="font-size:0.975rem;">Edit review</h3></label>
 					 		<textarea name="review[body]" id="body1" cols="30" rows="3" class="form-control" required>${bod}</textarea>
 					 		<div class="valid-feedback">
 					 			Looks good
@@ -220,7 +263,7 @@
 					let o = `  _id: ${obj._id},  body: ${obj.body},  rating: ${obj.rating}`;
 
 					let original = 
-						`<div class="card-body" >
+						`<div class="card-body px-0" >
 							<h5 class="card-title">Rating:</h5>
 							<p class="starability-result" data-rating="${obj.rating}">
 							  Rated: ${obj.rating} stars
@@ -228,9 +271,9 @@
 		 					<h6 class="card-subtitle mb-2 text-muted">By ${user_name}</h6>
 					    	<p class="card-text" id="edit-p">Review: ${bod}</p>
 			 			 </div>
-		 				 <div class="card-body pt-0">
-					     	 <a id="edit-button" class="card-link btn btn-sm btn-success mb-1" data-rev="${o}">Edit</a>
-						     <form style="display: inline;" method="POST" action="/campgrounds/<%=ground._id%>/review/${obj._id}?_method=DELETE">
+		 				 <div class="card-body pt-0 px-0">
+					     	 <a id="edit-button" class="user card-link btn btn-sm btn-success mb-1" data-rev="${o}">Edit</a>
+						     <form id="deleteForm" style="display: inline;" method="POST" action="/campgrounds/<%=ground._id%>/review/${obj._id}?_method=DELETE">
 							     <button class="btn btn-sm btn-danger mb-1">DELETE</button>
 						     </form>
 					  	 </div>`
