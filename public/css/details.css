@@ -15,6 +15,36 @@ body {
 	top: -181px;
 }
 
+@media (max-width: 1206px) and (min-width: 978px) {
+	#wave2 {
+		top: -144px;
+	}
+}
+
+@media (max-width: 977px) and (min-width: 825px) {
+	#wave2 {
+		top: -90px;
+	}
+}
+
+@media (max-width: 824px) and (min-width: 647px) {
+	#wave2 {
+		top: -55px;
+	}
+}
+
+@media (max-width: 646px) and (min-width: 520px) {
+	#wave2 {
+		top: -21px;
+	}
+}
+
+@media (max-width: 519px) {
+	#wave2 {
+		top: 0px;
+	}
+}
+
 a.btn-success,
 button.btn-success {
 	transition: all 0.2s ease-in-out;
