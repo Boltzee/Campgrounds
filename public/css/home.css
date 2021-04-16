@@ -30,6 +30,10 @@ body {
 	background-image: url(/assets/asset_pic_22.jpg);
 	font-family: "Lato", sans-serif;
 }
+#wave {
+	position: fixed;
+	bottom: 0;
+}
 footer {
 	bottom: -7px;
 	position: fixed;
