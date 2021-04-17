@@ -212,6 +212,14 @@ label.form-label {
 	margin: 0;
 }
 
+#blob1 {
+	left: -218px;
+	top: 24px;
+	position: fixed;
+	z-index: -3;
+	width: 500px;
+}
+
 @media (max-width: 914px) {
 	#newForm {
 		width: 55%;
