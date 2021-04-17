@@ -28,6 +28,39 @@ db.once("open", () => {
 	console.log("Database Connected");
 });
 
+const image_samples = [
+	{
+		url:
+			"https://res.cloudinary.com/chadchampion/image/upload/v1618666905/asset_pic_15_ibkve1.jpg",
+		filename: "asset_pic_15_ibkve1",
+	},
+	{
+		url:
+			"https://res.cloudinary.com/chadchampion/image/upload/v1618666945/asset_pic_11_erwub1.jpg",
+		filename: "asset_pic_11_erwub1",
+	},
+	{
+		url:
+			"https://res.cloudinary.com/chadchampion/image/upload/v1618666979/asset_pic_4_meurno.jpg",
+		filename: "asset_pic_4_meurno",
+	},
+	{
+		url:
+			"https://res.cloudinary.com/chadchampion/image/upload/v1618666922/asset_pic_18_vtq5jq.jpg",
+		filename: "asset_pic_18_vtq5jq",
+	},
+	{
+		url:
+			"https://res.cloudinary.com/chadchampion/image/upload/v1618666927/asset_pic_13_bpgezn.jpg",
+		filename: "asset_pic_13_bpgezn",
+	},
+	{
+		url:
+			"https://res.cloudinary.com/chadchampion/image/upload/v1618666899/asset_pic_19_p6snar.jpg",
+		filename: "asset_pic_19_p6snar",
+	},
+];
+
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () => {
@@ -46,18 +79,10 @@ const seedDB = async () => {
 				],
 			},
 			images: [
-				{
-					url:
-						"https://res.cloudinary.com/chadchampion/image/upload/v1616938179/YelpCamp/onsqcoe4194je2pxi5jm.jpg",
-					filename: "YelpCamp/onsqcoe4194je2pxi5jm",
-				},
-				{
-					url:
-						"https://res.cloudinary.com/chadchampion/image/upload/v1616938179/YelpCamp/p4zfqwcrxti9o4jb93s2.jpg",
-					filename: "YelpCamp/p4zfqwcrxti9o4jb93s2",
-				},
+				image_samples[Math.floor(Math.random() * 6)],
+				image_samples[Math.floor(Math.random() * 6)],
 			],
-			author: "605f0778105ac227685f5421",
+			author: "6062f93d4c27750015bcb9fd",
 			description:
 				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum sit dolorem ipsum hic minus earum autem ab. Praesentium obcaecati assumenda, id placeat quae debitis aspernatur dolores facere ab fugiat! Ullam.",
 		});
