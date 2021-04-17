@@ -33,7 +33,7 @@
 
 
 		<div class="col-md-6 offset-e-3" id="newForm">
-			<form action="/campgrounds" method="POST" class="validate-form" enctype="multipart/form-data" novalidate>
+			<form action="/campgrounds/<%=ground._id%>?_method=PATCH" method="POST" class="validate-form" enctype="multipart/form-data" novalidate>
 				<label class="form-label" for="title">TITLE</label>
 				<input class="form-control" type="text" id="title" name="campground[title]" value="<%=ground.title%>" required>
 				<div class="valid-feedback">
