@@ -7,11 +7,20 @@ const mapboxToken =
 	"pk.eyJ1IjoiY29kZmlzaCIsImEiOiJja210amo4OWEwc2gzMnVtcDBieWZmc3ozIn0.UlFT_LWz0wqEyXHz_p6nDA";
 const geocoder = mbxGeocoding({ accessToken: mapboxToken });
 
-mongoose.connect("mongodb://localhost:27017/YelpCamp", {
-	useNewUrlParser: true,
-	useCreateIndex: true,
-	useUnifiedTopology: true,
-});
+// mongoose.connect("mongodb://localhost:27017/YelpCamp", {
+// 	useNewUrlParser: true,
+// 	useCreateIndex: true,
+// 	useUnifiedTopology: true,
+// });
+
+mongoose.connect(
+	"mongodb+srv://codfish:yUzNtIYNBSyS8FcR@yelpcamp.x7jc2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+	{
+		useNewUrlParser: true,
+		useCreateIndex: true,
+		useUnifiedTopology: true,
+	}
+);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -23,7 +32,7 @@ const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () => {
 	await Campground.deleteMany({});
-	for (let x = 0; x < 400; x++) {
+	for (let x = 0; x < 75; x++) {
 		let random1000 = Math.floor(Math.random() * 1000);
 		const item = new Campground({
 			location: `${cities[random1000].city},${cities[random1000].state}`,
