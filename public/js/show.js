@@ -2,6 +2,8 @@ const gallery = document.querySelector("#gallery");
 const load = document.getElementById("load");
 const map_1 = document.getElementById("map");
 const campground_list = campgrounds.features;
+let k =
+	"https://res.cloudinary.com/chadchampion/image/upload/v1616938179/YelpCamp/onsqcoe4194je2pxi5jm.jpg";
 
 // setTimeout(function () {
 // 	window.scrollTo(0, 255);
