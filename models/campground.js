@@ -3,71 +3,71 @@ const Review = require("./review");
 const User = require("./user");
 
 const imageSchema = new mongoose.Schema({
-	url: String,
-	filename: String,
+    url: String,
+    filename: String,
 });
 
 imageSchema.virtual("thumbnail").get(function () {
-	return this.url.replace("/upload", "/upload/w_200");
+    return this.url.replace("/upload", "/upload/w_200");
 });
 
 const opts = { toJSON: { virtuals: true } };
 
 const campgroundSchema = new mongoose.Schema(
-	{
-		title: {
-			type: String,
-			required: true,
-		},
-		geometry: {
-			type: {
-				type: String,
-				enum: ["Point"],
-				required: true,
-			},
-			coordinates: {
-				type: [Number],
-				required: true,
-			},
-		},
-		images: [imageSchema],
-		price: {
-			type: Number,
-			required: true,
-		},
-		description: {
-			type: String,
-			lowercase: true,
-		},
-		location: {
-			type: String,
-		},
-		author: {
-			type: mongoose.Schema.Types.ObjectID,
-			ref: "User",
-		},
-		reviews: [
-			{
-				type: mongoose.Schema.Types.ObjectID,
-				ref: "Review",
-			},
-		],
-	},
-	opts
+    {
+        title: {
+            type: String,
+            required: true,
+        },
+        geometry: {
+            type: {
+                type: String,
+                enum: ["Point"],
+                required: true,
+            },
+            coordinates: {
+                type: [Number],
+                required: true,
+            },
+        },
+        images: [imageSchema],
+        price: {
+            type: Number,
+            required: true,
+        },
+        description: {
+            type: String,
+            lowercase: true,
+        },
+        location: {
+            type: String,
+        },
+        author: {
+            type: mongoose.Schema.Types.ObjectID,
+            ref: "User",
+        },
+        reviews: [
+            {
+                type: mongoose.Schema.Types.ObjectID,
+                ref: "Review",
+            },
+        ],
+    },
+    opts
 );
 
 campgroundSchema.virtual("properties.popUpMarkup").get(function () {
-	return `<strong><a href="/campgrounds/${
-		this._id
-	}">${this.title}</a></strong>
+    return `<strong><a href="/campgrounds/${
+        this._id
+    }">${this.title}</a></strong>
 	<p>${this.description.substring(0, 35)}...</p>`;
 });
 
 campgroundSchema.post("findOneAndDelete", async function (ground) {
-	if (ground.reviews.length) {
-		const res = await Review.deleteMany({ _id: { $in: ground.reviews } });
-		console.log(res);
-	}
+    if (ground.reviews.length) {
+        const res = await Review.deleteMany({ _id: { $in: ground.reviews } });
+        console.log(res);
+    }
 });
 
 const Campground = mongoose.model("Campground", campgroundSchema);
