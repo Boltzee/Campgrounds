@@ -25,6 +25,7 @@ const passport = require("passport");
 const localStrategy = require("passport-local");
 const helmet = require("helmet");
 const MongoDBStore = require("connect-mongo");
+var https = require("https");
 
 const ExpressError = require("./utils/expressError");
 
@@ -202,6 +203,11 @@ app.use((err, req, res, next) => {
 //
 
 const port = process.env.PORT || 3000;
+
+setInterval(function () {
+    console.log("pinging!!!");
+    https.get("https://leafyclimate.kirantirunagiri.repl.co");
+}, 300000);
 
 app.listen(port, () => {
     console.log(`LISTENING ON PORT ${port}`);
