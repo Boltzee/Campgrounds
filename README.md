@@ -28,8 +28,6 @@ User-Features:
 4. Edit his/her created campgrounds.
 5. Authentication and session using passport auth.
 
-<br />
-
 ## Installation Requirements
 
 -   Install Node.js >= 10
