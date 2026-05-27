@@ -37,16 +37,8 @@ app.use(mongoSanitize());
 
 /// Connecting to the mongo database
 
-// const db_url = process.env.DB_URL;
-// "mongodb://localhost:27017/YelpCamp"
-// const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/YelpCamp";
-const dbUrl = "mongodb://localhost:27017/YelpCamp";
-mongoose.connect(dbUrl, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-});
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/YelpCamp";
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -152,7 +144,7 @@ app.use(
                 "'self'",
                 "blob:",
                 "data:",
-                "https://res.cloudinary.com/chadchampion/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
+                `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/`,
                 "https://images.unsplash.com/",
                 "https://source.unsplash.com/collection/483251",
             ],
